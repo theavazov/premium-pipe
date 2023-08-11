@@ -1,0 +1,27 @@
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.btn {
+  display: grid;
+  place-items: center;
+  color: var(--black);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  color: var(--green);
+}
+
+.btn svg {
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 1200px) {
+  .buttons {
+    display: none;
+  }
+}

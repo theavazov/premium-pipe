@@ -17,6 +17,12 @@
   --halvar-bold: "Halvar bold";
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  background-color: unset;
+}
+
 *,
 *::before,
 *::after {
@@ -36,4 +42,145 @@
 
 main {
   flex: 1 1 auto;
+  margin-top: 124px;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+.box,
+.mediumbox,
+.minibox {
+  max-width: calc(1680px + 30px);
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 15px;
+}
+
+.mediumbox {
+  max-width: calc(1400px + 30px);
+}
+
+.minibox {
+  max-width: calc(1110px + 30px);
+}
+
+.section {
+  margin-top: 120px;
+}
+
+.section_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section_inner_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section_inner_top a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-family: var(--interface-medium), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: var(--green);
+  max-width: 250px;
+  width: 100%;
+}
+
+.section_inner_top a svg {
+  max-width: 24px;
+  width: 100%;
+  height: 24px;
+}
+
+.section_title {
+  font-family: var(--halvar-bold), sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  color: var(--black);
+  text-transform: uppercase;
+}
+
+.categories_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.products_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* = */
+.primary_btn {
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: var(--halvar-bold);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 18.2px */
+  text-transform: uppercase;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 40px;
+  background: var(--green);
+}
+
+.primary_btn svg {
+  max-width: 24px;
+  width: 100%;
+  height: 24px;
+}
+
+@media (max-width: 1200px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .section_inner {
+    gap: 18px;
+  }
+  .section_title {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .categories_container,
+  .products_container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .section_inner_top a {
+    display: none;
+  }
 }

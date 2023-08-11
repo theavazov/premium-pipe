@@ -1,0 +1,15 @@
+.card {
+  width: 100%;
+  border: 1px solid #ebebeb;
+}
+
+.card_image {
+  position: relative;
+  height: 250px;
+}
+
+@media (max-width: 1200px) {
+  .card_image {
+    height: 180px;
+  }
+}
