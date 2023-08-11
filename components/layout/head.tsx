@@ -8,7 +8,7 @@ type Props = {
 };
 
 export function CustomHead({ title, desc, canonical }: Props) {
-  const URL = "https://premiumpipe-ndc.vercel.app";
+  const URL = "https://premiumpipe-ndc.vercel.app/";
   const { locales } = useRouter();
 
   return (
