@@ -1,0 +1,38 @@
+@import "./fonts.css";
+
+:root {
+  --white: #ffffff;
+  --black: #020105;
+  --green: #4eb848;
+  --gray: #5d5d5f;
+  --grayscale: #353437;
+  --dark-blue: #1b1b3a;
+  --interface-regular: "Interface regular";
+  --interface-medium: "Interface medium";
+  --interface-semibold: "Interface semibold";
+  --interface-bold: "Interface bold";
+  --halvar-regular: "Halvar regular";
+  --halvar-medium: "Halvar medium";
+  --halvar-bold: "Halvar bold";
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: var(--interface-regular), sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 1 auto;
+}

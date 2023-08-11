@@ -1,0 +1,42 @@
+/* === FONTS === */
+@font-face {
+  font-family: "Interface regular";
+  src: url("/fonts/Interface/TTInterfaces-Regular.woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Interface medium";
+  src: url("/fonts/Interface/TTInterfaces-Medium.woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Interface semibold";
+  src: url("/fonts/Interface/TTInterfaces-SemiBold.woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Interface bold";
+  src: url("/fonts/Interface/TTInterfaces-Bold.woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Halvar regular";
+  src: url("/fonts/Halvar/HalvarBreit-Rg.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Halvar medium";
+  src: url("/fonts/Halvar/HalvarBreit-Md.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Halvar bold";
+  src: url("/fonts/Halvar/HalvarBreit-Bd.ttf");
+  font-display: swap;
+}
