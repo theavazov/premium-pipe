@@ -27,7 +27,7 @@ interface PageProps {
   products: IProduct[];
 }
 
-export default function Home({
+export default function Page({
   categories,
   partners,
   galleries,

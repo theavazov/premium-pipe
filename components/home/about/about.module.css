@@ -2,6 +2,7 @@
   background: var(--apple-grey, #f5f5f7);
   transform: translateY(-128px);
 }
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -9,6 +10,12 @@
   gap: 100px;
   padding-bottom: 120px;
   padding-top: 180px;
+}
+
+.info_section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .descs {
@@ -110,5 +117,6 @@
   }
   .mobile_btn {
     display: flex;
+    max-width: max-content;
   }
 }

@@ -35,7 +35,13 @@ export default function Footer() {
   ];
 
   return (
-    <section className={styles.footer}>
+    <section
+      className={
+        pathname === "/" || pathname === "/about"
+          ? styles.footer
+          : `${styles.margin} ${styles.footer}`
+      }
+    >
       <div className={`box ${styles.footer_inner}`}>
         <div className={styles.top_container}>
           <div className={styles.top_container_inner_top}>
@@ -103,7 +109,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className={styles.email}
               >
-                info@P-pipe.com
+                info@p-pipe.com
               </a>
             </div>
             <div className={styles.contact}>

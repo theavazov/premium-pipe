@@ -8,7 +8,7 @@ type Props = {
 };
 
 export function CustomHead({ title, desc, canonical }: Props) {
-  const URL = "https://premiumpipe-ndc.vercel.app/";
+  const URL = "https://premiumpipe-ndc.vercel.app";
   const { locales } = useRouter();
 
   return (
@@ -25,7 +25,7 @@ export function CustomHead({ title, desc, canonical }: Props) {
         referrerPolicy="no-referrer"
       /> */}
       <meta name="description" content={desc} />
-      <link rel="canonical" href={canonical} />
+      <link rel="canonical" href={`${URL}${canonical}`} />
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       {locales?.map((locale: string) => {
         return (
@@ -33,7 +33,7 @@ export function CustomHead({ title, desc, canonical }: Props) {
             key={locale}
             rel="alternate"
             hrefLang={locale}
-            href={`${URL}/${locale}`}
+            href={`${URL}${canonical}/${locale}`}
           />
         );
       })}

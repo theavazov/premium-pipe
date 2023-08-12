@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { chevron_right } from "../../../public/icons";
 import styles from "./about.module.css";
 import Image from "next/image";
@@ -22,9 +23,9 @@ export default function AboutCompany() {
               инновациям и устанавливает высокие стандарты в своей отрасли.
             </p>
           </div>
-          <button className={`primary_btn ${styles.btn}`}>
+          <Link href="/about" className={`primary_btn ${styles.btn}`}>
             Подробнее {chevron_right}
-          </button>
+          </Link>
         </div>
         <div className={styles.images}>
           <Image
@@ -35,9 +36,9 @@ export default function AboutCompany() {
             className="image"
           />
         </div>
-        <button className={`primary_btn ${styles.mobile_btn}`}>
+        <Link href="/about" className={`primary_btn ${styles.mobile_btn}`}>
           Подробнее {chevron_right}
-        </button>
+        </Link>
       </div>
     </section>
   );

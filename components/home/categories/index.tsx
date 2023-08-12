@@ -10,7 +10,7 @@ export default function CategoriesSection({
   categories: ICategory[];
 }) {
   return (
-    <section>
+    <section className={styles.section}>
       <div className="box section_inner">
         <div className="section_inner_top">
           <h3 className="section_title">каталог продукции</h3>

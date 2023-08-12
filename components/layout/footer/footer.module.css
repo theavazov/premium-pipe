@@ -1,6 +1,11 @@
 .footer {
   background: var(--dark-blue);
 }
+
+.footer.margin {
+  margin-top: 120px;
+}
+
 .footer_inner {
   padding-block: 80px;
   display: flex;
@@ -196,6 +201,9 @@
 }
 
 @media (max-width: 1200px) {
+  .footer.margin {
+    margin-top: 56px;
+  }
   .contact {
     align-items: flex-start;
   }

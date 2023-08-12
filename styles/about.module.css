@@ -1,0 +1,136 @@
+.section_inner {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.inner_top {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.top_left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top_right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 540px;
+  width: 100%;
+}
+
+.top_right_div {
+  width: 100%;
+  background-color: #f5f5f7;
+  border: 1px solid #ebebeb;
+  padding: 16px;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.top_right_div div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.top_right_div img {
+  display: inline-block;
+  width: 178px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.stats_number {
+  font-family: var(--halvar-bold), sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 48px;
+  color: var(--green);
+}
+
+.stats_title {
+  font-family: var(--interface-semibold), sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #1d2b1e;
+}
+
+.stats_text {
+  font-size: 16px;
+  line-height: 24px;
+  color: #5d5d5f;
+  text-align: center;
+}
+
+.inner_bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.inner_bottom_image {
+  position: relative;
+  height: 580px;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--grayscale);
+}
+
+@media (max-width: 1200px) {
+  .section_inner {
+    gap: 24px;
+    padding-top: 32px;
+  }
+  .inner_top {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .top_right {
+    gap: 8px;
+    max-width: 100%;
+  }
+  .inner_bottom {
+    gap: 24px;
+  }
+  .inner_bottom_image {
+    height: 360px;
+  }
+  .top_right_div img {
+    max-width: 100%;
+    width: 100%;
+  }
+  .stats_number {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  .stats_title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .stats_text {
+    font-size: 12px;
+    line-height: 15.6px;
+  }
+}

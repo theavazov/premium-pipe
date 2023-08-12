@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
 import { IPartner } from "../../../server/interfaces";
-import Buttons from "../buttons";
+import Buttons from "../../utils/buttons";
 import styles from "./partners.module.css";
 import Image from "next/image";
 

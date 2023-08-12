@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
 import { IGallery } from "../../../server/interfaces";
-import Buttons from "../../universal/buttons";
+import Buttons from "../../utils/buttons";
 import styles from "./gallery.module.css";
 import GalleryCard from "../../cards/gallery";
 

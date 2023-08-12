@@ -17,6 +17,26 @@
   --halvar-bold: "Halvar bold";
 }
 
+@keyframes shine {
+  to {
+    background-position: right -40px top 0;
+  }
+}
+
+.skeleton {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 40px 100%;
+  background-repeat: no-repeat;
+  background-position: left -40px top;
+  animation: shine 2s ease infinite;
+  background-color: #ececec;
+}
+
 button {
   cursor: pointer;
   border: none;
@@ -30,7 +50,7 @@ button {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   font-family: var(--interface-regular), sans-serif;
 }
 
@@ -167,6 +187,9 @@ main {
   }
   .mobile {
     display: block;
+  }
+  .section {
+    margin-top: 56px;
   }
   .section_inner {
     gap: 18px;

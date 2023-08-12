@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   chevron_right,
   cup_star,
@@ -21,13 +22,6 @@ export default function Intro() {
               полипропиленовые, полиэтиленовые и ПВХ продукция
             </p>
           </div>
-          {/* <Image
-            src="/media/test-bg.jpg"
-            className={styles.image}
-            width={236}
-            height={236}
-            alt="pc"
-          /> */}
         </div>
         <div className={styles.middle}>
           <div className={styles.video_container}>
@@ -38,22 +32,15 @@ export default function Intro() {
               height={560}
               alt="pc"
             />
-            {/* <video
-              id="background-video"
-              loop
-              autoPlay
-              muted
-              className={styles.video}
-            >
-              <source src={"/media/back.mp4"} type="video/mp4" />
-            </video> */}
           </div>
           <div className={styles.middle_info}>
             <p className={styles.middle_subtitle}>
               Ассортимент из полимерных, ПВХ и полиэтиленовых труб различного
               назначения.
             </p>
-            <button className="primary_btn">О компании {chevron_right} </button>
+            <Link href="/about" className="primary_btn">
+              О компании {chevron_right}{" "}
+            </Link>
           </div>
         </div>
         <div className={styles.bottom_container}>
