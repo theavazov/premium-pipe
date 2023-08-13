@@ -38,7 +38,7 @@ export async function getPartners(locale: string) {
 
 export async function getMedia(locale: string, variant: "video" | "image") {
   const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_ENDPOINT}/media?type${variant}`,
+    `${process.env.NEXT_PUBLIC_ENDPOINT}/media?type=${variant}`,
     {
       headers: { Language: locale },
     }
@@ -94,3 +94,5 @@ export async function getSingleNews(locale: string, slug: string) {
 
   return data;
 }
+
+export async function searchProducts(query: string) {}

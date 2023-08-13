@@ -11,13 +11,26 @@
   transition: 0.3s;
 }
 
-.btn:hover {
+.btn:hover,
+.arrowbtn:hover {
   color: var(--green);
 }
 
-.btn svg {
+.btn svg,
+.arrowbtn svg {
   width: 40px;
   height: 40px;
+}
+
+.arrowbtn {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #ebebeb;
+  border-radius: 50%;
+  color: var(--black);
+  transition: 0.3s;
 }
 
 @media (max-width: 1200px) {

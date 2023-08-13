@@ -1,11 +1,5 @@
-export const gmail = (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+export const email = (
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="Huge-icon/social/outline/gmail">
       <rect
         id="Rectangle 1084"
@@ -14,13 +8,13 @@ export const gmail = (
         width="20"
         height="18"
         rx="4"
-        stroke="#4EB848"
+        stroke="currentColor"
         strokeWidth="1.5"
       />
       <path
         id="Vector 3014"
         d="M2 7L9.50122 13.001C10.9621 14.1697 13.0379 14.1697 14.4988 13.001L22 7"
-        stroke="#4EB848"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -30,18 +24,12 @@ export const gmail = (
 );
 
 export const phone = (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="Huge-icon/communication/outline/call">
       <path
         id="Rectangle 77"
         d="M21 19V17.3541C21 16.5363 20.5021 15.8008 19.7428 15.4971L17.7086 14.6835C16.7429 14.2971 15.6422 14.7156 15.177 15.646L15 16C15 16 12.5 15.5 10.5 13.5C8.5 11.5 8 9 8 9L8.35402 8.82299C9.28438 8.35781 9.70285 7.25714 9.31654 6.29136L8.50289 4.25722C8.19916 3.4979 7.46374 3 6.64593 3H5C3.89543 3 3 3.89543 3 5C3 13.8366 10.1634 21 19 21C20.1046 21 21 20.1046 21 19Z"
-        stroke="#4EB848"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
@@ -73,18 +61,12 @@ export const arrow_down = (
 );
 
 export const bag = (
-  <svg
-    width="24"
-    height="25"
-    viewBox="0 0 24 25"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="Huge-icon/ecommerce/outline/bag">
       <path
         id="Rectangle 760"
         d="M16 6.5C16 4.29086 14.2091 2.5 12 2.5C9.79086 2.5 8 4.29086 8 6.5"
-        stroke="#020105"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -92,7 +74,7 @@ export const bag = (
       <path
         id="Rectangle 788"
         d="M4.56175 10.0039C4.81197 8.00215 6.51357 6.5 8.53086 6.5H15.4686C17.4859 6.5 19.1875 8.00215 19.4377 10.0039L20.4377 18.0039C20.7361 20.3913 18.8746 22.5 16.4686 22.5H7.53086C5.12487 22.5 3.26332 20.3913 3.56175 18.0039L4.56175 10.0039Z"
-        stroke="#020105"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
@@ -101,18 +83,12 @@ export const bag = (
 );
 
 export const chevron_down = (
-  <svg
-    width="20"
-    height="21"
-    viewBox="0 0 20 21"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="Arrows&#38;Directions/chevron-down">
       <path
         id="Vector"
         d="M15.3604 8.375L10.0029 13.7333L4.64453 8.375"
-        stroke="#020105"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -564,33 +540,12 @@ export const eye = (
 );
 
 export const location = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-  >
-    <circle cx="12" cy="11" r="3" stroke="#4EB848" strokeWidth="1.5" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="11" r="3" stroke="currentColor" strokeWidth="1.5" />
     <path
       d="M21 10.8889C21 15.7981 15.375 22 12 22C8.625 22 3 15.7981 3 10.8889C3 5.97969 7.02944 2 12 2C16.9706 2 21 5.97969 21 10.8889Z"
-      stroke="#4EB848"
+      stroke="currentColor"
       strokeWidth="1.5"
-    />
-  </svg>
-);
-
-export const location1 = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 32 32"
-    fill="none"
-  >
-    <path
-      d="M8 28.3337C7.44772 28.3337 7 28.7814 7 29.3337C7 29.8859 7.44772 30.3337 8 30.3337V28.3337ZM24 30.3337C24.5523 30.3337 25 29.8859 25 29.3337C25 28.7814 24.5523 28.3337 24 28.3337V30.3337ZM25 12.667C25 14.9423 23.5465 17.8851 21.5396 20.3295C20.553 21.5311 19.4762 22.5575 18.462 23.2742C17.4166 24.0129 16.5636 24.3337 16 24.3337V26.3337C17.1864 26.3337 18.4584 25.7256 19.6162 24.9076C20.805 24.0675 22.0095 22.909 23.0854 21.5986C25.2035 19.0187 27 15.6282 27 12.667H25ZM16 24.3337C15.4566 24.3337 14.6126 23.9994 13.5613 23.2101C12.5453 22.4474 11.4658 21.3574 10.4757 20.0894C8.46234 17.5105 7 14.4336 7 12.1485H5C5 15.0998 6.78766 18.6155 8.89928 21.3201C9.97174 22.6938 11.1734 23.9183 12.3605 24.8096C13.5124 25.6743 14.7934 26.3337 16 26.3337V24.3337ZM7 12.1485C7 7.30778 11.3048 3.66699 16 3.66699V1.66699C10.3859 1.66699 5 6.02621 5 12.1485H7ZM16 3.66699C20.6584 3.66699 25 7.2737 25 12.667H27C27 6.06028 21.6509 1.66699 16 1.66699V3.66699ZM19 12.0003C19 13.6572 17.6569 15.0003 16 15.0003V17.0003C18.7614 17.0003 21 14.7617 21 12.0003H19ZM16 15.0003C14.3431 15.0003 13 13.6572 13 12.0003H11C11 14.7617 13.2386 17.0003 16 17.0003V15.0003ZM13 12.0003C13 10.3435 14.3431 9.00033 16 9.00033V7.00033C13.2386 7.00033 11 9.2389 11 12.0003H13ZM16 9.00033C17.6569 9.00033 19 10.3435 19 12.0003H21C21 9.2389 18.7614 7.00033 16 7.00033V9.00033ZM8 30.3337H24V28.3337H8V30.3337Z"
-      fill="#FD8C05"
     />
   </svg>
 );
@@ -692,6 +647,18 @@ export const plus = (
       y2="16.5"
       stroke="#1D2B1E"
       strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const hugearrow = (
+  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M23.3333 26.667L30 20.0003M30 20.0003L23.3333 13.3337M30 20.0003L10 20.0003"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

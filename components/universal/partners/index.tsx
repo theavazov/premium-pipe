@@ -16,7 +16,11 @@ export default function UniversalPartners({
       <div className={`box section_inner ${styles.partners_inner}`}>
         <div className="section_inner_top">
           <h3 className="section_title">Наши партнеры</h3>
-          <Buttons prevClass="prev-partner" nextClass="next-partner" />
+          <Buttons
+            variant="chevron"
+            prevClass="prev-partner"
+            nextClass="next-partner"
+          />
         </div>
         <div>
           {partners.length > 0 ? (

@@ -16,7 +16,11 @@ export default function GallerySection({
       <div className="box section_inner">
         <div className="section_inner_top">
           <h3 className="section_title">Галерея</h3>
-          <Buttons prevClass="" nextClass="" />
+          <Buttons
+            variant="chevron"
+            prevClass="prev-media"
+            nextClass="next-media"
+          />
         </div>
         <div className="desktop">
           {galleries.length > 0 ? (

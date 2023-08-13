@@ -61,7 +61,11 @@ export default function Page({ article }: { article: PageProps }) {
               className={`box section_inner_top ${styles.other_product_inner}`}
             >
               <h3 className="section_title">Другие новости</h3>
-              <Buttons prevClass="prev-news" nextClass="next-news" />
+              <Buttons
+                variant="arrow"
+                prevClass="prev-news"
+                nextClass="next-news"
+              />
             </div>
             <div style={{ paddingInline: "16px" }}>
               <Swiper

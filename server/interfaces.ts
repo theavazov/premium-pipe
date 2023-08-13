@@ -24,6 +24,8 @@ export interface IProduct {
   price: number;
   image: string | null;
   category: string;
+  details: string | null;
+  desc: string;
 }
 
 export interface INews {

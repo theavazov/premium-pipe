@@ -1,7 +1,22 @@
+import { useQuery } from "react-query";
 import Layout from "../components/layout";
 import { CustomHead } from "../components/layout/head";
+import { getMedia } from "../server/api";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import IntroSection from "../components/universal/intro";
 
 export default function Page() {
+  const { locale } = useRouter();
+  const [type, setType] = useState<"image" | "video">("image");
+
+  useEffect(() => {
+    getMedia(locale!, type)
+      .then((r) => console.log(r))
+      .catch((e) => console.log(e));
+  }, [locale, type]);
+
   return (
     <>
       <CustomHead
@@ -10,7 +25,7 @@ export default function Page() {
         canonical={"/gallery"}
       />
       <Layout>
-        <h1>Gallery</h1>
+        <IntroSection location="Галерея" title="Наша галерея" />
       </Layout>
     </>
   );

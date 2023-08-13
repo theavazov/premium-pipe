@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 .top_container {
   padding-top: 90px;
@@ -82,7 +83,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 22;
+  z-index: 1;
   margin-left: 17%;
   margin-top: 24px;
   display: flex;
@@ -107,9 +108,9 @@
   justify-content: space-between;
   width: 1516px;
   padding: 37px 0 37px 120px;
-  background: #4eb848;
+  background: var(--green);
   transform: translateY(-64px);
-  z-index: 23;
+  z-index: 1;
 }
 .success_container {
   display: grid;

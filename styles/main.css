@@ -17,6 +17,14 @@
   --halvar-bold: "Halvar bold";
 }
 
+#nprogress .bar {
+  background: var(--green) !important;
+}
+
+#nprogress .spinner {
+  display: none !important;
+}
+
 @keyframes shine {
   to {
     background-position: right -40px top 0;
