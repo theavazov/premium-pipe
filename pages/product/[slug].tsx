@@ -75,6 +75,20 @@ export default function Page({ product }: { product: PageProps }) {
                       </SwiperSlide>
                     );
                   })}
+                  {product.other_products.map((product) => {
+                    return (
+                      <SwiperSlide key={product.id}>
+                        <ProductCard product={product} />
+                      </SwiperSlide>
+                    );
+                  })}
+                  {product.other_products.map((product) => {
+                    return (
+                      <SwiperSlide key={product.id}>
+                        <ProductCard product={product} />
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
             </div>

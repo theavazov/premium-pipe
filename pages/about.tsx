@@ -7,11 +7,15 @@ import styles from "../styles/about.module.css";
 import IntroSection from "../components/universal/intro";
 import Image from "next/image";
 import aboutImg from "../public/media/about-img.jpg";
+import { useContext } from "react";
+import { TranslationsContext } from "../store/translations";
 
 // Section
 const Partners = dynamic(() => import("../components/universal/partners"));
 
 export default function Page({ partners }: { partners: IPartner[] }) {
+  const { t } = useContext(TranslationsContext);
+
   return (
     <>
       <CustomHead
@@ -20,7 +24,7 @@ export default function Page({ partners }: { partners: IPartner[] }) {
         canonical={"/about"}
       />
       <Layout>
-        <IntroSection location="О компании" />
+        <IntroSection location={t["main.about"]} />
         <section>
           <div className={`mediumbox ${styles.section_inner}`}>
             <div className={styles.inner_top}>

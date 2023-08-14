@@ -590,16 +590,10 @@ export const cart2 = (
 );
 
 export const x = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
     <path
       d="M16.2426 7.75738L7.75732 16.2427M16.2426 16.2426L7.75732 7.75732"
-      stroke="#5D5D5F"
+      stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -608,36 +602,24 @@ export const x = (
 );
 
 export const minus = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="17"
-    height="1"
-    viewBox="0 0 17 1"
-    fill="none"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 1" fill="none">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M0 0.5C0 0.223858 0.152223 0 0.34 0H16.66C16.8478 0 17 0.223858 17 0.5C17 0.776142 16.8478 1 16.66 1H0.34C0.152223 1 0 0.776142 0 0.5Z"
-      fill="#9A999B"
+      fill="currentColor"
     />
   </svg>
 );
 
 export const plus = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="17"
-    height="17"
-    viewBox="0 0 17 17"
-    fill="none"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" fill="none">
     <line
       x1="0.5"
       y1="8.5"
       x2="16.5"
       y2="8.5"
-      stroke="#1D2B1E"
+      stroke="currentColor"
       strokeLinecap="round"
     />
     <line
@@ -645,7 +627,7 @@ export const plus = (
       y1="0.5"
       x2="8.5"
       y2="16.5"
-      stroke="#1D2B1E"
+      stroke="currentColor"
       strokeLinecap="round"
     />
   </svg>

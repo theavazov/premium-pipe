@@ -97,3 +97,16 @@ export async function getSingleNews(locale: string, slug: string) {
 }
 
 export async function searchProducts(query: string) {}
+
+export async function getSiteinfo(locale: string) {
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT}/static_infos`,
+    {
+      headers: { language: locale },
+    }
+  );
+
+  const data = res.data;
+
+  return data;
+}

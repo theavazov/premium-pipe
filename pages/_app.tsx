@@ -4,6 +4,9 @@ import Router from "next/router";
 import { useEffect } from "react";
 import NProgress from "nprogress";
 import { QueryClient, QueryClientProvider } from "react-query";
+import TranslationsProvider from "../store/translations";
+import FormContextProvider from "../store/form";
+import SiteinfoProvider from "../store/siteinfo";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -20,7 +23,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
+      <TranslationsProvider>
+        <FormContextProvider>
+          <SiteinfoProvider>
+            <Component {...pageProps} />
+          </SiteinfoProvider>
+        </FormContextProvider>
+      </TranslationsProvider>
     </QueryClientProvider>
   );
 }

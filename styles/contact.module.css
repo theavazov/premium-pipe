@@ -87,6 +87,10 @@
   color: var(--black);
 }
 
+.input:focus {
+  outline: none;
+}
+
 .form_buttons {
   display: flex;
   align-items: center;
