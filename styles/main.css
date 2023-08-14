@@ -1,4 +1,5 @@
 @import "./fonts.css";
+@import "./buttons.css";
 
 :root {
   --white: #ffffff;

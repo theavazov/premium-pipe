@@ -1,9 +1,7 @@
-import { useQuery } from "react-query";
 import Layout from "../components/layout";
 import { CustomHead } from "../components/layout/head";
 import { getMedia } from "../server/api";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import IntroSection from "../components/universal/intro";
 
@@ -13,7 +11,7 @@ export default function Page() {
 
   useEffect(() => {
     getMedia(locale!, type)
-      .then((r) => console.log(r))
+      .then((res) => console.log(res))
       .catch((e) => console.log(e));
   }, [locale, type]);
 

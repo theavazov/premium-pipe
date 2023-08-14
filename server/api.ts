@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ICategory, INews } from "./interfaces";
 
 export async function getCategories(locale: string) {
   const res = await axios.get(
@@ -13,7 +14,7 @@ export async function getCategories(locale: string) {
   return data;
 }
 
-export async function getSingleCategory(locale: string, slug: string) {
+export async function getSingleCategory(locale: string, slug: any) {
   const res = await axios.get(
     `${process.env.NEXT_PUBLIC_ENDPOINT}/categories/${slug}`,
     {
@@ -23,7 +24,7 @@ export async function getSingleCategory(locale: string, slug: string) {
 
   const data = await res.data;
 
-  return data;
+  return data as ICategory;
 }
 
 export async function getPartners(locale: string) {
@@ -79,7 +80,7 @@ export async function getNews(locale: string) {
 
   const data = await res.data.results;
 
-  return data;
+  return data as INews[];
 }
 
 export async function getSingleNews(locale: string, slug: string) {

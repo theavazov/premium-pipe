@@ -10,6 +10,7 @@ import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
 import Buttons from "../../components/utils/buttons";
 import NewsCard from "../../components/cards/news";
+import noimage from "../../public/media/noimage.jpg";
 
 interface PageProps extends INews {
   other_news: INews[];
@@ -41,7 +42,7 @@ export default function Page({ article }: { article: PageProps }) {
             <div className={styles.inner_body}>
               <div className={styles.article_image}>
                 <Image
-                  src={article.image ? article.image : ""}
+                  src={article.image ? article.image : noimage}
                   alt={article.title}
                   width={1100}
                   height={610}

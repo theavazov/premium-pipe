@@ -35,6 +35,20 @@
   color: var(--white);
 }
 
+@media (max-width: 1800px) {
+  .card_title {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .card {
+    min-height: 200px;
+  }
+  .card_svg {
+    max-width: 24px;
+    height: 24px;
+  }
+}
+
 @media (max-width: 1200px) {
   .card {
     padding: 16px 14px;

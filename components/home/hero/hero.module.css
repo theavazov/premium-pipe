@@ -22,7 +22,7 @@
   flex-direction: column;
   max-width: 1680px;
   margin: 0 auto;
-
+  padding-inline: 15px;
   width: 100%;
   margin-bottom: 24px;
   gap: 16px;
@@ -166,9 +166,6 @@
   }
   .success {
     padding: 0 5px;
-  }
-  .topper {
-    padding: 0 16px;
   }
 }
 @media (max-width: 1280px) {

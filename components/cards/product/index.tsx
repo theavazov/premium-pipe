@@ -3,6 +3,7 @@ import { IProduct } from "../../../server/interfaces";
 import styles from "./product.module.css";
 import Image from "next/image";
 import { arrow_right } from "../../../public/icons";
+import noimage from "../../../public/media/noimage.jpg";
 
 export default function ProductCard({ product }: { product: IProduct }) {
   return (
@@ -10,7 +11,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
       <div className={styles.card_category}>{product.category}</div>
       <div className={styles.card_image}>
         <Image
-          src={product.image ? product.image : ""}
+          src={product.image ? product.image : noimage}
           alt={product.title}
           width={400}
           height={250}

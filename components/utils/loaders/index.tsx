@@ -7,3 +7,11 @@ export function CategoriesLoader() {
     </div>
   );
 }
+
+export function ProductsLoader() {
+  return (
+    <div className="catgegories_container">
+      <div className={`skeleton ${styles.product}`}></div>
+    </div>
+  );
+}

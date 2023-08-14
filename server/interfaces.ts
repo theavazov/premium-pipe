@@ -3,6 +3,8 @@ export interface ICategory {
   slug: string;
   title: string;
   image: string | null;
+  desc: string | null;
+  products: IProduct[];
 }
 
 export interface IPartner {
@@ -37,4 +39,10 @@ export interface INews {
   subtitle: string;
   views: number;
   desc: string;
+}
+
+export interface IMedia {
+  id: number;
+  image: string | null;
+  video: string | null;
 }

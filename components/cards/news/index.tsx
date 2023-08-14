@@ -3,13 +3,14 @@ import styles from "./news.module.css";
 import { arrow_right, calendar, eye } from "../../../public/icons";
 import { INews } from "../../../server/interfaces";
 import Image from "next/image";
+import noimage from "../../../public/media/noimage.jpg";
 
 export default function NewsCard({ article }: { article: INews }) {
   return (
     <Link href={`/news/${article.slug}`} className={styles.card}>
       <div className={styles.card_image}>
         <Image
-          src={article.image ? article.image : ""}
+          src={article.image ? article.image : noimage}
           alt={article.title}
           width={400}
           height={250}
