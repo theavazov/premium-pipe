@@ -9,6 +9,13 @@ import { IProduct } from "../../server/interfaces";
 import Buttons from "../../components/utils/buttons";
 import ProductCard from "../../components/cards/product";
 import styles from "../../styles/product.module.css";
+import { cart2, minus, plus } from "../../public/icons";
+import Image from "next/image";
+import noimage from "../../public/media/noimage.jpg";
+import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { OrdersContext } from "../../store/storage";
+import { isFound, save, update } from "../../helpers/storage";
 
 interface PageProps extends IProduct {
   other_products: IProduct[];
@@ -16,6 +23,21 @@ interface PageProps extends IProduct {
 }
 
 export default function Page({ product }: { product: PageProps }) {
+  const router = useRouter();
+  const [cImg, setCImg] = useState("");
+  const { orders, setOrders } = useContext(OrdersContext);
+  const [count, setCount] = useState(1);
+  const [inCart, setInCart] = useState<boolean>(false);
+
+  useEffect(() => {
+    setCImg(product.images.length > 0 ? product.images[0].image : "");
+  }, [router]);
+
+  useEffect(() => {
+    setInCart(isFound(product.id).boolean);
+    setCount(isFound(product.id).count);
+  }, [orders, router]);
+
   return (
     <>
       <CustomHead
@@ -26,7 +48,101 @@ export default function Page({ product }: { product: PageProps }) {
       <Layout>
         <IntroSection location="Продукции" title="Наши продукты" />
         <section>
-          <div className={`box ${styles.section_inner}`}></div>
+          <div className={`box ${styles.section_inner}`}>
+            <div className={styles.product_images_wrapper}>
+              <div className={styles.images_mainimg}>
+                <Image
+                  src={cImg ? cImg : noimage}
+                  alt={product.title}
+                  width={680}
+                  height={500}
+                  className="image"
+                  priority
+                />
+              </div>
+              <div>
+                <Swiper slidesPerView={4} spaceBetween={16} speed={800}>
+                  {product.images.length > 0
+                    ? product.images.map((img) => {
+                        return (
+                          <SwiperSlide key={img.id}>
+                            <div
+                              className={
+                                cImg === img.image
+                                  ? `${styles.images_secondary} ${styles.active}`
+                                  : styles.images_secondary
+                              }
+                              onClick={() => setCImg(img.image)}
+                            >
+                              <Image
+                                src={img.image ? img.image : noimage}
+                                alt={product.title}
+                                className="image"
+                                width={160}
+                                height={115}
+                                priority
+                              />
+                            </div>
+                          </SwiperSlide>
+                        );
+                      })
+                    : null}
+                </Swiper>
+              </div>
+            </div>
+            <div className={styles.product_content_wrapper}>
+              <div className={styles.content_body}>
+                <div className={styles.content_body_item}>
+                  <h2 className={styles.product_title}>{product.title}</h2>
+                  {product.desc ? (
+                    <div
+                      className={styles.product_desc}
+                      dangerouslySetInnerHTML={{ __html: product.desc }}
+                    ></div>
+                  ) : null}
+                </div>
+                <div className={styles.content_body_item}>
+                  <p className={styles.yetim_text}>Количество:</p>
+                  <div className="counter">
+                    <button
+                      onClick={() => {
+                        if (count - 1 <= 0) return;
+                        setCount(count - 1);
+                        if (inCart) update(product.id, count - 1, setOrders);
+                      }}
+                    >
+                      {minus}
+                    </button>
+                    <span>{count}</span>
+                    <button
+                      onClick={() => {
+                        setCount(count + 1);
+                        if (inCart) update(product.id, count + 1, setOrders);
+                      }}
+                    >
+                      {plus}
+                    </button>
+                  </div>
+                </div>
+                {inCart ? (
+                  <button className="btn primary-two">Добавлено {cart2}</button>
+                ) : (
+                  <button
+                    className="btn primary-two"
+                    onClick={() => save(product, count, setOrders)}
+                  >
+                    Добавить корзину {cart2}
+                  </button>
+                )}
+              </div>
+              {product.details ? (
+                <div
+                  className={styles.content_table}
+                  dangerouslySetInnerHTML={{ __html: product.details }}
+                ></div>
+              ) : null}
+            </div>
+          </div>
         </section>
         {product.other_products.length > 0 ? (
           <section className="section">

@@ -229,6 +229,9 @@ main {
 }
 
 @media (max-width: 1200px) {
+  main {
+    margin-top: 160px;
+  }
   .desktop {
     display: none;
   }
@@ -253,21 +256,24 @@ main {
   .section_inner_top a {
     display: none;
   }
-  .counter {
+  .counter.cart {
     gap: 12px;
     border-radius: 2px;
     padding: 4px 10px;
   }
-  .counter button {
+  .counter.cart button {
     padding: 0px;
   }
-  .counter button svg {
+  .counter.cart button svg {
     width: 12px;
     height: 12px;
   }
-  .counter span {
+  .counter.cart span {
     font-size: 12px;
     line-height: 15.6px;
     min-width: 24px;
+  }
+  .counter.cart button:hover {
+    background-color: var(--white);
   }
 }

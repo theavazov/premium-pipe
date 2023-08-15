@@ -4,10 +4,22 @@ import { CustomHead } from "../components/layout/head";
 import IntroSection from "../components/universal/intro";
 import { cart2, minus, plus, x } from "../public/icons";
 import styles from "../styles/cart.module.css";
+import stules from "../styles/search.module.css";
 import noimage from "../public/media/noimage.jpg";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { OrdersContext } from "../store/storage";
+import { deleteAll, deleteOrder, isFound, update } from "../helpers/storage";
+import { IStorageOrder } from "../server/interfaces";
+import { ModalContext } from "../store/modal";
+import Toast from "../components/utils/toast";
+import { FormContext } from "../store/form";
+import emptyImg from "../public/media/empty.jpg";
 
 export default function Page() {
+  const { orders, setOrders, total } = useContext(OrdersContext);
+  const { setIsModal, setVariant } = useContext(ModalContext);
+  const { isSuccess } = useContext(FormContext);
+
   return (
     <>
       <CustomHead title={"Premium Pipe | Cart"} desc={""} canonical={"/cart"} />
@@ -15,70 +27,138 @@ export default function Page() {
         <IntroSection location="Корзина" title="Наша корзина" />
         <section>
           <div className="minibox">
-            <div className={styles.section_inner}>
-              <div className={styles.inner_top}>
-                <div className={styles.top_intro}>
-                  <h3 className={styles.intro_title}>Ваш заказ</h3>
-                  <button>Удалить все</button>
+            {orders.length > 0 ? (
+              <div className={styles.section_inner}>
+                <div className={styles.inner_top}>
+                  <div className={styles.top_intro}>
+                    <h3 className={styles.intro_title}>Ваш заказ</h3>
+                    <button onClick={() => deleteAll(setOrders)}>
+                      Удалить все
+                    </button>
+                  </div>
+                  <ul className={styles.orders_list}>
+                    {orders.map((order: IStorageOrder) => {
+                      return <OrderCard key={order.id} order={order} />;
+                    })}
+                  </ul>
                 </div>
-                <ul className={styles.orders_list}>
-                  <OrderCard />
-                  <OrderCard />
-                  <OrderCard />
-                </ul>
+                <div className={styles.inner_bottom}>
+                  <p>
+                    Количество продуктов: <span>{total}</span>
+                  </p>
+                  <button
+                    className="btn primary-two"
+                    onClick={() => {
+                      setVariant("store");
+                      setIsModal(true);
+                    }}
+                  >
+                    Заказ на покупку {cart2}
+                  </button>
+                </div>
               </div>
-              <div className={styles.inner_bottom}>
-                <p>
-                  Количество продуктов: <span>3</span>
-                </p>
-                <button className="btn primary-two">
-                  Заказ на покупку {cart2}
-                </button>
-              </div>
-            </div>
+            ) : (
+              <EmptyComponent />
+            )}
           </div>
         </section>
       </Layout>
+      <Toast
+        variant="success"
+        toast={isSuccess ? true : false}
+        message={"Muvaffaqiyatli yuborildi!"}
+      />
     </>
   );
 }
 
-const OrderCard = () => {
+const EmptyComponent = () => {
+  return (
+    <div className={stules.empty_wrapper}>
+      <h4 style={{ textAlign: "center" }} className={stules.custom_title}>
+        корзина пустой
+      </h4>
+      <Image src={emptyImg} alt="empty image" />
+    </div>
+  );
+};
+
+const OrderCard = ({ order }: { order: IStorageOrder }) => {
+  const { orders, setOrders } = useContext(OrdersContext);
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    setCount(isFound(order.id).count);
+  }, [orders]);
 
   return (
     <li className={styles.card}>
       <div className={styles.card_left}>
         <div className={styles.card_img}>
           <Image
-            src={noimage}
-            alt="order-title"
+            src={order.image ? order.image : noimage}
+            alt={order.title}
             width={140}
             height={105}
             className="image"
           />
         </div>
         <div className={styles.card_info}>
-          <h4 className={styles.info_title}>Тройник 90° канализационный</h4>
+          <h4 className={styles.info_title}>{order.title}</h4>
           <p>
             Количество: <span>{count}</span>
           </p>
           <div className="mobile">
-            <div className="counter">
-              <button onClick={() => setCount(count - 1)}>{minus}</button>
+            <div className="counter cart">
+              <button
+                onClick={() => {
+                  if (count - 1 <= 0) return;
+                  setCount(count - 1);
+                  update(order.id, count - 1, setOrders);
+                }}
+              >
+                {minus}
+              </button>
               <span>{count}</span>
-              <button onClick={() => setCount(count + 1)}>{plus}</button>
+              <button
+                onClick={() => {
+                  setCount(count + 1);
+                  update(order.id, count + 1, setOrders);
+                }}
+              >
+                {plus}
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.card_right}>
-        <button className={styles.xBtn}>{x}</button>
+        <button
+          className={styles.xBtn}
+          onClick={() => deleteOrder(order.id, orders, setOrders)}
+        >
+          {x}
+        </button>
         <div className="desktop">
-          <div className="counter">
-            <button onClick={() => setCount(count - 1)}>{minus}</button>
+          <div className="counter cart">
+            <button
+              onClick={() => {
+                if (count - 1 <= 0) deleteOrder(order.id, orders, setOrders);
+                setCount(count - 1);
+                update(order.id, count - 1, setOrders);
+              }}
+            >
+              {minus}
+            </button>
             <span>{count}</span>
-            <button onClick={() => setCount(count + 1)}>{plus}</button>
+            <button
+              onClick={() => {
+                setCount(count + 1);
+                update(order.id, count + 1, setOrders);
+              }}
+            >
+              {plus}
+            </button>
           </div>
         </div>
       </div>

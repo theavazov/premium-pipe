@@ -68,6 +68,34 @@ export default function UniversalPartners({
                   </SwiperSlide>
                 );
               })}
+              {partners.map((partner) => {
+                return (
+                  <SwiperSlide key={partner.id}>
+                    <div className={styles.card}>
+                      <Image
+                        src={partner.image ? partner.image : ""}
+                        alt={partner.name}
+                        width={260}
+                        height={130}
+                      />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+              {partners.map((partner) => {
+                return (
+                  <SwiperSlide key={partner.id}>
+                    <div className={styles.card}>
+                      <Image
+                        src={partner.image ? partner.image : ""}
+                        alt={partner.name}
+                        width={260}
+                        height={130}
+                      />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           ) : null}
         </div>

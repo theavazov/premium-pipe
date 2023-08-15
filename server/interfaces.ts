@@ -1,3 +1,10 @@
+export interface IStorageOrder {
+  id: number;
+  title: string;
+  image: string | null;
+  count: number;
+}
+
 export interface ICategory {
   id: number;
   slug: string;
@@ -28,6 +35,7 @@ export interface IProduct {
   category: string;
   details: string | null;
   desc: string;
+  images: { id: number; image: string }[];
 }
 
 export interface INews {
@@ -45,4 +53,17 @@ export interface IMedia {
   id: number;
   image: string | null;
   video: string | null;
+}
+
+export interface IObjectOrder {
+  id: number;
+  count: number;
+}
+
+export interface IStoreObjectData {
+  name: string;
+  number: string;
+  message: string;
+  email: string;
+  products: IObjectOrder[];
 }

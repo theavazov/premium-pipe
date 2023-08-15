@@ -7,6 +7,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import TranslationsProvider from "../store/translations";
 import FormContextProvider from "../store/form";
 import SiteinfoProvider from "../store/siteinfo";
+import OrdersContextProvider from "../store/storage";
+import ModalContextProvider from "../store/modal";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -26,7 +28,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <TranslationsProvider>
         <FormContextProvider>
           <SiteinfoProvider>
-            <Component {...pageProps} />
+            <OrdersContextProvider>
+              <ModalContextProvider>
+                <Component {...pageProps} />
+              </ModalContextProvider>
+            </OrdersContextProvider>
           </SiteinfoProvider>
         </FormContextProvider>
       </TranslationsProvider>

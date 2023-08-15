@@ -5,8 +5,19 @@ import IntroSection from "../components/universal/intro";
 import styles from "../styles/contact.module.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import { chevron_right } from "../public/icons";
+import { FormContext } from "../store/form";
+import { useContext, useState } from "react";
+import Toast from "../components/utils/toast";
+import { IStoreObjectData } from "../server/interfaces";
+import { storeOrders } from "../server/api";
 
 export default function Page() {
+  const { isSuccess, setIsSuccess } = useContext(FormContext);
+  const [isValid, setIsValid] = useState(false);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [message, setMessage] = useState("");
+
   return (
     <>
       <CustomHead
@@ -40,34 +51,69 @@ export default function Page() {
                   сложных задач
                 </p>
               </div>
-              <form className={styles.form_wrapper}>
+              <form
+                className={styles.form_wrapper}
+                onSubmit={(e) => {
+                  e.preventDefault();
+
+                  const data: IStoreObjectData = {
+                    name: name,
+                    number: number,
+                    email: "",
+                    message: message,
+                    products: [],
+                  };
+
+                  storeOrders(data)
+                    .then((res) => {
+                      setIsSuccess(true);
+                      setName("");
+                      setNumber("");
+                      setMessage("");
+                      setTimeout(() => {
+                        setIsSuccess(false);
+                      }, 2000);
+                    })
+                    .catch((e) => console.log(e));
+                }}
+              >
                 <div className={styles.form_inputs}>
                   <input
                     type="text"
                     placeholder="Имя"
                     className={styles.input}
+                    value={name}
+                    required
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <IMaskInput
                     mask={"+998 00 000 00 00"}
                     placeholder="Номер телефона"
                     className={styles.input}
+                    value={number}
+                    required
+                    onChange={(e: any) => setNumber(e.target.value)}
                   />
                   <textarea
                     cols={30}
                     rows={6}
                     className={styles.input}
                     placeholder="Сообщение"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>
                 <div className={styles.form_buttons}>
                   <ReCAPTCHA
                     sitekey={`${process.env.NEXT_PUBLIC_SITEKEY}`}
-                    // style={{
-                    //   transform: "scale(0.8, .85)",
-                    //   transformOrigin: "0 0",
-                    // }}
+                    onChange={() => setIsValid(true)}
                   />
-                  <button type="submit" className="btn primary">
+                  <button
+                    type="submit"
+                    style={{ opacity: isValid ? "1" : "0.5" }}
+                    className="btn primary"
+                    disabled={!isValid ? true : false}
+                  >
                     Узнать больше {chevron_right}
                   </button>
                 </div>
@@ -76,6 +122,11 @@ export default function Page() {
           </div>
         </section>
       </Layout>
+      <Toast
+        variant="success"
+        toast={isSuccess ? true : false}
+        message={"Muvaffaqiyatli yuborildi!"}
+      />
     </>
   );
 }

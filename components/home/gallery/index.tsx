@@ -53,6 +53,20 @@ export default function GallerySection({
                   </SwiperSlide>
                 );
               })}
+              {galleries.map((media) => {
+                return (
+                  <SwiperSlide key={media.id}>
+                    <GalleryCard gallery={media} />
+                  </SwiperSlide>
+                );
+              })}
+              {galleries.map((media) => {
+                return (
+                  <SwiperSlide key={media.id}>
+                    <GalleryCard gallery={media} />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           ) : null}
         </div>

@@ -99,13 +99,7 @@ export const chevron_down = (
 );
 
 export const search = (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g
       id="Huge-icon/interface/outline/search 01"
       clipPath="url(#clip0_107_1838)"
@@ -113,7 +107,7 @@ export const search = (
       <path
         id="Vector"
         d="M18.3337 18.3333L16.667 16.6667M1.66699 9.58333C1.66699 5.21108 5.2114 1.66666 9.58366 1.66666C13.9559 1.66666 17.5003 5.21108 17.5003 9.58333C17.5003 13.9556 13.9559 17.5 9.58366 17.5C5.2114 17.5 1.66699 13.9556 1.66699 9.58333Z"
-        stroke="#020105"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

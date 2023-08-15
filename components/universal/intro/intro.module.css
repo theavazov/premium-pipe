@@ -46,8 +46,7 @@ a.breadcrumb_element:hover {
 @media (max-width: 1200px) {
   .section_inner {
     gap: 8px;
-    padding-top: 30px;
-    padding-bottom: 50px;
+    padding-block: 50px;
   }
   .section_title {
     font-size: 20px;

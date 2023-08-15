@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICategory, INews } from "./interfaces";
+import { ICategory, INews, IStoreObjectData } from "./interfaces";
 
 export async function getCategories(locale: string) {
   const res = await axios.get(
@@ -96,7 +96,15 @@ export async function getSingleNews(locale: string, slug: string) {
   return data;
 }
 
-export async function searchProducts(query: string) {}
+export async function searchProducts(query: string) {
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT}/products?search=${query}`
+  );
+
+  const data = res.data;
+
+  return data;
+}
 
 export async function getSiteinfo(locale: string) {
   const res = await axios.get(
@@ -109,4 +117,13 @@ export async function getSiteinfo(locale: string) {
   const data = res.data;
 
   return data;
+}
+
+export async function storeOrders(data: IStoreObjectData) {
+  const res = await axios.post(
+    `${process.env.NEXT_PUBLIC_ENDPOINT}/application/create`,
+    data
+  );
+
+  return res.data;
 }

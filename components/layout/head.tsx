@@ -17,13 +17,13 @@ export function CustomHead({ title, desc, canonical }: Props) {
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>{title}</title>
-      {/* <link
+      <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
         integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
         crossOrigin="anonymous"
         referrerPolicy="no-referrer"
-      /> */}
+      />
       <meta name="description" content={desc} />
       <link rel="canonical" href={`${URL}${canonical}`} />
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
