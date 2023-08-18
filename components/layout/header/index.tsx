@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import {
   bag,
   chevron_down,
+  close,
   email,
   location,
   phone,
@@ -12,7 +13,14 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import { searchProducts } from "../../../server/api";
 import { FormContext } from "../../../store/form";
-
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Box,
+} from "@chakra-ui/react";
 interface Props {
   variant: "light" | "dark";
 }
@@ -38,10 +46,16 @@ export default function Header({ variant }: Props) {
       isActive: pathname === "/about" ? true : false,
     },
     {
+      name: "Galereya",
+      path: "/gallery",
+      isActive: pathname === "/gallery" ? true : false,
+    },
+    {
       name: "Новости",
       path: "/news",
       isActive: pathname.includes("/news") ? true : false,
     },
+
     {
       name: "Контакты",
       path: "/contact",
@@ -51,7 +65,7 @@ export default function Header({ variant }: Props) {
 
   const [localesDropdown, setLocalesDropdown] = useState(false);
   const [numbersDropdown, setNumbersDropdown] = useState(false);
-
+  const [isMenu, setIsMenu] = useState(false);
   return (
     <header className={styles.header}>
       <div className="desktop">
@@ -257,14 +271,199 @@ export default function Header({ variant }: Props) {
               />
               <button type="submit">{search}</button>
             </form>
-            <button className={styles.hamburger}>
+            <button
+              className={styles.hamburger}
+              onClick={() => setIsMenu(!isMenu)}
+            >
               <span></span>
               <span></span>
               <span></span>
             </button>
           </div>
         </div>
+        {isMenu ? <MobileMenu setIsMenu={setIsMenu} variant={variant} /> : null}
       </div>
     </header>
   );
 }
+const MobileMenu = ({ setIsMenu, variant }: any) => {
+  const { pathname } = useRouter();
+  const links = [
+    {
+      name: "Главная",
+      path: "/",
+      isActive: pathname === "/" ? true : false,
+    },
+    {
+      name: "Пpoдукции",
+      path: "/categories",
+      isActive: pathname.includes("/categories") ? true : false,
+    },
+    {
+      name: "О компании",
+      path: "/about",
+      isActive: pathname === "/about" ? true : false,
+    },
+    {
+      name: "Новости",
+      path: "/news",
+      isActive: pathname.includes("/news") ? true : false,
+    },
+    {
+      name: "Контакты",
+      path: "/contact",
+      isActive: pathname === "/contact" ? true : false,
+    },
+  ];
+  return (
+    <section
+      className={`${styles.mobile_menu}
+    ${
+      variant === "light"
+        ? `${styles.mobile_menu} ${styles.light}`
+        : `${styles.mobile_menu} ${styles.dark}`
+    }
+    `}
+    >
+      <div className={styles.navigation}>
+        <button className={styles.close} onClick={() => setIsMenu()}>
+          {close}
+        </button>
+        <p className={styles.menu}>Menu</p>
+        <div></div>
+      </div>
+      <div className={styles.navbar_mobile_container}>
+        <nav className={styles.header_nav}>
+          <Link
+            href={"/"}
+            className={`${
+              pathname === "/"
+                ? `${styles.nav_link} ${styles.active}`
+                : styles.nav_link
+            }`}
+          >
+            Главная
+          </Link>
+          <Accordion allowToggle>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    className={styles.nav_link}
+                  >
+                    Products <AccordionIcon />
+                  </Box>
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} className={styles.nav_inner_links}>
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? `${styles.nav_inner_link} ${styles.active}`
+                      : styles.nav_inner_link
+                  }
+                >
+                  Полипропиленовые трубы/композиты
+                </Link>
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? `${styles.nav_inner_link} ${styles.active}`
+                      : styles.nav_inner_link
+                  }
+                >
+                  Полипропиленовые фитинги
+                </Link>{" "}
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? `${styles.nav_inner_link} ${styles.active}`
+                      : styles.nav_inner_link
+                  }
+                >
+                  Канализационные трубы и фитинги из пвх
+                </Link>{" "}
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? `${styles.nav_inner_link} ${styles.active}`
+                      : styles.nav_inner_link
+                  }
+                >
+                  Канализационные трубы и фитинги из полипропилена (бесшумные)
+                </Link>{" "}
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? `${styles.nav_inner_link} ${styles.active}`
+                      : styles.nav_inner_link
+                  }
+                >
+                  Aqua pipe
+                </Link>{" "}
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? `${styles.nav_inner_link} ${styles.active}`
+                      : styles.nav_inner_link
+                  }
+                >
+                  Полиэтиленовые трубы
+                </Link>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+          <Link
+            href={"/about"}
+            className={`${
+              pathname === "/about"
+                ? `${styles.nav_link} ${styles.active}`
+                : styles.nav_link
+            }`}
+          >
+            О компании
+          </Link>
+          <Link
+            href={"/gallery"}
+            className={`${
+              pathname === "/gallery"
+                ? `${styles.nav_link} ${styles.active}`
+                : styles.nav_link
+            }`}
+          >
+            Gallery
+          </Link>
+          <Link
+            href={"/news"}
+            className={`${
+              pathname === "/news"
+                ? `${styles.nav_link} ${styles.active}`
+                : styles.nav_link
+            }`}
+          >
+            Новости
+          </Link>
+          <Link
+            href={"/contact"}
+            className={`${
+              pathname === "/contact"
+                ? `${styles.nav_link} ${styles.active}`
+                : styles.nav_link
+            }`}
+          >
+            Контакты
+          </Link>
+        </nav>
+      </div>
+    </section>
+  );
+};

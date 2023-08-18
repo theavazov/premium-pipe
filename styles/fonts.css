@@ -40,3 +40,8 @@
   src: url("/fonts/Halvar/HalvarBreit-Bd.ttf");
   font-display: swap;
 }
+@font-face {
+  font-family: "Inter Medium";
+  src: url("/fonts/Inter/Inter-Medium.ttf");
+  font-display: swap;
+}

@@ -49,7 +49,20 @@ export async function getMedia(locale: string, variant: "video" | "image") {
 
   return data;
 }
+// export async function getGalleries(locale: string) {
+//   const res = await axios.get(
+//     `${process.env.NEXT_PUBLIC_ENDPOINT}/media?type`,
+//     {
+//       headers: { lang: locale },
+//     }
+//   );
 
+//   const data = await res.data;
+
+//   const galleries = await data.galleries.data;
+
+//   return galleries;
+// }
 export async function getProducts(locale: string) {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT}/products`, {
     headers: { Language: locale },

@@ -67,3 +67,15 @@ export interface IStoreObjectData {
   email: string;
   products: IObjectOrder[];
 }
+export interface IStore {
+  name: string;
+  number: string;
+}
+// export interface Gallery {
+//   id: number;
+//   title: string;
+//   desc: string;
+//   lg_files: Array<string>;
+//   md_files: Array<string>;
+//   sm_files: Array<string>;
+// }

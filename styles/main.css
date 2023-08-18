@@ -16,6 +16,7 @@
   --halvar-regular: "Halvar regular";
   --halvar-medium: "Halvar medium";
   --halvar-bold: "Halvar bold";
+  --inter-medium: "Inter Medium";
 }
 
 #nprogress .bar {
@@ -228,6 +229,11 @@ main {
   height: 17px;
 }
 
+@media (max-width: 1550px) {
+  .box {
+    padding-inline: 56px;
+  }
+}
 @media (max-width: 1200px) {
   main {
     margin-top: 160px;

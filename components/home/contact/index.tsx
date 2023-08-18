@@ -1,8 +1,17 @@
 import styles from "./contact.module.css";
 import { IMaskInput } from "react-imask";
 import { chevron_right } from "../../../public/icons";
-
+import { useContext, useState } from "react";
+import { FormContext } from "../../../store/form";
+import { IStoreObjectData } from "../../../server/interfaces";
+import { storeOrders } from "../../../server/api";
+import ReCAPTCHA from "react-google-recaptcha";
 export default function ContactsHome() {
+  const { isSuccess, setIsSuccess } = useContext(FormContext);
+  const [isValid, setIsValid] = useState(false);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+
   return (
     <section>
       <div className={styles.container}>
@@ -26,15 +35,36 @@ export default function ContactsHome() {
             <div className={styles.form_container}>
               <form
                 className={styles.form_wrapper}
-                //  onSubmit={handleRequest}
+                onSubmit={(e) => {
+                  e.preventDefault();
+
+                  const data: IStoreObjectData = {
+                    name: name,
+                    number: number,
+                    email: "",
+                    message: "",
+                    products: [],
+                  };
+
+                  storeOrders(data)
+                    .then((res) => {
+                      setIsSuccess(true);
+                      setName("");
+                      setNumber("");
+                      setTimeout(() => {
+                        setIsSuccess(false);
+                      }, 2000);
+                    })
+                    .catch((e) => console.log(e));
+                }}
               >
                 <div className={styles.top_form}>
                   <input
                     type="text"
                     placeholder="Ваше имя"
                     className={styles.name}
-                    //   value={name}
-                    //   onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <div className={styles.formwrapper}>
                     <span>+998</span>
@@ -45,19 +75,25 @@ export default function ContactsHome() {
                       unmask={true}
                       placeholder=" 33 571 46 56"
                       required
-                      // value={number}
+                      value={number}
                       id="name"
-                      // onChange={(e) => setNumber(e.currentTarget.value)}
+                      onChange={(e) => setNumber(e.currentTarget.value)}
                     />
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className={`${styles.submit} primary_btn`}
-                >
-                  Отправить {chevron_right}
-                </button>
+                <div className={styles.form_buttons}>
+                  <ReCAPTCHA
+                    sitekey={`${process.env.NEXT_PUBLIC_SITEKEY}`}
+                    onChange={() => setIsValid(true)}
+                  />
+                  <button
+                    type="submit"
+                    className={`${styles.submit} primary_btn`}
+                  >
+                    Отправить {chevron_right}
+                  </button>
+                </div>
               </form>
             </div>
           </div>

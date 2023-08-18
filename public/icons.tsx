@@ -594,7 +594,30 @@ export const x = (
     />
   </svg>
 );
-
+export const close = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="15"
+    viewBox="0 0 14 15"
+    fill="none"
+  >
+    <path
+      d="M13.2278 1.74609L0.768555 14.2053"
+      stroke="#020105"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M13.2313 14.2134L0.761719 1.74121"
+      stroke="#020105"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 export const minus = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 1" fill="none">
     <path

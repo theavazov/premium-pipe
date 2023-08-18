@@ -8,6 +8,8 @@
   color: var(--black);
   min-height: 260px;
   transition: 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
 .card_title {
@@ -33,6 +35,49 @@
 .card:hover .card_title,
 .card:hover .card_svg {
   color: var(--white);
+}
+.card:hover {
+  border: 1px solid var(--grey-8, #ebebeb);
+  background: var(--green);
+}
+.card:hover .card_title {
+  color: var(--white, #fff);
+}
+.card:hover svg > path {
+  stroke: white;
+}
+.images {
+  display: none;
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  z-index: 22;
+  width: 220px;
+  height: 190px;
+}
+.image image {
+}
+.image {
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
+}
+.card:hover .images {
+  display: flex;
+}
+.card:hover .ellipse {
+  display: block;
+}
+.ellipse {
+  display: none;
+  background: var(--white, #fff);
+  opacity: 0.800000011920929;
+  filter: blur(72px);
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 220px;
+  height: 190px;
 }
 
 @media (max-width: 1800px) {

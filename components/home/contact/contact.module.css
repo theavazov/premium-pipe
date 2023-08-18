@@ -147,7 +147,12 @@
   align-items: center;
   color: #9a999b;
 }
-
+.form_buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
 @media (max-width: 1440px) {
   .inner_container {
     left: 16px;
@@ -208,6 +213,13 @@
   }
   .form_wrapper {
     gap: 20px;
+  }
+  .form_buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
   }
 }
 @media (max-width: 660px) {

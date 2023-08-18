@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { Key, useContext, useEffect, useState } from "react";
 import styles from "./modal.module.css";
 import { ModalContext } from "../../../store/modal";
 import { IMaskInput } from "react-imask";
@@ -11,6 +11,15 @@ import {
 } from "../../../server/interfaces";
 import { OrdersContext } from "../../../store/storage";
 import { FormContext } from "../../../store/form";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, Thumbs } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import Image from "next/image";
+
+// import { arrowRightBig, xSvg } from "../../public/icons";
 
 export default function Modal() {
   const { variant, setIsModal } = useContext(ModalContext);
@@ -134,6 +143,101 @@ const StoreModal = () => {
   );
 };
 
-const ViewModal = () => {
+const ViewModals = () => {
   return <div className={`${styles.modal_inner} ${styles.view}`}>View</div>;
+};
+
+const ViewModal = () => {
+  const { media, setIsModal } = useContext(ModalContext);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+
+  if (typeof media[0] === "object") {
+    return (
+      <div className={styles.lightbox}>
+        <Image
+          src={media[0].src}
+          alt="media"
+          width={1060}
+          height={600}
+          className="image"
+        />
+      </div>
+    );
+  } else if (typeof media[0] === "string") {
+    return (
+      <div className={styles.thumbs_swiper}>
+        <button
+          className={styles.modal_closer}
+          onClick={() => setIsModal(false)}
+        ></button>
+        <div className="minibox thumbs_swiper">
+          <button className="prevThumb swiperBtn"></button>
+          <button className="nextThumb swiperBtn"></button>
+          <Swiper
+            loop={true}
+            spaceBetween={32}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[Navigation, Thumbs]}
+            navigation={{ prevEl: ".prevThumb", nextEl: ".nextThumb" }}
+            className="main-swiper"
+            keyboard={{ enabled: true }}
+          >
+            {media.map((img: any, i: Key | null | undefined) => {
+              return (
+                <SwiperSlide key={i}>
+                  <div className={styles.main}>
+                    <Image
+                      src={img}
+                      alt="media"
+                      width={1400}
+                      height={765}
+                      className="image"
+                      unoptimized
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={8}
+            slidesPerView={3.2}
+            modules={[Navigation, Thumbs, Autoplay]}
+            className={styles.thumbs}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            breakpoints={{
+              880: {
+                slidesPerView: 4.5,
+              },
+              1400: {
+                slidesPerView: 6.5,
+              },
+            }}
+            keyboard={{ enabled: true }}
+          >
+            {media.map((img: any, i: Key | null | undefined) => {
+              return (
+                <SwiperSlide key={i}>
+                  <div className={styles.thumbs}>
+                    <Image
+                      src={img}
+                      alt="media"
+                      width={190}
+                      height={140}
+                      className="image"
+                      unoptimized
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
 };
