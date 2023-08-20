@@ -19,7 +19,7 @@ export default function Page({ partners }: { partners: IPartner[] }) {
   return (
     <>
       <CustomHead
-        title={"Premium Pipe | About"}
+        title={`Premium Pipe |  ${t["main.about"]}`}
         desc={""}
         canonical={"/about"}
       />
@@ -29,35 +29,11 @@ export default function Page({ partners }: { partners: IPartner[] }) {
           <div className={`mediumbox ${styles.section_inner}`}>
             <div className={styles.inner_top}>
               <div className={styles.top_left}>
-                <h3 className="section_title">Jahon Invest plast</h3>
+                <h3 className="section_title">{t["about.jahon_invest"]}</h3>
                 <div className={styles.texts}>
-                  <p className={styles.text}>
-                    The Premium pipe cluster was founded in October 2018. We
-                    have made our task to raise textile production in our
-                    country to a new level and bring Uzbekistan to the world
-                    leaders of the cotton industry. Also one of the key tasks
-                    for us was to remove the stamp from Uzbek cotton as a
-                    product of slave labor.
-                  </p>
-                  <p className={styles.text}>
-                    The idea of the “Cot Cluster Economy” is to responsibly grow
-                    cotton and deeply all of it to process components, maximize
-                    added value and minimize the negative impact on the
-                    environment by reusing production waste and with the help of
-                    secondary clothing technology processing{" "}
-                  </p>
-                  <p className={styles.text}>
-                    The Premium pipe cluster was founded in October 2018. We
-                    have made our task to raise textile production in our
-                    country to a new level and bring Uzbekistan to the world
-                    leaders of the cotton industry. Ранее Apple уже запустила
-                    продажи через онлайн-площадку Tmall, которая принадлежит
-                    Alibaba Group. Судя по всему, в компании серьёзно настроены
-                    сражаться за китайского потребителя. Несмотря на то что
-                    iPhone занимает порядка 20 % местного рынка смартфонов, в
-                    первом квартале 2023-го продажи Apple в Китае упали на 5 %.
-                    И вряд ли эта цифра радует руководство корпорации.
-                  </p>
+                  <p className={styles.text}>{t["main.text1"]}</p>
+                  <p className={styles.text}>{t["about.text2"]} </p>
+                  <p className={styles.text}>{t["about.text3"]}</p>
                 </div>
               </div>
               <div className={styles.top_right}>
@@ -72,27 +48,33 @@ export default function Page({ partners }: { partners: IPartner[] }) {
                 <div className={styles.top_right_div}>
                   <h4 className={styles.stats_number}>04</h4>
                   <div>
-                    <h5 className={styles.stats_title}>Производства</h5>
+                    <h5 className={styles.stats_title}>
+                      {t["about.stats_title1"]}
+                    </h5>
                     <p className={styles.stats_text}>
-                      Майки, Трусы и Боксеры, Футболки и Безрукавки,Нижнее бельё
+                      {t["about.stats_desc1"]}
                     </p>
                   </div>
                 </div>
                 <div className={styles.top_right_div}>
                   <h4 className={styles.stats_number}>25</h4>
                   <div>
-                    <h5 className={styles.stats_title}>Летний опыт</h5>
+                    <h5 className={styles.stats_title}>
+                      {t["about.stats_title2"]}
+                    </h5>
                     <p className={styles.stats_text}>
-                      инвестиции в развитие с 1998 года
+                      {t["about.stats_desc2"]}
                     </p>
                   </div>
                 </div>
                 <div className={styles.top_right_div}>
                   <h4 className={styles.stats_number}>0,98</h4>
                   <div>
-                    <h5 className={styles.stats_title}>Тысяч человек</h5>
+                    <h5 className={styles.stats_title}>
+                      {t["about.stats_title3"]}
+                    </h5>
                     <p className={styles.stats_text}>
-                      Общая численность сотрудников
+                      {t["about.stats_desc3"]}
                     </p>
                   </div>
                 </div>
@@ -102,20 +84,7 @@ export default function Page({ partners }: { partners: IPartner[] }) {
               <div className={styles.inner_bottom_image}>
                 <Image src={aboutImg} alt="about image" className="image" />
               </div>
-              <p className={styles.text}>
-                Производственные мощности компании, в цехах которой установлено
-                современное оборудование от мировых производителей, среди
-                которых вязальные машины Taifan, швейные машины Juki, Brother,
-                Siruba и гладильные Malkan, позволяют представлять потребителям
-                до 30 тонн полотна и 150-250 тысяч готовых трикотажных изделий в
-                месяц.Торговая марка Premium pipe получила повсеместное
-                признание благодаря высокому качеству и эстетичности выпускаемой
-                продукции.Мужское белье от Premium pipe отлично прилегает к телу
-                и гигиенично за счет использования в производстве натуральных
-                материалов высокого качества.Вся выпускаемая продукция
-                производится из натурального материала – хлопка, выращенного на
-                благодатных полях нашей страны.
-              </p>
+              <p className={styles.text}>{t["about.text4"]}</p>
             </div>
           </div>
         </section>

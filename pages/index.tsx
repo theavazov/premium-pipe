@@ -13,6 +13,7 @@ import { ICategory, IGallery, IPartner, IProduct } from "../server/interfaces";
 import Toast from "../components/utils/toast";
 import { useContext } from "react";
 import { FormContext } from "../store/form";
+import { TranslationsContext } from "../store/translations";
 
 // Sections
 const Hero = dynamic(() => import("../components/home/hero"));
@@ -37,7 +38,7 @@ export default function Page({
   products,
 }: PageProps) {
   const { isSuccess } = useContext(FormContext);
-
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead title={"Premium Pipe"} desc={""} canonical={"/"} />
@@ -53,7 +54,7 @@ export default function Page({
       <Toast
         variant="success"
         toast={isSuccess ? true : false}
-        message={"Muvaffaqiyatli yuborildi!"}
+        message={`${t["main.successfully_sent"]}!`}
       />
     </>
   );

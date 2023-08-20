@@ -2,29 +2,23 @@ import Link from "next/link";
 import { chevron_right } from "../../../public/icons";
 import styles from "./about.module.css";
 import Image from "next/image";
+import { useContext } from "react";
+import { TranslationsContext } from "../../../store/translations";
 export default function AboutCompany() {
+  const { t } = useContext(TranslationsContext);
   return (
     <section className={styles.box}>
       <div className={`box ${styles.container}`}>
         <div className={styles.info_section}>
-          <p className={`${styles.section_title} section_title`}>О компании</p>
+          <p className={`${styles.section_title} section_title`}>
+            {t["main.about"]}
+          </p>
           <div className={styles.descs}>
-            <p className={styles.desc}>
-              Компания Premium pipe Asia polyplast является ведущим
-              производителем полипропиленовых, полиэтиленовых и ПВХ
-              трубопроводов для внутренних и наружных сетей инженерных
-              коммуникаций.
-            </p>
-            <p className={styles.desc}>
-              Наша продукция отличается высоким качеством, надежностью и
-              долговечностью. Благодаря передовым технологиям и
-              профессиональному опыту, компания успешно удовлетворяет
-              потребности клиентов в различных отраслях. Она стремится к
-              инновациям и устанавливает высокие стандарты в своей отрасли.
-            </p>
+            <p className={styles.desc}>{t["main.about_desc_1"]}</p>
+            <p className={styles.desc}>{t["main.about_desc_2"]}</p>
           </div>
           <Link href="/about" className={`primary_btn ${styles.btn}`}>
-            Подробнее {chevron_right}
+            {t["main.more"]} {chevron_right}
           </Link>
         </div>
         <div className={styles.images}>
@@ -37,7 +31,7 @@ export default function AboutCompany() {
           />
         </div>
         <Link href="/about" className={`primary_btn ${styles.mobile_btn}`}>
-          Подробнее {chevron_right}
+          {t["main.more"]} {chevron_right}
         </Link>
       </div>
     </section>

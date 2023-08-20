@@ -5,17 +5,20 @@ import { IGallery } from "../../../server/interfaces";
 import Buttons from "../../utils/buttons";
 import styles from "./gallery.module.css";
 import GalleryCard from "../../cards/gallery";
+import { useContext } from "react";
+import { TranslationsContext } from "../../../store/translations";
 
 export default function GallerySection({
   galleries,
 }: {
   galleries: IGallery[];
 }) {
+  const { t } = useContext(TranslationsContext);
   return (
     <section className="section">
       <div className="box section_inner">
         <div className="section_inner_top">
-          <h3 className="section_title">Галерея</h3>
+          <h3 className="section_title">{t["main.gallery"]}</h3>
           <Buttons
             variant="chevron"
             prevClass="prev-media"

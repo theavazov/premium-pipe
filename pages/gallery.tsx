@@ -35,8 +35,9 @@ export default function PageGalleriesPage({
         <Layout>
           <IntroSection location="Галерея" title="Наша галерея" />
           <section className="wrapper">
-            <div className={`box mini_section`}>
-              <div className="">
+            <div className={`box mini_section ${styles.section_inner}`}>
+         
+              <div className={styles.galleries_container}>
                 {galleries.length > 0
                   ? galleries.map((media, id) => {
                       return <GalleryCard key={id} gallery={media} />;

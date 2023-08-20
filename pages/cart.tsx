@@ -14,26 +14,33 @@ import { ModalContext } from "../store/modal";
 import Toast from "../components/utils/toast";
 import { FormContext } from "../store/form";
 import emptyImg from "../public/media/empty.jpg";
+import { TranslationsContext } from "../store/translations";
 
 export default function Page() {
   const { orders, setOrders, total } = useContext(OrdersContext);
   const { setIsModal, setVariant } = useContext(ModalContext);
   const { isSuccess } = useContext(FormContext);
-
+  const { t } = useContext(TranslationsContext);
   return (
     <>
-      <CustomHead title={"Premium Pipe | Cart"} desc={""} canonical={"/cart"} />
+      <CustomHead
+        title={`Premium Pipe | ${t["main.cart"]}`}
+        desc={""}
+        canonical={"/cart"}
+      />
       <Layout>
-        <IntroSection location="Корзина" title="Наша корзина" />
+        <IntroSection location={t["main.cart"]} title={t["main.our_cart"]} />
         <section>
           <div className="minibox">
             {orders.length > 0 ? (
               <div className={styles.section_inner}>
                 <div className={styles.inner_top}>
                   <div className={styles.top_intro}>
-                    <h3 className={styles.intro_title}>Ваш заказ</h3>
+                    <h3 className={styles.intro_title}>
+                      {t["main.your_order"]}
+                    </h3>
                     <button onClick={() => deleteAll(setOrders)}>
-                      Удалить все
+                      {t["main.delete_all"]}
                     </button>
                   </div>
                   <ul className={styles.orders_list}>
@@ -44,7 +51,7 @@ export default function Page() {
                 </div>
                 <div className={styles.inner_bottom}>
                   <p>
-                    Количество продуктов: <span>{total}</span>
+                    {t["main.quantity_of_products"]}: <span>{total}</span>
                   </p>
                   <button
                     className="btn primary-two"
@@ -53,7 +60,7 @@ export default function Page() {
                       setIsModal(true);
                     }}
                   >
-                    Заказ на покупку {cart2}
+                    {t["main.purchase_order"]} {cart2}
                   </button>
                 </div>
               </div>
@@ -66,17 +73,18 @@ export default function Page() {
       <Toast
         variant="success"
         toast={isSuccess ? true : false}
-        message={"Muvaffaqiyatli yuborildi!"}
+        message={`${t["main.successfully_sent"]!}`}
       />
     </>
   );
 }
 
 const EmptyComponent = () => {
+  const { t } = useContext(TranslationsContext);
   return (
     <div className={stules.empty_wrapper}>
       <h4 style={{ textAlign: "center" }} className={stules.custom_title}>
-        корзина пустой
+        {t["main.cart_empty"]}
       </h4>
       <Image src={emptyImg} alt="empty image" />
     </div>
@@ -90,7 +98,7 @@ const OrderCard = ({ order }: { order: IStorageOrder }) => {
   useEffect(() => {
     setCount(isFound(order.id).count);
   }, [orders]);
-
+  const { t } = useContext(TranslationsContext);
   return (
     <li className={styles.card}>
       <div className={styles.card_left}>
@@ -106,7 +114,7 @@ const OrderCard = ({ order }: { order: IStorageOrder }) => {
         <div className={styles.card_info}>
           <h4 className={styles.info_title}>{order.title}</h4>
           <p>
-            Количество: <span>{count}</span>
+            {t["main.quantity"]}: <span>{count}</span>
           </p>
           <div className="mobile">
             <div className="counter cart">

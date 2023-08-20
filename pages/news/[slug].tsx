@@ -11,6 +11,8 @@ import { Navigation, Autoplay } from "swiper/modules";
 import Buttons from "../../components/utils/buttons";
 import NewsCard from "../../components/cards/news";
 import noimage from "../../public/media/noimage.jpg";
+import { useContext } from "react";
+import { TranslationsContext } from "../../store/translations";
 
 interface PageProps extends INews {
   other_news: INews[];
@@ -18,6 +20,7 @@ interface PageProps extends INews {
 }
 
 export default function Page({ article }: { article: PageProps }) {
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead
@@ -61,7 +64,7 @@ export default function Page({ article }: { article: PageProps }) {
             <div
               className={`box section_inner_top ${styles.other_product_inner}`}
             >
-              <h3 className="section_title">Другие новости</h3>
+              <h3 className="section_title">{t["main.other_news"]}</h3>
               <Buttons
                 variant="arrow"
                 prevClass="prev-news"

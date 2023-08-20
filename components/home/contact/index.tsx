@@ -6,12 +6,13 @@ import { FormContext } from "../../../store/form";
 import { IStoreObjectData } from "../../../server/interfaces";
 import { storeOrders } from "../../../server/api";
 import ReCAPTCHA from "react-google-recaptcha";
+import { TranslationsContext } from "../../../store/translations";
 export default function ContactsHome() {
   const { isSuccess, setIsSuccess } = useContext(FormContext);
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-
+  const { t } = useContext(TranslationsContext);
   return (
     <section>
       <div className={styles.container}>
@@ -26,11 +27,8 @@ export default function ContactsHome() {
         <div className={styles.box}>
           <div className={styles.inner_container}>
             <div className={styles.title_section}>
-              <p className={styles.title}>Форма для обратной связи</p>
-              <p className={styles.desc}>
-                Описываем любые сложные цифровые системы с точки зрения
-                требований, составляем подробную проектную документацию
-              </p>
+              <p className={styles.title}>{t["main.form_title"]}</p>
+              <p className={styles.desc}>{t["main.form_desc_home"]}</p>
             </div>
             <div className={styles.form_container}>
               <form
@@ -61,7 +59,7 @@ export default function ContactsHome() {
                 <div className={styles.top_form}>
                   <input
                     type="text"
-                    placeholder="Ваше имя"
+                    placeholder={t["main.name"]}
                     className={styles.name}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -91,7 +89,7 @@ export default function ContactsHome() {
                     type="submit"
                     className={`${styles.submit} primary_btn`}
                   >
-                    Отправить {chevron_right}
+                    {t["main.submit"]} {chevron_right}
                   </button>
                 </div>
               </form>

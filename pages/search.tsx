@@ -14,14 +14,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
 import { FormContext } from "../store/form";
+import { TranslationsContext } from "../store/translations";
 
 export default function Page() {
   const { products, setProducts, query, setQuery } = useContext(FormContext);
-
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead
-        title={"Premium Pipe | Search"}
+        title={`Premium Pipe | ${t["main.search"]}`}
         desc={""}
         canonical={"/search"}
       />
@@ -60,10 +61,11 @@ export default function Page() {
 }
 
 const EmptyComponent = () => {
+  const { t } = useContext(TranslationsContext);
   return (
     <div className={styles.empty_wrapper}>
       <h4 style={{ textAlign: "center" }} className={styles.custom_title}>
-        По вашему запросу ничего не найдено
+        {t["main.nothing_found"]}
       </h4>
       <Image src={emptyImg} alt="empty image" />
     </div>
@@ -71,10 +73,11 @@ const EmptyComponent = () => {
 };
 
 const ContentComponent = ({ products }: { products: IProduct[] }) => {
+  const { t } = useContext(TranslationsContext);
   return (
     <div className={`section_inner ${styles.content_wrapper}`}>
       <div className="section_inner_top">
-        <h4 className={styles.custom_title}>По вашему запросу найдено</h4>
+        <h4 className={styles.custom_title}>{t["main.thing_found"]}</h4>
         <Buttons
           variant="arrow"
           prevClass="prev-product"

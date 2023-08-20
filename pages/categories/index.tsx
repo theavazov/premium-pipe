@@ -5,17 +5,23 @@ import { getCategories } from "../../server/api";
 import { ICategory } from "../../server/interfaces";
 import styles from "../../styles/categories.module.css";
 import CategoryCard from "../../components/cards/category";
+import { useContext } from "react";
+import { TranslationsContext } from "../../store/translations";
 
 export default function Page({ categories }: { categories: ICategory[] }) {
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead
-        title={"Premium Pipe | Categories"}
+        title={`Premium Pipe | ${t["main.category"]}`}
         desc={""}
         canonical={`/categories`}
       />
       <Layout>
-        <IntroSection location="Продукции" title="каталог продукции" />
+        <IntroSection
+          location={t["main.products"]}
+          title={t["main.catalog_products"]}
+        />
         <section>
           <div className={`box categories_container ${styles.section_inner}`}>
             {categories.length > 0

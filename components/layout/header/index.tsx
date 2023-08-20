@@ -21,6 +21,7 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { TranslationsContext } from "../../../store/translations";
 interface Props {
   variant: "light" | "dark";
 }
@@ -28,36 +29,35 @@ interface Props {
 export default function Header({ variant }: Props) {
   const { pathname, locale, locales, asPath, push } = useRouter();
   const { setProducts, query, setQuery } = useContext(FormContext);
-
+  const { t } = useContext(TranslationsContext);
   const links = [
     {
-      name: "Главная",
+      name: t["main.main"],
       path: "/",
       isActive: pathname === "/" ? true : false,
     },
     {
-      name: "Пpoдукции",
-      path: "/categories",
-      isActive: pathname.includes("/categories") ? true : false,
-    },
-    {
-      name: "О компании",
+      name: t["main.about"],
       path: "/about",
       isActive: pathname === "/about" ? true : false,
     },
     {
-      name: "Galereya",
+      name: t["main.gallery"],
       path: "/gallery",
       isActive: pathname === "/gallery" ? true : false,
     },
     {
-      name: "Новости",
+      name: t["main.products"],
+      path: "/categories",
+      isActive: pathname.includes("/categories") ? true : false,
+    },
+    {
+      name: t["main.news"],
       path: "/news",
       isActive: pathname.includes("/news") ? true : false,
     },
-
     {
-      name: "Контакты",
+      name: t["main.contact"],
       path: "/contact",
       isActive: pathname === "/contact" ? true : false,
     },
@@ -194,14 +194,14 @@ export default function Header({ variant }: Props) {
               >
                 <input
                   type="text"
-                  placeholder="Поиск"
+                  placeholder={t["main.search"]}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
                 <button type="submit">{search}</button>
               </form>
               <Link href="/cart" className={styles.nav_link}>
-                {bag} Корзина
+                {bag} {t["main.cart"]}
               </Link>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function Header({ variant }: Props) {
             >
               <input
                 type="text"
-                placeholder="Поиск"
+                placeholder={t["main.cart"]}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -288,33 +288,7 @@ export default function Header({ variant }: Props) {
 }
 const MobileMenu = ({ setIsMenu, variant }: any) => {
   const { pathname } = useRouter();
-  const links = [
-    {
-      name: "Главная",
-      path: "/",
-      isActive: pathname === "/" ? true : false,
-    },
-    {
-      name: "Пpoдукции",
-      path: "/categories",
-      isActive: pathname.includes("/categories") ? true : false,
-    },
-    {
-      name: "О компании",
-      path: "/about",
-      isActive: pathname === "/about" ? true : false,
-    },
-    {
-      name: "Новости",
-      path: "/news",
-      isActive: pathname.includes("/news") ? true : false,
-    },
-    {
-      name: "Контакты",
-      path: "/contact",
-      isActive: pathname === "/contact" ? true : false,
-    },
-  ];
+  const { t } = useContext(TranslationsContext);
   return (
     <section
       className={`${styles.mobile_menu}
@@ -342,7 +316,17 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                 : styles.nav_link
             }`}
           >
-            Главная
+            {t["main.main"]}
+          </Link>
+          <Link
+            href={"/about"}
+            className={`${
+              pathname === "/about"
+                ? `${styles.nav_link} ${styles.active}`
+                : styles.nav_link
+            }`}
+          >
+            {t["main.about"]}
           </Link>
           <Accordion allowToggle>
             <AccordionItem>
@@ -354,7 +338,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                     textAlign="left"
                     className={styles.nav_link}
                   >
-                    Products <AccordionIcon />
+                    {t["main.products"]} <AccordionIcon />
                   </Box>
                 </AccordionButton>
               </h2>
@@ -422,16 +406,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
-          <Link
-            href={"/about"}
-            className={`${
-              pathname === "/about"
-                ? `${styles.nav_link} ${styles.active}`
-                : styles.nav_link
-            }`}
-          >
-            О компании
-          </Link>
+
           <Link
             href={"/gallery"}
             className={`${
@@ -440,7 +415,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                 : styles.nav_link
             }`}
           >
-            Gallery
+            {t["main.gallery"]}
           </Link>
           <Link
             href={"/news"}
@@ -450,7 +425,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                 : styles.nav_link
             }`}
           >
-            Новости
+            {t["main.news"]}
           </Link>
           <Link
             href={"/contact"}
@@ -460,7 +435,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                 : styles.nav_link
             }`}
           >
-            Контакты
+            {t["main.contact"]}
           </Link>
         </nav>
       </div>

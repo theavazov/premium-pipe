@@ -16,6 +16,7 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { OrdersContext } from "../../store/storage";
 import { isFound, save, update } from "../../helpers/storage";
+import { TranslationsContext } from "../../store/translations";
 
 interface PageProps extends IProduct {
   other_products: IProduct[];
@@ -37,7 +38,7 @@ export default function Page({ product }: { product: PageProps }) {
     setInCart(isFound(product.id).boolean);
     setCount(isFound(product.id).count);
   }, [orders, router]);
-
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead
@@ -46,7 +47,10 @@ export default function Page({ product }: { product: PageProps }) {
         canonical={`/product/${product.slug}`}
       />
       <Layout>
-        <IntroSection location="Продукции" title="Наши продукты" />
+        <IntroSection
+          location={t["main.products"]}
+          title={t["main.our_products"]}
+        />
         <section>
           <div className={`box ${styles.section_inner}`}>
             <div className={styles.product_images_wrapper}>
@@ -102,7 +106,7 @@ export default function Page({ product }: { product: PageProps }) {
                   ) : null}
                 </div>
                 <div className={styles.content_body_item}>
-                  <p className={styles.yetim_text}>Количество:</p>
+                  <p className={styles.yetim_text}>{t["main.quantity"]}:</p>
                   <div className="counter">
                     <button
                       onClick={() => {
@@ -125,13 +129,15 @@ export default function Page({ product }: { product: PageProps }) {
                   </div>
                 </div>
                 {inCart ? (
-                  <button className="btn primary-two">Добавлено {cart2}</button>
+                  <button className="btn primary-two">
+                    {t["main.added"]} {cart2}
+                  </button>
                 ) : (
                   <button
                     className="btn primary-two"
                     onClick={() => save(product, count, setOrders)}
                   >
-                    Добавить корзину {cart2}
+                    {t["main.added_cart"]} {cart2}
                   </button>
                 )}
               </div>
@@ -148,7 +154,7 @@ export default function Page({ product }: { product: PageProps }) {
           <section className="section">
             <div className="box section_inner">
               <div className="section_inner_top">
-                <h3 className="section_title">Другие продукты</h3>
+                <h3 className="section_title">{t["main.other_products"]}</h3>
                 <Buttons
                   variant="arrow"
                   prevClass="prev-product"

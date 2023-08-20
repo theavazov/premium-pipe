@@ -4,8 +4,11 @@ import styles from "./product.module.css";
 import Image from "next/image";
 import { arrow_right } from "../../../public/icons";
 import noimage from "../../../public/media/noimage.jpg";
+import { useContext } from "react";
+import { TranslationsContext } from "../../../store/translations";
 
 export default function ProductCard({ product }: { product: IProduct }) {
+  const { t } = useContext(TranslationsContext);
   return (
     <Link href={`/product/${product.slug}`} className={styles.card}>
       <div className={styles.card_category}>{product.category}</div>
@@ -21,7 +24,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
       <div className={styles.card_content}>
         <p className={styles.card_title}>{product.title}</p>
         <div className={styles.card_content_body}>
-          <span>Подробнее</span>
+          <span>{t["main.more"]}</span>
           {arrow_right}
         </div>
       </div>

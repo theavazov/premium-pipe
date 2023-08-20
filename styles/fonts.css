@@ -41,6 +41,11 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "Halvar Extrabold";
+  src: url("/fonts/Halvar/HalvarBreit-XBd.ttf");
+  font-display: swap;
+}
+@font-face {
   font-family: "Inter Medium";
   src: url("/fonts/Inter/Inter-Medium.ttf");
   font-display: swap;

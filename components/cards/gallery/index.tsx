@@ -14,6 +14,15 @@ export default function GalleryCard({ gallery }: { gallery: IGallery }) {
           height={250}
         />
       </div>
+      <div className={styles.card_hover_img }>
+        <Image
+          src="/media/gallery_hover_img.png"
+          alt="gallery"
+          className="image"
+          width={400}
+          height={250}
+        />
+      </div>
     </div>
   );
 }

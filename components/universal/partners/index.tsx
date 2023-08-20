@@ -5,17 +5,20 @@ import { IPartner } from "../../../server/interfaces";
 import Buttons from "../../utils/buttons";
 import styles from "./partners.module.css";
 import Image from "next/image";
+import { useContext } from "react";
+import { TranslationsContext } from "../../../store/translations";
 
 export default function UniversalPartners({
   partners,
 }: {
   partners: IPartner[];
 }) {
+  const { t } = useContext(TranslationsContext);
   return (
     <section className={`section ${styles.section}`}>
       <div className={`box section_inner ${styles.partners_inner}`}>
         <div className="section_inner_top">
-          <h3 className="section_title">Наши партнеры</h3>
+          <h3 className="section_title">{t["main.our_partners"]}</h3>
           <Buttons
             variant="chevron"
             prevClass="prev-partner"

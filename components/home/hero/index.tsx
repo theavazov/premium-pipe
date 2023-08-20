@@ -8,19 +8,20 @@ import {
 } from "../../../public/icons";
 import styles from "./hero.module.css";
 import Image from "next/image";
+import { useContext } from "react";
+import { TranslationsContext } from "../../../store/translations";
 export default function Intro() {
-  return (
+  const { t } = useContext(TranslationsContext);
+  return ( 
     <section>
       <div className={styles.container}>
         <div className={styles.top_container}>
           <div className={styles.topper}>
             <p className={styles.subtitle}>
               {magnet}
-              Premium pipe Asia polyplast
+              {t["main.asia_polyplast"]}
             </p>
-            <p className={styles.title}>
-              полипропиленовые, полиэтиленовые и ПВХ продукция
-            </p>
+            <p className={styles.title}>{t["main.asia_polyplast_desc"]}</p>
           </div>
         </div>
         <div className={styles.middle}>
@@ -35,32 +36,35 @@ export default function Intro() {
           </div>
           <div className={styles.middle_info}>
             <p className={styles.middle_subtitle}>
-              Ассортимент из полимерных, ПВХ и полиэтиленовых труб различного
-              назначения.
+              {t["main.intro_middle_subtitle"]}
             </p>
             <Link href="/about" className="primary_btn">
-              О компании {chevron_right}{" "}
+              {t["main.about"]} {chevron_right}{" "}
             </Link>
           </div>
         </div>
         <div className={styles.bottom_container}>
           <div className={styles.bottom}>
-            <p className={styles.success_title_top}>Наш успех</p>
+            <p className={styles.success_title_top}>
+              {t["main.success_title_top"]}
+            </p>
             <div className={styles.success_container}>
               <div className={styles.success}>
                 {pie_chart}
                 <p className={styles.success_title}>
-                  более 10 лет профессионального опыта
+                  {t["main.success_title_1"]}
                 </p>
               </div>
               <div className={styles.success}>
                 {cup_star}
-                <p className={styles.success_title}>Сотни успешных проектов</p>
+                <p className={styles.success_title}>
+                  {t["main.success_title_2"]}
+                </p>
               </div>
               <div className={styles.success}>
                 {hand_stars}
                 <p className={styles.success_title}>
-                  Огромное количество благодарных клиентов
+                  {t["main.success_title_3"]}
                 </p>
               </div>
             </div>

@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import Link from "next/link";
 import ProductCard from "../../components/cards/product";
+import { useContext } from "react";
+import { TranslationsContext } from "../../store/translations";
 
 export default function Page() {
   const router = useRouter();
@@ -23,7 +25,7 @@ export default function Page() {
     error,
     isLoading,
   } = useQuery([], () => getCategories(router.locale!), { retry: false });
-
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead
@@ -38,10 +40,10 @@ export default function Page() {
               <div className={styles.intro_titles}>
                 <nav className={styles.breadcrumb}>
                   <Link href="/" className={styles.breadcrumb_el}>
-                    Главная
+                    {t["main.main"]}
                   </Link>
                   <span className={styles.breadcrumb_el}>/</span>
-                  <p className={styles.breadcrumb_el}>Продукции</p>
+                  <p className={styles.breadcrumb_el}>{t["main.products"]}</p>
                 </nav>
                 <h1 className={styles.intro_title}>{category?.title}</h1>
               </div>
@@ -59,7 +61,7 @@ export default function Page() {
             <div className={`box ${styles.body_inner}`}>
               <aside className={styles.body_aside}>
                 <div className={styles.body_aside_body}>
-                  <h4>Категории</h4>
+                  <h4>{t["main.category"]}</h4>
                   <div className={styles.aside_items}>
                     {categories.map((asideCategory: ICategory) => {
                       return (

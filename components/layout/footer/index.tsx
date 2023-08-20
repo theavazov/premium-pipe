@@ -2,33 +2,41 @@ import styles from "./footer.module.css";
 import { facebook, instagram, linkedin, youtube } from "../../../public/icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { TranslationsContext } from "../../../store/translations";
 
 export default function Footer() {
   const { pathname } = useRouter();
+  const { t } = useContext(TranslationsContext);
 
   const navigation = [
     {
-      title: "Главная",
+      title: t["main.main"],
       path: "/",
       isActive: pathname === "/" ? true : false,
     },
     {
-      title: "О компании",
+      title: t["main.about"],
       path: "/about",
       isActive: pathname === "/about" ? true : false,
     },
     {
-      title: "Пpoдукции",
+      title: t["main.gallery"],
+      path: "/gallery",
+      isActive: pathname === "/gallery" ? true : false,
+    },
+    {
+      title: t["main.products"],
       path: "/categories",
       isActive: pathname.includes("/categories") ? true : false,
     },
     {
-      title: "Новости",
+      title: t["main.news"],
       path: "/news",
       isActive: pathname.includes("/news") ? true : false,
     },
     {
-      title: "Контакты",
+      title: t["main.contact"],
       path: "/contact",
       isActive: pathname === "/contact" ? true : false,
     },
@@ -46,15 +54,15 @@ export default function Footer() {
         <div className={styles.top_container}>
           <div className={styles.top_container_inner_top}>
             <div className={styles.title_cont}>
-              <p className={styles.mytitle}>Свяжитесь с нами</p>
+              <p className={styles.mytitle}>{t["main.contactus"]}</p>
               <p className={styles.title_desc}>
-                Если у вас есть вопросы или вы хотите обсудить сотруничество -
-                пишите, звоните или закажите обратный звонок, и мы сами все
-                расскажем
+                {t["main.footer_contactus_desc"]}
               </p>
             </div>
             <div className={styles.social_links_cont}>
-              <p className={styles.social_links_title}>Социальные медиа</p>
+              <p className={styles.social_links_title}>
+                {t["main.social_networks"]}
+              </p>
               <div className={styles.social_links}>
                 <a
                   href={"/"}
@@ -93,7 +101,7 @@ export default function Footer() {
           </div>
           <div className={styles.top_container_inner_btm}>
             <div className={styles.contact}>
-              <p className={styles.contact_title}>Phone number</p>
+              <p className={styles.contact_title}>{t["main.phone_number"]}</p>
               <a href={`tel: +998 78 122 12 42`} className={styles.phone}>
                 +998 78 122 12 42
               </a>
@@ -102,7 +110,7 @@ export default function Footer() {
               </a>
             </div>
             <div className={styles.contact}>
-              <p className={styles.contact_title}>Email</p>
+              <p className={styles.contact_title}>{t["main.email"]}</p>
               <a
                 href={`mailto: info@P-pipe.com`}
                 target={"_blank"}
@@ -113,7 +121,7 @@ export default function Footer() {
               </a>
             </div>
             <div className={styles.contact}>
-              <p className={styles.contact_title}>Address</p>
+              <p className={styles.contact_title}>{t["main.address"]}</p>
               <p className={styles.contact_info}>
                 Юнусабадский район, массив Ташгрес, Улица Боги Шамол
               </p>
@@ -122,7 +130,7 @@ export default function Footer() {
         </div>
         <div className={styles.btm_container}>
           <p className={styles.copyright}>
-            Copyright © {new Date().getFullYear()} Premium Pipe Asia
+            {t["main.copyright"]} © {new Date().getFullYear()} Premium Pipe Asia
           </p>
           <div className={styles.footer_links}>
             {navigation.map((link, idx) => {
@@ -143,10 +151,11 @@ export default function Footer() {
           </div>
           <div className={styles.btm_mb}>
             <p className={styles.copyright_mobile}>
-              Copyright © {new Date().getFullYear()} Premium Pipe Asia
+              {t["main.copyright"]} © {new Date().getFullYear()} Premium Pipe
+              Asia
             </p>
             <p className={styles.designedby}>
-              Design by{" "}
+              {t["main.designby"]}{" "}
               <a href={"/"} target="_blank" rel="noreferrer">
                 NDC
               </a>

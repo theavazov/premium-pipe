@@ -1,5 +1,9 @@
+.section_inner {
+  padding-bottom: 120px;
+  padding-top: 80px;
+}
 .galleries_container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 16px;
 }

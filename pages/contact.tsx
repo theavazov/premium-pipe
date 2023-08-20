@@ -10,6 +10,7 @@ import { useContext, useState } from "react";
 import Toast from "../components/utils/toast";
 import { IStoreObjectData } from "../server/interfaces";
 import { storeOrders } from "../server/api";
+import { TranslationsContext } from "../store/translations";
 
 export default function Page() {
   const { isSuccess, setIsSuccess } = useContext(FormContext);
@@ -17,16 +18,19 @@ export default function Page() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
-
+  const { t } = useContext(TranslationsContext);
   return (
     <>
       <CustomHead
-        title={"Premium Pipe | Contact"}
+        title={`Premium Pipe | ${t["main.contact"]}`}
         desc={""}
         canonical={"/contact"}
       />
       <Layout>
-        <IntroSection location={"Контакты"} title="Связаться с нами" />
+        <IntroSection
+          location={t["main.contact"]}
+          title={t["main.contactus"]}
+        />
         <section>
           <div className={`box ${styles.section_inner}`}>
             <div className={styles.left}>
@@ -45,11 +49,8 @@ export default function Page() {
             </div>
             <div className={styles.right}>
               <div className={styles.titles_div}>
-                <h3 className={styles.title}>Контакты</h3>
-                <p>
-                  Давайте обсудим ваш проект, вместе мы найдем решение самых
-                  сложных задач
-                </p>
+                <h3 className={styles.title}>{t["main.contact"]}</h3>
+                <p>{t["main.contact_desc"]}</p>
               </div>
               <form
                 className={styles.form_wrapper}
@@ -80,7 +81,7 @@ export default function Page() {
                 <div className={styles.form_inputs}>
                   <input
                     type="text"
-                    placeholder="Имя"
+                    placeholder={t["main.name"]}
                     className={styles.input}
                     value={name}
                     required
@@ -88,7 +89,7 @@ export default function Page() {
                   />
                   <IMaskInput
                     mask={"+998 00 000 00 00"}
-                    placeholder="Номер телефона"
+                    placeholder={t["main.phone_number"]}
                     className={styles.input}
                     value={number}
                     required
@@ -98,7 +99,7 @@ export default function Page() {
                     cols={30}
                     rows={6}
                     className={styles.input}
-                    placeholder="Сообщение"
+                    placeholder={t["main.message"]}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
@@ -114,7 +115,7 @@ export default function Page() {
                     className="btn primary"
                     disabled={!isValid ? true : false}
                   >
-                    Узнать больше {chevron_right}
+                    {t["main.know_more"]} {chevron_right}
                   </button>
                 </div>
               </form>
@@ -125,7 +126,7 @@ export default function Page() {
       <Toast
         variant="success"
         toast={isSuccess ? true : false}
-        message={"Muvaffaqiyatli yuborildi!"}
+        message={`${t["main.successfully_sent"]} !`}
       />
     </>
   );
