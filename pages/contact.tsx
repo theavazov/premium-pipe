@@ -9,7 +9,6 @@ import {
   facebook,
   instagram,
   linkedin,
-  location,
   location2,
   youtube,
 } from "../public/icons";
@@ -19,6 +18,7 @@ import Toast from "../components/utils/toast";
 import { IStoreObjectData } from "../server/interfaces";
 import { storeOrders } from "../server/api";
 import { TranslationsContext } from "../store/translations";
+import { SiteinfoContext } from "../store/siteinfo";
 
 export default function Page() {
   const { isSuccess, setIsSuccess } = useContext(FormContext);
@@ -27,6 +27,14 @@ export default function Page() {
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
   const { t } = useContext(TranslationsContext);
+  const { siteinfo } = useContext(SiteinfoContext);
+
+  let numbers: string[] = [];
+
+  if (siteinfo.nbm != null) {
+    numbers = siteinfo.nbm.split("| ");
+  }
+
   return (
     <>
       <CustomHead
@@ -43,23 +51,13 @@ export default function Page() {
           <div className={`box ${styles.section_inner}`}>
             <div className={styles.left}>
               <div className={styles.map}>
-                <div>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191884.83987229373!2d69.11455884790136!3d41.282737945974475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2z0KLQvnNoa2VudCwgT2B6YmVraXN0b24!5e0!3m2!1suz!2s!4v1691918218007!5m2!1suz!2s"
-                    width="600"
-                    height="450"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: siteinfo.map }}></div>
               </div>
               <div className={styles.map_content}>
                 <div className={styles.bottom_info}>
                   <p className={styles.location_name}>
                     {location2}
-                    <span>
-                      Юнусабадский район, массив Ташгрес, Улица Боги Шамол
-                    </span>
+                    <span>{siteinfo.adres}</span>
                   </p>
                   <div className={styles.social_media}>
                     <p className={styles.social_title}>Социальные медиа</p>
@@ -151,12 +149,12 @@ export default function Page() {
                     {t["main.phone_number"]}
                   </p>
                   <a
-                    href={`tel: `}
+                    href={`tel: ${numbers[0]}`}
                     target={"_blank"}
                     rel="noreferrer"
                     className={styles.phone}
                   >
-                    +998 78 122 12 42
+                    {numbers[0]}
                   </a>
                 </div>
                 <div className={styles.contact_info_inner}>
@@ -164,12 +162,12 @@ export default function Page() {
                     {t["main.email"]}
                   </p>
                   <a
-                    href={`mailto: `}
+                    href={`mailto: ${siteinfo.email}`}
                     target={"_blank"}
                     rel="noreferrer"
                     className={styles.mail}
                   >
-                    info@p-pipe.com
+                    {siteinfo.email}
                   </a>
                 </div>
               </div>

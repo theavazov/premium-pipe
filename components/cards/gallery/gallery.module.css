@@ -9,21 +9,41 @@
   position: relative;
   height: 250px;
 }
+
 .card:hover .card_hover_img {
   display: flex;
 }
+
 .card_hover_img {
   display: none;
 }
+
 .card_hover_img img {
-  /* object-fit: contain !important; */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 }
+
+.card:nth-child(1),
+.card:nth-child(8) {
+  grid-column: span 3;
+}
+
+.card:nth-child(2),
+.card:nth-child(3),
+.card:nth-child(4),
+.card:nth-child(5),
+.card:nth-child(6),
+.card:nth-child(7) {
+  grid-column: span 2;
+}
+
+/* Qoganini ham shunga togrlab ketaverasiz */
+
 @media (max-width: 1200px) {
   .card_image {
     height: 180px;
   }
+  /* .card:nth-child(number) hammasini grid-column: auto; qilip chiqasiz media ni ichida  */
 }
