@@ -32,7 +32,11 @@
   color: var(--black);
   transition: 0.3s;
 }
-
+@media (max-width: 1440px) {
+  .buttons {
+    gap: 16px;
+  }
+}
 @media (max-width: 1200px) {
   .buttons {
     display: none;

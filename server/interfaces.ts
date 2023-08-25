@@ -22,6 +22,7 @@ export interface IPartner {
 
 export interface IGallery {
   id: number;
+  video: string;
   image: string;
   link: string | null;
 }
@@ -71,11 +72,3 @@ export interface IStore {
   name: string;
   number: string;
 }
-// export interface Gallery {
-//   id: number;
-//   title: string;
-//   desc: string;
-//   lg_files: Array<string>;
-//   md_files: Array<string>;
-//   sm_files: Array<string>;
-// }

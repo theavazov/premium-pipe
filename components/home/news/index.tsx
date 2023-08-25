@@ -1,24 +1,21 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
-import { IGallery } from "../../../server/interfaces";
+import { IGallery, INews } from "../../../server/interfaces";
 import Buttons from "../../utils/buttons";
 import styles from "./gallery.module.css";
 import GalleryCard from "../../cards/gallery";
 import { useContext } from "react";
 import { TranslationsContext } from "../../../store/translations";
+import NewsCard from "../../cards/news/index";
 
-export default function GallerySection({
-  galleries,
-}: {
-  galleries: IGallery[];
-}) {
+export default function GallerySection({ news }: { news: INews[] }) {
   const { t } = useContext(TranslationsContext);
   return (
     <section className="section">
       <div className="box section_inner">
         <div className="section_inner_top">
-          <h3 className="section_title">{t["main.gallery"]}</h3>
+          <h3 className="section_title">{t["main.news"]}</h3>
           <Buttons
             variant="chevron"
             prevClass="prev-media"
@@ -26,7 +23,7 @@ export default function GallerySection({
           />
         </div>
         <div className="desktop">
-          {galleries.length > 0 ? (
+          {news.length > 0 ? (
             <Swiper
               modules={[Navigation, Autoplay]}
               navigation={{ prevEl: ".prev-media", nextEl: ".next-media" }}
@@ -43,30 +40,34 @@ export default function GallerySection({
                 },
                 1400: {
                   slidesPerView: 4,
+                  spaceBetween: 16,
+                },
+                1560: {
+                  slidesPerView: 4,
                   spaceBetween: 24,
                 },
               }}
               slidesPerView={"auto"}
               loop={true}
             >
-              {galleries.map((media) => {
+              {news.map((news) => {
                 return (
-                  <SwiperSlide key={media.id}>
-                    <GalleryCard gallery={media} />
+                  <SwiperSlide key={news.id}>
+                    <NewsCard article={news} />
                   </SwiperSlide>
                 );
               })}
-              {galleries.map((media) => {
+              {news.map((news) => {
                 return (
-                  <SwiperSlide key={media.id}>
-                    <GalleryCard gallery={media} />
+                  <SwiperSlide key={news.id}>
+                    <NewsCard article={news} />
                   </SwiperSlide>
                 );
               })}
-              {galleries.map((media) => {
+              {news.map((news) => {
                 return (
-                  <SwiperSlide key={media.id}>
-                    <GalleryCard gallery={media} />
+                  <SwiperSlide key={news.id}>
+                    <NewsCard article={news} />
                   </SwiperSlide>
                 );
               })}
@@ -75,9 +76,9 @@ export default function GallerySection({
         </div>
         <div className="mobile">
           <div className="products_container">
-            {galleries.length > 0
-              ? galleries.map((media) => {
-                  return <GalleryCard key={media.id} gallery={media} />;
+            {news.length > 0
+              ? news.map((news) => {
+                  return <NewsCard key={news.id} article={news} />;
                 })
               : null}
           </div>

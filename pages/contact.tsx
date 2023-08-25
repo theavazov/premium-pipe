@@ -4,7 +4,15 @@ import { CustomHead } from "../components/layout/head";
 import IntroSection from "../components/universal/intro";
 import styles from "../styles/contact.module.css";
 import ReCAPTCHA from "react-google-recaptcha";
-import { chevron_right } from "../public/icons";
+import {
+  chevron_right,
+  facebook,
+  instagram,
+  linkedin,
+  location,
+  location2,
+  youtube,
+} from "../public/icons";
 import { FormContext } from "../store/form";
 import { useContext, useState } from "react";
 import Toast from "../components/utils/toast";
@@ -45,7 +53,25 @@ export default function Page() {
                   ></iframe>
                 </div>
               </div>
-              <div className={styles.map_content}></div>
+              <div className={styles.map_content}>
+                <div className={styles.bottom_info}>
+                  <p className={styles.location_name}>
+                    {location2}
+                    <span>
+                      Юнусабадский район, массив Ташгрес, Улица Боги Шамол
+                    </span>
+                  </p>
+                  <div className={styles.social_media}>
+                    <p className={styles.social_title}>Социальные медиа</p>
+                    <div className={styles.socials}>
+                      {youtube}
+                      {facebook}
+                      {instagram}
+                      {linkedin}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className={styles.right}>
               <div className={styles.titles_div}>
@@ -119,6 +145,34 @@ export default function Page() {
                   </button>
                 </div>
               </form>
+              <div className={styles.contact_info}>
+                <div className={styles.contact_info_inner}>
+                  <p className={styles.contacts_info_title}>
+                    {t["main.phone_number"]}
+                  </p>
+                  <a
+                    href={`tel: `}
+                    target={"_blank"}
+                    rel="noreferrer"
+                    className={styles.phone}
+                  >
+                    +998 78 122 12 42
+                  </a>
+                </div>
+                <div className={styles.contact_info_inner}>
+                  <p className={styles.contacts_info_title}>
+                    {t["main.email"]}
+                  </p>
+                  <a
+                    href={`mailto: `}
+                    target={"_blank"}
+                    rel="noreferrer"
+                    className={styles.mail}
+                  >
+                    info@p-pipe.com
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

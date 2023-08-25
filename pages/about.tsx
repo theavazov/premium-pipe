@@ -31,7 +31,7 @@ export default function Page({ partners }: { partners: IPartner[] }) {
               <div className={styles.top_left}>
                 <h3 className="section_title">{t["about.jahon_invest"]}</h3>
                 <div className={styles.texts}>
-                  <p className={styles.text}>{t["main.text1"]}</p>
+                  <p className={styles.text}>{t["about.text1"]}</p>
                   <p className={styles.text}>{t["about.text2"]} </p>
                   <p className={styles.text}>{t["about.text3"]}</p>
                 </div>

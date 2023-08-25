@@ -92,6 +92,10 @@ export default function Page({ article }: { article: PageProps }) {
                     slidesPerView: 3.4,
                   },
                   1200: {
+                    spaceBetween: 16,
+                    slidesPerView: 4.5,
+                  },
+                  1450: {
                     spaceBetween: 24,
                     slidesPerView: 4.5,
                   },

@@ -62,7 +62,16 @@
   line-height: 27px;
   color: var(--black);
 }
-
+@media (max-width: 1440px) {
+  .article_title {
+    font-size: 26px;
+    line-height: 150%;
+  }
+  .article_text {
+    font-size: 18px;
+    line-height: 150%;
+  }
+}
 @media (max-width: 1200px) {
   .section_inner {
     padding-top: 32px;

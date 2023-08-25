@@ -45,7 +45,67 @@
   background-color: var(--white);
   z-index: -1;
 }
+.bottom_info {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border: 1px solid var(--grey-8, #ebebeb);
+  background: var(--white, #fff);
+  box-shadow: 0px 12px 33px 0px rgba(2, 1, 5, 0.12);
+}
+.location_name {
+  color: var(--black, #020105);
+  font-family: var(--halvar-bold);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 21.6px */
+  text-transform: uppercase;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-right: 48px;
+  border-right: 1px solid #ebebeb;
+}
+.location_name svg {
+  width: 32px;
+  height: 32px;
+}
+.location_name span {
+  max-width: 364px;
+}
+
+.social_media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 48px;
+}
+
+.social_title {
+  color: #69697e;
+  font-family: var(--interface);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+}
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.socials svg path {
+  fill: var(--black, #020105);
+}
 .right {
   max-width: 540px;
   width: 100%;
@@ -108,7 +168,56 @@
   justify-content: space-between;
   gap: 22px;
 }
+.contact_info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 24px;
+  gap: 70px;
+  border-top: 1px solid #c2c2c3;
+  margin-top: 24px;
+}
+.contact_info_inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4px;
+}
+.mail,
+.phone {
+  color: var(--black, #020105);
+  font-family: var(--interface-medium);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 30px */
+}
 
+@media (max-width: 1440px) {
+  .location_name span {
+    font-size: 16px;
+    line-height: 120%;
+  }
+  .bottom_info {
+    padding: 20px;
+  }
+  .location_name {
+    padding-right: 10px;
+  }
+  .social_media {
+    padding-left: 10px;
+    align-items: flex-start;
+  }
+  .title {
+    font-size: 22px;
+    line-height: 112%;
+  }
+  .titles_div {
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+  }
+}
 @media (max-width: 1200px) {
   .section_inner {
     flex-direction: column;
@@ -126,5 +235,12 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+  .bottom_info {
+    flex-direction: column;
+  }
+  .bottom_info {
+    padding: 18px 10px;
+    right: 8px;
   }
 }

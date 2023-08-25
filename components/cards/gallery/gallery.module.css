@@ -2,6 +2,7 @@
   width: 100%;
   border: 1px solid #ebebeb;
   position: relative;
+  cursor: pointer;
 }
 
 .card_image {

@@ -1,3 +1,6 @@
+.minibox_mb {
+}
+
 .input_wrapper {
   display: flex;
   align-items: center;
@@ -63,7 +66,14 @@
 .content_wrapper {
   margin-top: 64px;
 }
-
+@media (max-width: 1440px) {
+  .input_wrapper {
+    max-width: 1200px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
 @media (max-width: 1200px) {
   .input {
     font-size: 16px;

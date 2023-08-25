@@ -4,12 +4,19 @@ import dynamic from "next/dynamic";
 import {
   getCategories,
   getMedia,
+  getNews,
   getPartners,
   getProducts,
 } from "../server/api";
 
 // Interfaces
-import { ICategory, IGallery, IPartner, IProduct } from "../server/interfaces";
+import {
+  ICategory,
+  IGallery,
+  INews,
+  IPartner,
+  IProduct,
+} from "../server/interfaces";
 import Toast from "../components/utils/toast";
 import { useContext } from "react";
 import { FormContext } from "../store/form";
@@ -20,21 +27,21 @@ const Hero = dynamic(() => import("../components/home/hero"));
 const About = dynamic(() => import("../components/home/about"));
 const Categories = dynamic(() => import("../components/home/categories"));
 const Products = dynamic(() => import("../components/home/products"));
-const Gallery = dynamic(() => import("../components/home/gallery"));
+const News = dynamic(() => import("../components/home/news"));
 const Partners = dynamic(() => import("../components/universal/partners"));
 const Contacts = dynamic(() => import("../components/home/contact"));
 
 interface PageProps {
   categories: ICategory[];
   partners: IPartner[];
-  galleries: IGallery[];
+  news: INews[];
   products: IProduct[];
 }
 
 export default function Page({
   categories,
   partners,
-  galleries,
+  news,
   products,
 }: PageProps) {
   const { isSuccess } = useContext(FormContext);
@@ -47,7 +54,7 @@ export default function Page({
         <About />
         <Categories categories={categories} />
         <Products products={products} />
-        <Gallery galleries={galleries} />
+        <News news={news} />
         <Partners partners={partners} />
         <Contacts />
       </Layout>
@@ -63,10 +70,10 @@ export default function Page({
 export async function getServerSideProps(ctx: any) {
   const categories = await getCategories(ctx.locale);
   const partners = await getPartners(ctx.locale);
-  const galleries = await getMedia(ctx.locale, "image");
+  const news = await getNews(ctx.locale);
   const products = await getProducts(ctx.locale);
 
   return {
-    props: { categories, partners, galleries, products },
+    props: { categories, partners, news, products },
   };
 }

@@ -167,6 +167,45 @@
   .success {
     padding: 0 5px;
   }
+  .subtitle {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%; /* 15.4px */
+    text-transform: uppercase;
+  }
+  .title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 35.2px */
+  }
+  .middle_subtitle {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+  }
+  .success_title_top {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 150%; /* 33px */
+    text-transform: uppercase;
+  }
+  .success {
+    gap: 16px;
+  }
+  .success:nth-child(1),
+  .success:nth-child(2) {
+    padding: 0 20px;
+  }
+  .success_title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+  }
 }
 @media (max-width: 1280px) {
   .bottom {

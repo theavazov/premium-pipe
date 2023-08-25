@@ -22,6 +22,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { TranslationsContext } from "../../../store/translations";
+import OrdersContextProvider, { OrdersContext } from "../../../store/storage";
+import { SiteinfoContext } from "../../../store/siteinfo";
 interface Props {
   variant: "light" | "dark";
 }
@@ -29,6 +31,7 @@ interface Props {
 export default function Header({ variant }: Props) {
   const { pathname, locale, locales, asPath, push } = useRouter();
   const { setProducts, query, setQuery } = useContext(FormContext);
+  const { siteinfo } = useContext(SiteinfoContext);
   const { t } = useContext(TranslationsContext);
   const links = [
     {
@@ -62,10 +65,64 @@ export default function Header({ variant }: Props) {
       isActive: pathname === "/contact" ? true : false,
     },
   ];
+  /*siteinfo:
+
+{
+
+  logo_first: null,
+
+  logo_second: null,
+
+  title: 'Premium pipe',
+
+  subtitle: '',
+
+  description: null,
+
+  about_us: null,
+
+adres: 
+
+    'Тошкент вилояти, Охангарон шахар, Ангрен Эркин Иктисодий зонаси Бирлик МФЙ, 40-уй',
+
+  email: 'info@P-pipe.com',
+
+  telegram: 'https://t.me/ilkhomjon_rustamov',
+
+  instagram: 'https://www.instagram.com/ilkhomjon_rustamov/',
+
+  facebook: 'https://www.instagram.com/ilkhomjon_rustamov/',
+
+  youtube: 'https://www.instagram.com/ilkhomjon_rustamov/',
+
+  nbm: '+998 91 528 53 33 | +998 98 700 20 20',
+
+map: 
+
+    '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23965.30967953781!2d69.32322355764158!3d41.337925475708296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef48a8ed4d0e9%3A0x3772abeffc72e7b8!2sInha%20University%20in%20Tashkent!5e0!3m2!1sen!2s!4v1691419672002!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+
+  work_time: '',
+
+  catalog: null,
+
+  certificates: null,
+
+  tech_info: null,
+
+  meta_title: null
+
+} */
 
   const [localesDropdown, setLocalesDropdown] = useState(false);
   const [numbersDropdown, setNumbersDropdown] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+  const { orders } = useContext(OrdersContext);
+  let numbers: string[] = [];
+
+  if (siteinfo.nbm != null && typeof siteinfo.nbm === "string") {
+    numbers = siteinfo.nbm.split("| ");
+  }
+
   return (
     <header className={styles.header}>
       <div className="desktop">
@@ -78,12 +135,11 @@ export default function Header({ variant }: Props) {
         >
           <div className={`box ${styles.header_top_inner}`}>
             <a href="#" className={styles.header_top_link}>
-              {location} Тошкент вилояти, Охангарон шахар, Ангрен Эркин
-              Иктисодий зонаси Бирлик МФЙ, 40-уй
+              {location} {siteinfo.adres}
             </a>
             <nav className={styles.header_top_inner_nav}>
               <a href="#" className={styles.header_top_link}>
-                {email} info@premiumpipe.com
+                {email} {siteinfo.email}
               </a>
               <div className={styles.header_top_withdropdown}>
                 <button
@@ -91,7 +147,7 @@ export default function Header({ variant }: Props) {
                   onClick={() => setNumbersDropdown(!numbersDropdown)}
                 >
                   <div className={styles.header_top_link}>
-                    {phone} +998 78 122 12 42
+                    {phone} {siteinfo.nbm}
                   </div>
                   {chevron_down}
                 </button>
@@ -201,7 +257,13 @@ export default function Header({ variant }: Props) {
                 <button type="submit">{search}</button>
               </form>
               <Link href="/cart" className={styles.nav_link}>
-                {bag} {t["main.cart"]}
+                <div
+                  data-number={orders.length ? orders.length : null}
+                  className={styles.cart_svg}
+                >
+                  {bag}
+                </div>
+                {t["main.cart"]}
               </Link>
             </div>
           </div>
@@ -362,7 +424,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                   }
                 >
                   Полипропиленовые фитинги
-                </Link>{" "}
+                </Link>
                 <Link
                   href={"/"}
                   className={
@@ -372,7 +434,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                   }
                 >
                   Канализационные трубы и фитинги из пвх
-                </Link>{" "}
+                </Link>
                 <Link
                   href={"/"}
                   className={
@@ -382,7 +444,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                   }
                 >
                   Канализационные трубы и фитинги из полипропилена (бесшумные)
-                </Link>{" "}
+                </Link>
                 <Link
                   href={"/"}
                   className={
@@ -392,7 +454,7 @@ const MobileMenu = ({ setIsMenu, variant }: any) => {
                   }
                 >
                   Aqua pipe
-                </Link>{" "}
+                </Link>
                 <Link
                   href={"/"}
                   className={

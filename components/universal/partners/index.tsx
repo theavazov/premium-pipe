@@ -47,9 +47,13 @@ export default function UniversalPartners({
                 },
                 1200: {
                   slidesPerView: 4,
-                  spaceBetween: 12,
+                  spaceBetween: 10,
                 },
                 1400: {
+                  slidesPerView: 6,
+                  spaceBetween: 10,
+                },
+                1560: {
                   slidesPerView: 6,
                   spaceBetween: 12,
                 },

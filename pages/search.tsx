@@ -27,9 +27,9 @@ export default function Page() {
         canonical={"/search"}
       />
       <Layout>
-        <IntroSection location="Результат поиска" />
+        <IntroSection location={t["main.search_result"]} />
         <section className="section">
-          <div className="box">
+          <div className={`box ${styles.minibox_mb}`}>
             <form
               className={styles.input_wrapper}
               onSubmit={(e) => {
@@ -105,6 +105,10 @@ const ContentComponent = ({ products }: { products: IProduct[] }) => {
               slidesPerView: 3.4,
             },
             1200: {
+              spaceBetween: 16,
+              slidesPerView: 4,
+            },
+            1450: {
               spaceBetween: 24,
               slidesPerView: 4,
             },

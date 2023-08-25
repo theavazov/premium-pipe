@@ -234,8 +234,41 @@ main {
   .box {
     padding-inline: 56px;
   }
+  .box,
+  .mediumbox,
+  .minibox {
+    padding-inline: 56px;
+  }
+}
+@media (max-width: 1440px) {
+  .section_inner {
+    gap: 32px;
+  }
+  .section_title {
+    font-family: var(--halvar-bold), sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 112%; /* 31.36px */
+    text-transform: uppercase;
+  }
+  .section_inner_top a {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  .categories_container,
+  .products_container {
+    gap: 16px;
+  }
 }
 @media (max-width: 1200px) {
+  .box,
+  .mediumbox,
+  .minibox {
+    padding-inline: 16px;
+  }
   main {
     margin-top: 160px;
   }

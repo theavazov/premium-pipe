@@ -2,7 +2,7 @@ import { Key, useContext, useEffect, useState } from "react";
 import styles from "./modal.module.css";
 import { ModalContext } from "../../../store/modal";
 import { IMaskInput } from "react-imask";
-import { chevron_right, x } from "../../../public/icons";
+import { arrow_right, chevron_right, close, x } from "../../../public/icons";
 import { storeOrders } from "../../../server/api";
 import {
   IObjectOrder,
@@ -12,12 +12,13 @@ import {
 import { OrdersContext } from "../../../store/storage";
 import { FormContext } from "../../../store/form";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Thumbs } from "swiper/modules";
+import { Navigation, Autoplay, Thumbs, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import Image from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 // import { arrowRightBig, xSvg } from "../../public/icons";
 
@@ -39,8 +40,10 @@ export default function Modal() {
     <div className={styles.modal}>
       {variant === "store" ? (
         <StoreModal />
-      ) : variant === "view" ? (
-        <ViewModal />
+      ) : variant === "video" ? (
+        <ViewVideo />
+      ) : variant === "image" ? (
+        <ViewImage />
       ) : null}
     </div>
   );
@@ -143,101 +146,87 @@ const StoreModal = () => {
   );
 };
 
-const ViewModals = () => {
-  return <div className={`${styles.modal_inner} ${styles.view}`}>View</div>;
-};
-
-const ViewModal = () => {
-  const { media, setIsModal } = useContext(ModalContext);
-  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-
-  if (typeof media[0] === "object") {
-    return (
-      <div className={styles.lightbox}>
-        <Image
-          src={media[0].src}
-          alt="media"
-          width={1060}
-          height={600}
-          className="image"
-        />
-      </div>
-    );
-  } else if (typeof media[0] === "string") {
-    return (
-      <div className={styles.thumbs_swiper}>
+const ViewVideo = () => {
+  const { media, setIsModal, zoomVideo } = useContext(ModalContext);
+  return (
+    <div className={`${styles.modal_inner} ${styles.zoomed_wrapper_container}`}>
+      <div className={styles.zoomed_wrapper}>
         <button
           className={styles.modal_closer}
           onClick={() => setIsModal(false)}
-        ></button>
-        <div className="minibox thumbs_swiper">
-          <button className="prevThumb swiperBtn"></button>
-          <button className="nextThumb swiperBtn"></button>
-          <Swiper
-            loop={true}
-            spaceBetween={32}
-            thumbs={{ swiper: thumbsSwiper }}
-            modules={[Navigation, Thumbs]}
-            navigation={{ prevEl: ".prevThumb", nextEl: ".nextThumb" }}
-            className="main-swiper"
-            keyboard={{ enabled: true }}
-          >
-            {media.map((img: any, i: Key | null | undefined) => {
-              return (
-                <SwiperSlide key={i}>
-                  <div className={styles.main}>
-                    <Image
-                      src={img}
-                      alt="media"
-                      width={1400}
-                      height={765}
-                      className="image"
-                      unoptimized
-                    />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={8}
-            slidesPerView={3.2}
-            modules={[Navigation, Thumbs, Autoplay]}
-            className={styles.thumbs}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
-            breakpoints={{
-              880: {
-                slidesPerView: 4.5,
-              },
-              1400: {
-                slidesPerView: 6.5,
-              },
-            }}
-            keyboard={{ enabled: true }}
-          >
-            {media.map((img: any, i: Key | null | undefined) => {
-              return (
-                <SwiperSlide key={i}>
-                  <div className={styles.thumbs}>
-                    <Image
-                      src={img}
-                      alt="media"
-                      width={190}
-                      height={140}
-                      className="image"
-                      unoptimized
-                    />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
-      </div>
-    );
-  }
+        >
+          {close}
+        </button>
 
-  return null;
+        <video src={zoomVideo}></video>
+      </div>
+    </div>
+  );
+};
+const ViewImage = () => {
+  const { zoomImage, setIsModal } = useContext(ModalContext);
+
+  return (
+    <div className={`${styles.modal_inner} ${styles.zoomed_wrapper_container}`}>
+      <div className={styles.zoomed_wrapper}>
+        <button
+          className={styles.modal_closer}
+          onClick={() => setIsModal(false)}
+        >
+          {close}
+        </button>
+
+        <Image src={zoomImage} alt="zoomed_image" width={960} height={640} />
+      </div>
+    </div>
+  );
+};
+const ViewModal = () => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const { zoomImage, media, setIsModal, index } = useContext(ModalContext);
+
+  return (
+    <>
+      {/* <Swiper
+        loop={true}
+        spaceBetween={10}
+        navigation={true}
+        thumbs={{ swiper: thumbsSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className={styles.swiper1}
+        initialSlide={index}
+      >
+        <SwiperSlide>
+          <Image src={zoomImage} alt="zoomed_image" width={960} height={640} />
+        </SwiperSlide>
+      </Swiper>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        loop={true}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className={styles.swiper2}
+        initialSlide={index}
+      >
+        {media.length > 0
+          ? media.map((med: { image: string | StaticImport }) => {
+              console.log(med.image, "!!!!!");
+              return (
+                <SwiperSlide key={}>
+                  <Image
+                    src={med.image}
+                    alt="zoomed_image"
+                    width={960}
+                    height={640}
+                  />
+                </SwiperSlide>
+              );
+            })
+          : null}
+      </Swiper> */}
+    </>
+  );
 };

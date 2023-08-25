@@ -98,6 +98,26 @@
   color: var(--grayscale);
 }
 
+@media (max-width: 1440px) {
+  .text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+  }
+  .stats_number {
+    font-size: 39px;
+    line-height: 100%; /* 39px */
+  }
+  .stats_title {
+    font-size: 18px;  
+    line-height: 150%; 
+  }
+  .stats_text {
+    font-size: 14px;
+    line-height: 140%;
+  }
+}
 @media (max-width: 1200px) {
   .section_inner {
     gap: 24px;
