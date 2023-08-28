@@ -96,7 +96,7 @@
   .container {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding-top: 56px;
+    padding-top: 110px;
     padding-bottom: 32px;
   }
   .images {
@@ -105,6 +105,10 @@
   }
 }
 @media (max-width: 768px) {
+  .container {
+    padding-top: 56px;
+    padding-bottom: 32px;
+  }
   .descs {
     padding: 12px 0 0 0;
   }

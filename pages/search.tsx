@@ -7,16 +7,16 @@ import emptyImg from "../public/media/empty.jpg";
 import Image from "next/image";
 import Buttons from "../components/utils/buttons";
 import ProductCard from "../components/cards/product";
-import { searchProducts } from "../server/api";
+import { getCategories, searchProducts } from "../server/api";
 import { useContext, useState } from "react";
-import { IProduct } from "../server/interfaces";
+import { ICategory, IProduct } from "../server/interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Autoplay } from "swiper/modules";
 import { FormContext } from "../store/form";
 import { TranslationsContext } from "../store/translations";
 
-export default function Page() {
+export default function Page(categories: ICategory[]) {
   const { products, setProducts, query, setQuery } = useContext(FormContext);
   const { t } = useContext(TranslationsContext);
   return (
@@ -26,7 +26,7 @@ export default function Page() {
         desc={""}
         canonical={"/search"}
       />
-      <Layout>
+      <Layout categories={categories}>
         <IntroSection location={t["main.search_result"]} />
         <section className="section">
           <div className={`box ${styles.minibox_mb}`}>
@@ -140,3 +140,9 @@ const ContentComponent = ({ products }: { products: IProduct[] }) => {
     </div>
   );
 };
+export async function getServerSideProps(ctx: any) {
+  const categories = await getCategories(ctx.locale);
+  return {
+    props: { categories },
+  };
+}

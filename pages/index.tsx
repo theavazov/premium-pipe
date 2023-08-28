@@ -49,7 +49,7 @@ export default function Page({
   return (
     <>
       <CustomHead title={"Premium Pipe"} desc={""} canonical={"/"} />
-      <Layout>
+      <Layout categories={categories}>
         <Hero />
         <About />
         <Categories categories={categories} />

@@ -15,12 +15,12 @@ import {
 import { FormContext } from "../store/form";
 import { useContext, useState } from "react";
 import Toast from "../components/utils/toast";
-import { IStoreObjectData } from "../server/interfaces";
-import { storeOrders } from "../server/api";
+import { ICategory, IStoreObjectData } from "../server/interfaces";
+import { getCategories, storeOrders } from "../server/api";
 import { TranslationsContext } from "../store/translations";
 import { SiteinfoContext } from "../store/siteinfo";
 
-export default function Page() {
+export default function Page(categories: ICategory[]) {
   const { isSuccess, setIsSuccess } = useContext(FormContext);
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
@@ -29,12 +29,34 @@ export default function Page() {
   const { t } = useContext(TranslationsContext);
   const { siteinfo } = useContext(SiteinfoContext);
 
+
   let numbers: string[] = [];
 
   if (siteinfo.nbm != null) {
     numbers = siteinfo.nbm.split("| ");
   }
-
+  const socialmedia = [
+    {
+      title: "youtube",
+      path: siteinfo.youtube,
+      icon: youtube,
+    },
+    {
+      title: "facebook",
+      path: siteinfo.facebook,
+      icon: facebook,
+    },
+    {
+      title: "instagram",
+      path: siteinfo.instagram,
+      icon: instagram,
+    },
+    {
+      title: "linkedin",
+      path: siteinfo.telegram,
+      icon: linkedin,
+    },
+  ];
   return (
     <>
       <CustomHead
@@ -42,7 +64,7 @@ export default function Page() {
         desc={""}
         canonical={"/contact"}
       />
-      <Layout>
+      <Layout categories={categories}>
         <IntroSection
           location={t["main.contact"]}
           title={t["main.contactus"]}
@@ -60,12 +82,23 @@ export default function Page() {
                     <span>{siteinfo.adres}</span>
                   </p>
                   <div className={styles.social_media}>
-                    <p className={styles.social_title}>Социальные медиа</p>
+                    <p className={styles.social_title}>
+                      {t["main.social_networks"]}
+                    </p>
                     <div className={styles.socials}>
-                      {youtube}
-                      {facebook}
-                      {instagram}
-                      {linkedin}
+                      {socialmedia.map((sm, i: number) => {
+                        return (
+                          <a
+                            key={i}
+                            href={sm.path}
+                            target={"_blank"}
+                            rel="noreferrer"
+                            title={sm.title}
+                          >
+                            {sm.icon}
+                          </a>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -182,4 +215,10 @@ export default function Page() {
       />
     </>
   );
+}
+export async function getServerSideProps(ctx: any) {
+  const categories = await getCategories(ctx.locale);
+  return {
+    props: { categories },
+  };
 }

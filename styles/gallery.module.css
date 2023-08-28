@@ -44,10 +44,56 @@
   color: #4eb848;
   border: 1px solid #4eb848;
 }
-
+.limit_btn_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom_btn {
+  border-radius: 40px;
+  border: 1px solid #4eb848;
+  color: #4eb848;
+  text-align: center;
+  font-family: var(--halvar-bold);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 18.2px */
+  text-transform: uppercase;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.bottom_btn > svg {
+  width: 24px;
+  height: 24px;
+}
 @media (max-width: 1200px) {
   .galleries_container {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .btns {
+    display: flex;
+    flex-direction: column;
+  }
+  .bottom_btn {
+    color: #4eb848;
+    text-align: center;
+    font-family: var(--halvar-medium);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  .btn {
+    text-align: center;
+    font-family: var(--halvar-medium);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
   }
 }

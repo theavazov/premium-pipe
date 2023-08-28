@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { TranslationsContext } from "../../../store/translations";
 export default function Intro() {
   const { t } = useContext(TranslationsContext);
-  return ( 
+  return (
     <section>
       <div className={styles.container}>
         <div className={styles.top_container}>
@@ -23,6 +23,13 @@ export default function Intro() {
             </p>
             <p className={styles.title}>{t["main.asia_polyplast_desc"]}</p>
           </div>
+          <Image
+            src="/media/homeherobg.png"
+            className={styles.image}
+            width={236}
+            height={236}
+            alt="pc"
+          />
         </div>
         <div className={styles.middle}>
           <div className={styles.video_container}>
@@ -31,7 +38,7 @@ export default function Intro() {
               className="image"
               width={1920}
               height={560}
-              alt="pc"
+              alt="background image"
             />
           </div>
           <div className={styles.middle_info}>

@@ -17,7 +17,7 @@ export default function Page({ categories }: { categories: ICategory[] }) {
         desc={""}
         canonical={`/categories`}
       />
-      <Layout>
+      <Layout categories={categories}>
         <IntroSection
           location={t["main.products"]}
           title={t["main.catalog_products"]}

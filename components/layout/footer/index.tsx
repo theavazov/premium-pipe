@@ -4,11 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { TranslationsContext } from "../../../store/translations";
+import { SiteinfoContext } from "../../../store/siteinfo";
 
 export default function Footer() {
   const { pathname } = useRouter();
   const { t } = useContext(TranslationsContext);
-
+  const { siteinfo } = useContext(SiteinfoContext);
   const navigation = [
     {
       title: t["main.main"],
@@ -41,6 +42,33 @@ export default function Footer() {
       isActive: pathname === "/contact" ? true : false,
     },
   ];
+  const socialmedia = [
+    {
+      title: "youtube",
+      path: siteinfo.youtube,
+      icon: youtube,
+    },
+    {
+      title: "facebook",
+      path: siteinfo.facebook,
+      icon: facebook,
+    },
+    {
+      title: "instagram",
+      path: siteinfo.instagram,
+      icon: instagram,
+    },
+    {
+      title: "linkedin",
+      path: siteinfo.telegram,
+      icon: linkedin,
+    },
+  ];
+  let numbers: string[] = [];
+
+  if (siteinfo.nbm != null && typeof siteinfo.nbm === "string") {
+    numbers = siteinfo.nbm.split("| ");
+  }
 
   return (
     <section
@@ -64,67 +92,56 @@ export default function Footer() {
                 {t["main.social_networks"]}
               </p>
               <div className={styles.social_links}>
-                <a
-                  href={"/"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.social_link}
-                >
-                  {youtube}
-                </a>
-                <a
-                  href={"/"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.social_link}
-                >
-                  {facebook}
-                </a>
-                <a
-                  href={"/"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.social_link}
-                >
-                  {instagram}
-                </a>
-                <a
-                  href={"/"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.social_link}
-                >
-                  {linkedin}
-                </a>
+                {socialmedia.map((sm, i: number) => {
+                  return (
+                    <a
+                      key={i}
+                      href={sm.path}
+                      target={"_blank"}
+                      rel="noreferrer"
+                      title={sm.title}
+                      className={styles.social_link}
+                    >
+                      {sm.icon}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
           <div className={styles.top_container_inner_btm}>
             <div className={styles.contact}>
               <p className={styles.contact_title}>{t["main.phone_number"]}</p>
-              <a href={`tel: +998 78 122 12 42`} className={styles.phone}>
-                +998 78 122 12 42
-              </a>
-              <a href={`tel: +998 78 122 12 42`} className={styles.phone}>
-                +998 78 122 12 42
-              </a>
+              {numbers && numbers.length > 0
+                ? numbers.map((number, i) => {
+                    return (
+                      <a
+                        key={i}
+                        href={`tel: ${number}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.phone}
+                      >
+                        {number}
+                      </a>
+                    );
+                  })
+                : null}
             </div>
             <div className={styles.contact}>
               <p className={styles.contact_title}>{t["main.email"]}</p>
               <a
-                href={`mailto: info@P-pipe.com`}
+                href={`mailto: ${siteinfo.email}`}
                 target={"_blank"}
                 rel="noreferrer"
                 className={styles.email}
               >
-                info@p-pipe.com
+                {siteinfo.email}
               </a>
             </div>
             <div className={styles.contact}>
               <p className={styles.contact_title}>{t["main.address"]}</p>
-              <p className={styles.contact_info}>
-                Юнусабадский район, массив Ташгрес, Улица Боги Шамол
-              </p>
+              <p className={styles.contact_info}>{siteinfo.adres}</p>
             </div>
           </div>
         </div>
@@ -155,7 +172,7 @@ export default function Footer() {
               Asia
             </p>
             <p className={styles.designedby}>
-              {t["main.designby"]}{" "}
+              {t["main.designby"]}
               <a href={"/"} target="_blank" rel="noreferrer">
                 NDC
               </a>

@@ -284,12 +284,17 @@
   .success_container {
     grid-template-columns: 1fr;
   }
+  .success:nth-child(1),
+  .success:nth-child(2) {
+    padding: 20px 0;
+  }
   .success {
     gap: 16px;
     border-right: unset;
     padding: 20px 0;
     justify-content: unset;
   }
+
   .success:nth-child(2) {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #ffffff;

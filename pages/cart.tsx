@@ -9,14 +9,17 @@ import noimage from "../public/media/noimage.jpg";
 import { useContext, useEffect, useState } from "react";
 import { OrdersContext } from "../store/storage";
 import { deleteAll, deleteOrder, isFound, update } from "../helpers/storage";
-import { IStorageOrder } from "../server/interfaces";
+import { ICategory, IStorageOrder } from "../server/interfaces";
 import { ModalContext } from "../store/modal";
 import Toast from "../components/utils/toast";
 import { FormContext } from "../store/form";
 import emptyImg from "../public/media/empty.jpg";
 import { TranslationsContext } from "../store/translations";
-
-export default function Page() {
+import { getCategories } from "../server/api";
+interface PageProps {
+  categories: ICategory[];
+}
+export default function Page(categories: PageProps) {
   const { orders, setOrders, total } = useContext(OrdersContext);
   const { setIsModal, setVariant } = useContext(ModalContext);
   const { isSuccess } = useContext(FormContext);
@@ -28,7 +31,7 @@ export default function Page() {
         desc={""}
         canonical={"/cart"}
       />
-      <Layout>
+      <Layout categories={categories.categories}>
         <IntroSection location={t["main.cart"]} title={t["main.our_cart"]} />
         <section>
           <div className="minibox">
@@ -173,3 +176,9 @@ const OrderCard = ({ order }: { order: IStorageOrder }) => {
     </li>
   );
 };
+export async function getServerSideProps(ctx: any) {
+  const categories = await getCategories(ctx.locale);
+  return {
+    props: { categories },
+  };
+}

@@ -6,37 +6,68 @@ import { ModalContext } from "../../../store/modal";
 import noimage from "../../../public/media/noimage.jpg";
 
 export default function GalleryCard({ gallery }: { gallery: IGallery }) {
-  const { setIsModal, setMedia, setVariant, setZoomImage } =
+  const { setIsModal, setMedia, setVariant, setZoomImage, setZoomVideo } =
     useContext(ModalContext);
 
   return (
-    <div
-      className={styles.card}
-      onClick={() => {
-        setVariant("image");
-        setZoomImage(gallery.image ? gallery.image : noimage);
-        setMedia(gallery);
-        setIsModal(true);
-      }}
-    >
-      <div className={styles.card_image}>
-        <Image
-          src={gallery.image ? gallery.image : noimage}
-          alt="gallery"
-          className="image"
-          width={400}
-          height={250}
-        />
-      </div>
-      <div className={styles.card_hover_img}>
-        <Image
-          src="/media/gallery_hover_img.png"
-          alt="gallery"
-          className="image"
-          width={400}
-          height={250}
-        />
-      </div>
-    </div>
+    <section className={styles.card_box}>
+      {gallery.image != null ? (
+        <div
+          className={styles.card}
+          onClick={() => {
+            setVariant("image");
+            setZoomImage(gallery.image ? gallery.image : noimage);
+            setMedia(gallery);
+            setIsModal(true);
+          }}
+        >
+          <div className={styles.card_image}>
+            <Image
+              src={gallery.image ? gallery.image : noimage}
+              alt="gallery"
+              className="image"
+              width={400}
+              height={250}
+            />
+          </div>
+          <div className={styles.card_hover_img}>
+            <Image
+              src="/media/gallery_hover_img.png"
+              alt="gallery"
+              className="image"
+              width={400}
+              height={250}
+            />
+          </div>
+        </div>
+      ) : (
+        <div
+          className={styles.card}
+          onClick={() => {
+            setVariant("video");
+            setZoomVideo(gallery.video ? gallery.video : noimage);
+            setMedia(gallery);
+            setIsModal(true);
+          }}
+        >
+          <div className={styles.card_image}>
+            <video
+              src={gallery.video}
+              autoPlay
+              className={styles.video}
+            ></video>
+          </div>
+          <div className={styles.card_hover_img}>
+            <Image
+              src="/media/play.png"
+              alt="gallery"
+              className="image"
+              width={400}
+              height={250}
+            />
+          </div>
+        </div>
+      )}
+    </section>
   );
 }

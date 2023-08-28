@@ -4,8 +4,8 @@ import { Navigation, Autoplay } from "swiper/modules";
 import Layout from "../../components/layout";
 import { CustomHead } from "../../components/layout/head";
 import IntroSection from "../../components/universal/intro";
-import { getSingleProduct } from "../../server/api";
-import { IProduct } from "../../server/interfaces";
+import { getCategories, getSingleProduct } from "../../server/api";
+import { ICategory, IProduct } from "../../server/interfaces";
 import Buttons from "../../components/utils/buttons";
 import ProductCard from "../../components/cards/product";
 import styles from "../../styles/product.module.css";
@@ -23,7 +23,13 @@ interface PageProps extends IProduct {
   images: { id: number; image: string }[];
 }
 
-export default function Page({ product }: { product: PageProps }) {
+export default function Page({
+  product,
+  categories,
+}: {
+  product: PageProps;
+  categories: ICategory[];
+}) {
   const router = useRouter();
   const [cImg, setCImg] = useState("");
   const { orders, setOrders } = useContext(OrdersContext);
@@ -46,7 +52,7 @@ export default function Page({ product }: { product: PageProps }) {
         desc={product.desc}
         canonical={`/product/${product.slug}`}
       />
-      <Layout>
+      <Layout categories={categories}>
         <IntroSection
           location={t["main.products"]}
           title={t["main.our_products"]}
@@ -223,8 +229,8 @@ export default function Page({ product }: { product: PageProps }) {
 
 export async function getServerSideProps(ctx: any) {
   const product = await getSingleProduct(ctx.locale, ctx.query.slug);
-
+  const categories = await getCategories(ctx.locale);
   return {
-    props: { product },
+    props: { product, categories },
   };
 }

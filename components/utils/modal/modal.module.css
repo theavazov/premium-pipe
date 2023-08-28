@@ -12,7 +12,7 @@
   inset: 0;
   background: rgba(10, 27, 51, 0.4);
   backdrop-filter: blur(12px);
-  z-index: 6;
+  z-index: 20;
   display: grid;
   place-items: center;
   animation: fadeIn 0.3s ease;
@@ -90,48 +90,14 @@
   outline: none;
 }
 /* View Modal */
-
-@media (max-width: 1200px) {
-  .store {
-    padding: 16px;
-  }
-  .store_intro {
-    padding-bottom: 16px;
-  }
-  .form_body {
-    padding-top: 16px;
-    grid-template-columns: 1fr;
-  }
-  .store_input {
-    padding: 10px 12px;
-  }
-  .store_intro p {
-    font-size: 18px;
-    line-height: 24px;
-  }
+.video {
+  width: 1396px;
+  height: 862px;
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 4;
-  background: rgba(10, 27, 51, 0.4);
-  backdrop-filter: blur(12px);
+.video_box {
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.modal_inner {
-  padding-inline: 16px;
+  justify-content: center;
 }
 
 .zoomed_wrapper_container {
@@ -155,68 +121,6 @@
   overflow: hidden;
 }
 
-.order_wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 28px;
-  background-color: var(--white);
-  max-width: 540px;
-  width: 100%;
-  border-radius: 24px;
-}
-
-.order_wrapper > img {
-  display: inline-block;
-  width: 104px;
-  height: 69px;
-  object-fit: contain;
-}
-
-.order_content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.order_title {
-  font-family: var(--interface-semibold), sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
-  color: var(--black);
-  text-align: center;
-}
-
-.order_desc {
-  text-align: center;
-  font-size: 18px;
-  line-height: 27px;
-  color: #5d5d5f;
-}
-
-.order_link {
-  display: inline-block;
-  margin-top: 40px;
-  font-size: 20px;
-  line-height: 30px;
-  color: var(--green);
-}
-
-.order_link:hover {
-  color: var(--green);
-  text-decoration: underline !important;
-}
-
-.edit_wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
 .modal_closer {
   width: 35px;
   height: 35px;
@@ -235,278 +139,41 @@
 .modal_closer svg path {
   stroke: white;
 }
-.edit_content {
-  background-color: var(--white);
-  padding: 40px;
-  border-radius: 24px;
-}
-
-.edit_buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.edit_buttons button {
-  padding: 16px 80px;
-  font-family: var(--interface-medium), sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-}
-
-.edit_buttons button:first-child {
-  background: #f5f5f7;
-  border: 1px solid #ebebeb;
-  border-radius: 12px;
-  color: var(--black);
-}
-
-.edit_buttons button:last-child {
-  background: var(--green);
-  border: 1px solid var(--green);
-  color: var(--white);
-  border-radius: 12px;
-}
-
-.edit_title {
-  font-family: var(--interface-semibold), sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
-  color: #309c74;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #ebebeb;
-}
-
-.edit_bottom {
-  padding-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.edit_mini_title {
-  font-family: var(--interface-medium), sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  color: #5d5d5f;
-}
-
-.edit_form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  width: 100%;
-}
-
-.edit_form input {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #d0dae2;
-  border-radius: 8px;
-  font-size: 16px;
-  line-height: 24px;
-  transition: 0.3s;
-}
-
-.edit_form input:focus {
-  outline: none;
-  border: 1px solid var(--green);
-}
-
-.lightbox {
-  position: relative;
-  height: 600px;
-  aspect-ratio: 16/9;
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.thumbs_swiper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
-
-.main {
-  position: relative;
-  width: 100%;
-  height: 640px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.thumbs {
-  position: relative;
-  width: 100%;
-  height: 140px;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.form_wrapper {
-  background-color: var(--white);
-  padding: 37px 40px 45px 40px;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 1144px;
-  width: 100%;
-  margin-inline: 16px;
-  position: relative;
-}
-
-.form_wrapper p {
-  font-family: var(--bebas-bold), sans-serif;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 83px;
-  color: var(--black);
-}
-
-.form_inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 32px;
-  column-gap: 64px;
-}
-
-.form_inputs input,
-.form_inputs textarea {
-  padding-bottom: 16px;
-  border: none;
-  border-bottom: 1px solid #c2c2c3;
-  transition: 0.3s;
-  font-size: 18px;
-  line-height: 28px;
-  color: var(--black);
-}
-
-.form_inputs textarea {
-  grid-column: span 2;
-}
-
-.form_inputs input:focus,
-.form_inputs textarea:focus {
-  outline: none;
-  border-bottom: 1px solid var(--green);
-  transition: 0.3s;
-}
-
-.form_buttons {
-  display: flex;
-  align-items: center;
-  gap: 37px;
-  margin-top: 32px;
-}
-
-.form_buttons button {
-  font-family: var(--interface-semibold), sans-serif;
-  font-weight: 600;
-  border: none;
-  background-color: var(--green);
-  color: var(--white);
-  font-size: 16px;
-  line-height: 20px;
-  padding: 13px 56px 16px 56px;
-  border-radius: 8px;
-}
-
-.closer {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  border: none;
-  background-color: unset;
-}
-
-.closer svg {
-  width: 40px;
-  height: 40px;
-}
-
-@media (max-width: 1800px) {
-  .thumbs_swiper {
-    gap: 24px;
-  }
-  .thumbs {
-    height: 100px;
-  }
-  .main {
-    height: 380px;
-  }
-}
-
 @media (max-width: 1200px) {
-  .lightbox {
-    height: 400px;
+  .store {
+    padding: 16px;
   }
-  .main {
-    height: 400px;
+  .store_intro {
+    padding-bottom: 16px;
   }
-  .form_wrapper p {
-    font-size: 48px;
-    line-height: 52px;
-  }
-}
-
-@media (max-width: 880px) {
-  .order_title {
-    font-size: 18px;
-    line-height: 27px;
-  }
-  .order_desc,
-  .order_link {
-    font-size: 14px;
-    line-height: 20px;
-  }
-  .lightbox {
-    height: 300px;
-  }
-  .main {
-    height: 225px;
-    border-radius: 8px;
-  }
-  .thumbs {
-    height: 70px;
-    border-radius: 8px;
-  }
-  .form_wrapper {
-    padding: 24px;
-  }
-  .form_inputs {
+  .form_body {
+    padding-top: 16px;
     grid-template-columns: 1fr;
   }
-  .form_inputs textarea {
-    grid-column: auto;
+  .store_input {
+    padding: 10px 12px;
   }
-  .form_buttons,
-  .zoomed_wrapper {
-    gap: 16px;
+  .store_intro p {
+    font-size: 18px;
+    line-height: 24px;
   }
+  .video {
+    width: 100%;
+    height: 862px;
+  }
+}
+@media (max-width: 880px) {
   .zoomed_wrapper img {
     height: 460px;
     border-radius: 16px;
   }
+  .video {
+    width: 100%;
+    height: 460px;
+  }
 }
 
 @media (max-width: 768px) {
-  .edit_content {
-    padding: 24px;
-    border-radius: 20px;
-  }
-  .edit_form {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
   .modal_closer {
     width: 40px;
     height: 40px;
@@ -516,72 +183,13 @@
     height: 14px;
   }
 }
-
 @media (max-width: 580px) {
-  .edit_content {
-    padding: 16px;
-    width: 320px;
-  }
-  .edit_title {
-    font-size: 18px;
-    line-height: 32px;
-    padding-bottom: 8px;
-  }
-  .edit_mini_title {
-    font-size: 14px;
-    line-height: 24px;
-  }
-  .edit_buttons {
-    flex-direction: column-reverse;
-    gap: 8px;
-    margin-top: 0px;
-  }
-  .edit_buttons button {
-    padding: 14px;
-    width: 100%;
-  }
-  .lightbox {
-    width: 320px;
-    height: 200px;
-    border-radius: 8px;
-    aspect-ratio: unset;
-  }
-  .form_wrapper {
-    border-radius: 16px;
-    padding-top: 36px;
-  }
-  .form_wrapper p {
-    font-size: 36px;
-    line-height: 40px;
-  }
-  .form_buttons {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .form_inputs input,
-  .form_buttons textarea {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  .form_buttons button {
-    max-width: 100%;
-    width: 100%;
-    padding: 16px;
-  }
-  .closer svg {
-    width: 24px;
-    height: 24px;
-  }
   .zoomed_wrapper img {
     height: 320px;
     border-radius: 16px;
   }
-}
-.swiper1 {
-  height: 400px;
-  width: 400px;
-}
-.swiper2 {
-  height: 200px;
-  width: 800px;
+  .video {
+    width: 100%;
+    height: 320px;
+  }
 }

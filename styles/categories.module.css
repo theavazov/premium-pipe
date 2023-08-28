@@ -144,6 +144,23 @@ a.breadcrumb_el:hover {
   }
 }
 
+@media (max-width: 1440px) {
+  .body_aside {
+    max-width: 280px;
+    padding-right: 27px;
+  }
+  .body_aside_body h4  {
+    font-size: 20px;
+    line-height: 150%;
+  }
+  .aside_link {
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .body_content {
+    padding-left: 26px;
+  }
+}
 @media (max-width: 1200px) {
   .intro {
     padding: 24px 16px;

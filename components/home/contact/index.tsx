@@ -7,22 +7,19 @@ import { IStoreObjectData } from "../../../server/interfaces";
 import { storeOrders } from "../../../server/api";
 import ReCAPTCHA from "react-google-recaptcha";
 import { TranslationsContext } from "../../../store/translations";
+import { SiteinfoContext } from "../../../store/siteinfo";
 export default function ContactsHome() {
   const { isSuccess, setIsSuccess } = useContext(FormContext);
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const { t } = useContext(TranslationsContext);
+  const { siteinfo } = useContext(SiteinfoContext);
   return (
     <section>
       <div className={styles.container}>
         <div className={styles.map}>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11984.110217217702!2d69.32450396245116!3d41.33001418736866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef48a8ed4d0e9%3A0x3772abeffc72e7b8!2sInha%20University%20in%20Tashkent!5e0!3m2!1sen!2s!4v1689777603424!5m2!1sen!2s"
-            width="600"
-            height="450"
-            loading="lazy"
-          ></iframe>
+          <div dangerouslySetInnerHTML={{ __html: siteinfo.map }}></div>
         </div>
         <div className={styles.box}>
           <div className={styles.inner_container}>

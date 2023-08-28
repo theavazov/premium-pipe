@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import Layout from "../components/layout";
 import { CustomHead } from "../components/layout/head";
-import { getPartners } from "../server/api";
-import { IPartner } from "../server/interfaces";
+import { getCategories, getPartners } from "../server/api";
+import { ICategory, IPartner } from "../server/interfaces";
 import styles from "../styles/about.module.css";
 import IntroSection from "../components/universal/intro";
 import Image from "next/image";
@@ -13,7 +13,13 @@ import { TranslationsContext } from "../store/translations";
 // Section
 const Partners = dynamic(() => import("../components/universal/partners"));
 
-export default function Page({ partners }: { partners: IPartner[] }) {
+export default function Page({
+  partners,
+  categories,
+}: {
+  partners: IPartner[];
+  categories: ICategory[];
+}) {
   const { t } = useContext(TranslationsContext);
 
   return (
@@ -23,7 +29,7 @@ export default function Page({ partners }: { partners: IPartner[] }) {
         desc={""}
         canonical={"/about"}
       />
-      <Layout>
+      <Layout categories={categories}>
         <IntroSection location={t["main.about"]} />
         <section>
           <div className={`mediumbox ${styles.section_inner}`}>
@@ -96,8 +102,8 @@ export default function Page({ partners }: { partners: IPartner[] }) {
 
 export async function getServerSideProps(ctx: any) {
   const partners = await getPartners(ctx.locale);
-
+  const categories = await getCategories(ctx.locale);
   return {
-    props: { partners },
+    props: { partners, categories },
   };
 }

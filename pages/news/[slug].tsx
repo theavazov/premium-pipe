@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Layout from "../../components/layout";
 import { CustomHead } from "../../components/layout/head";
-import { getSingleNews } from "../../server/api";
-import { INews } from "../../server/interfaces";
+import { getCategories, getSingleNews } from "../../server/api";
+import { ICategory, INews } from "../../server/interfaces";
 import styles from "../../styles/news.module.css";
 import { calendar, eye } from "../../public/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,7 +19,13 @@ interface PageProps extends INews {
   text: string;
 }
 
-export default function Page({ article }: { article: PageProps }) {
+export default function Page({
+  article,
+  categories,
+}: {
+  article: PageProps;
+  categories: ICategory[];
+}) {
   const { t } = useContext(TranslationsContext);
   return (
     <>
@@ -28,7 +34,7 @@ export default function Page({ article }: { article: PageProps }) {
         desc={article.text}
         canonical={`/news`}
       />
-      <Layout>
+      <Layout categories={categories}>
         <section>
           <div className={`minibox ${styles.wrapper}`}>
             <div className={styles.inner_top}>
@@ -133,8 +139,8 @@ export default function Page({ article }: { article: PageProps }) {
 
 export async function getServerSideProps(ctx: any) {
   const article = await getSingleNews(ctx.locale, ctx.query.slug);
-
+  const categories = await getCategories(ctx.locale);
   return {
-    props: { article },
+    props: { article, categories },
   };
 }

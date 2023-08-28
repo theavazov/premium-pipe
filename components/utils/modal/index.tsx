@@ -19,6 +19,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { TranslationsContext } from "../../../store/translations";
 
 // import { arrowRightBig, xSvg } from "../../public/icons";
 
@@ -58,11 +59,11 @@ const StoreModal = () => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
+  const { t } = useContext(TranslationsContext);
   return (
     <div className={`${styles.modal_inner} ${styles.store}`}>
       <div className={styles.store_intro}>
-        <p>Заказ на покупку</p>
+        <p>{t["main.orderfor"]}</p>
         <button onClick={() => setIsModal(false)}>{x}</button>
       </div>
       <form
@@ -109,7 +110,7 @@ const StoreModal = () => {
             <input
               type="text"
               className={styles.store_input}
-              placeholder="Имя*"
+              placeholder={`${t["main.name"]}*`}
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -117,14 +118,14 @@ const StoreModal = () => {
             <input
               type="email"
               className={styles.store_input}
-              placeholder="Электронная почта"
+              placeholder={t["main.email"]}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <IMaskInput
               mask={"+998 00 000 00 00"}
               className={styles.store_input}
-              placeholder="Номер телефона*"
+              placeholder={`${t["main.phone_number"]}*`}
               value={number}
               onChange={(e: any) => setNumber(e.target.value)}
             />
@@ -132,14 +133,14 @@ const StoreModal = () => {
           <textarea
             cols={30}
             rows={6}
-            placeholder="Сообщение"
+            placeholder={t["main.message"]}
             className={styles.store_input}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
         <button type="submit" className="btn primary-two">
-          Отправить {chevron_right}
+          {t["main.submit"]} {chevron_right}
         </button>
       </form>
     </div>
@@ -158,7 +159,14 @@ const ViewVideo = () => {
           {close}
         </button>
 
-        <video src={zoomVideo}></video>
+        <div className={styles.video_box}>
+          <video
+            src={zoomVideo}
+            className={styles.video}
+            autoPlay
+            controls
+          ></video>
+        </div>
       </div>
     </div>
   );

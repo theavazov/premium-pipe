@@ -10,7 +10,7 @@ import ProductCard from "../../components/cards/product";
 import { useContext } from "react";
 import { TranslationsContext } from "../../store/translations";
 
-export default function Page() {
+export default function Page({ categorys }: { categorys: ICategory[] }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -29,11 +29,11 @@ export default function Page() {
   return (
     <>
       <CustomHead
-        title={category ? category.title : "Loading..."}
+        title={category ? category.title : `${t["main.loading"]}...`}
         desc={category ? category.desc : ""}
         canonical={`/categories/${slug}`}
       />
-      <Layout>
+      <Layout categories={categorys}>
         <section>
           <div className={`box ${styles.intro_inner}`}>
             <div className={styles.intro}>
@@ -94,4 +94,10 @@ export default function Page() {
       </Layout>
     </>
   );
+}
+export async function getServerSideProps(ctx: any) {
+  const categorys = await getCategories(ctx.locale);
+  return {
+    props: { categorys },
+  };
 }

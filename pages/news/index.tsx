@@ -3,13 +3,16 @@ import NewsCard from "../../components/cards/news";
 import Layout from "../../components/layout";
 import { CustomHead } from "../../components/layout/head";
 import IntroSection from "../../components/universal/intro";
-import { getNews } from "../../server/api";
+import { getCategories, getNews } from "../../server/api";
 import styles from "../../styles/news.module.css";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { TranslationsContext } from "../../store/translations";
-
-export default function Page() {
+import { ICategory } from "../../server/interfaces";
+interface PageProps {
+  categories: ICategory[];
+}
+export default function Page(categories: PageProps) {
   const { locale } = useRouter();
   const { data: news, isLoading } = useQuery("news", () => getNews(locale!), {
     retry: false,
@@ -22,7 +25,7 @@ export default function Page() {
         desc={""}
         canonical={`/news`}
       />
-      <Layout>
+      <Layout categories={categories.categories}>
         <IntroSection location={t["main.news"]} title={t["main.our_news"]} />
         <section>
           <div className={`box ${styles.section_inner}`}>
@@ -42,4 +45,10 @@ export default function Page() {
       </Layout>
     </>
   );
+}
+export async function getServerSideProps(ctx: any) {
+  const categories = await getCategories(ctx.locale);
+  return {
+    props: { categories },
+  };
 }
