@@ -181,6 +181,7 @@
 
 .designedby > a {
   color: var(--green);
+  padding-left: 4px;
 }
 
 .copyright_mobile {

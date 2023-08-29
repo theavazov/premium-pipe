@@ -58,11 +58,6 @@ export default function Footer() {
       path: siteinfo.instagram,
       icon: instagram,
     },
-    {
-      title: "linkedin",
-      path: siteinfo.telegram,
-      icon: linkedin,
-    },
   ];
   let numbers: string[] = [];
 
@@ -173,7 +168,7 @@ export default function Footer() {
             </p>
             <p className={styles.designedby}>
               {t["main.designby"]}
-              <a href={"/"} target="_blank" rel="noreferrer">
+              <a href={"https://ndc.uz/"} target="_blank" rel="noreferrer">
                 NDC
               </a>
             </p>

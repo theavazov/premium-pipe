@@ -20,9 +20,6 @@ import "swiper/css/thumbs";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { TranslationsContext } from "../../../store/translations";
-
-// import { arrowRightBig, xSvg } from "../../public/icons";
-
 export default function Modal() {
   const { variant, setIsModal } = useContext(ModalContext);
 
@@ -49,7 +46,6 @@ export default function Modal() {
     </div>
   );
 }
-
 const StoreModal = () => {
   const { setIsModal } = useContext(ModalContext);
   const { orders, setOrders } = useContext(OrdersContext);
@@ -146,9 +142,10 @@ const StoreModal = () => {
     </div>
   );
 };
-
 const ViewVideo = () => {
   const { media, setIsModal, zoomVideo } = useContext(ModalContext);
+  const [prevEl, setPrevEl] = useState(null);
+  const [nextEl, setNextEl] = useState(null);
   return (
     <div className={`${styles.modal_inner} ${styles.zoomed_wrapper_container}`}>
       <div className={styles.zoomed_wrapper}>
@@ -158,14 +155,60 @@ const ViewVideo = () => {
         >
           {close}
         </button>
-
-        <div className={styles.video_box}>
-          <video
-            src={zoomVideo}
-            className={styles.video}
-            autoPlay
-            controls
-          ></video>
+        <Swiper
+          navigation={{ prevEl, nextEl }}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide className={styles.video_box}>
+            <video
+              src={zoomVideo}
+              className={styles.video}
+              autoPlay
+              controls
+            ></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.video_box}>
+            <video
+              src={zoomVideo}
+              className={styles.video}
+              autoPlay
+              controls
+            ></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.video_box}>
+            <video
+              src={zoomVideo}
+              className={styles.video}
+              autoPlay
+              controls
+            ></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.video_box}>
+            <video
+              src={zoomVideo}
+              className={styles.video}
+              autoPlay
+              controls
+            ></video>
+          </SwiperSlide>
+        </Swiper>
+        <div className={styles.navigation_box}>
+          {" "}
+          <div className={styles.navigation}>
+            <button
+              className={styles.left_btn}
+              ref={(node: any) => setPrevEl(node)}
+            >
+              {chevron_right}
+            </button>
+            <button
+              className={styles.right_btn}
+              ref={(node: any) => setNextEl(node)}
+            >
+              {chevron_right}
+            </button>
+          </div>
         </div>
       </div>
     </div>

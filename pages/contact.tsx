@@ -29,7 +29,6 @@ export default function Page(categories: ICategory[]) {
   const { t } = useContext(TranslationsContext);
   const { siteinfo } = useContext(SiteinfoContext);
 
-
   let numbers: string[] = [];
 
   if (siteinfo.nbm != null) {
@@ -50,11 +49,6 @@ export default function Page(categories: ICategory[]) {
       title: "instagram",
       path: siteinfo.instagram,
       icon: instagram,
-    },
-    {
-      title: "linkedin",
-      path: siteinfo.telegram,
-      icon: linkedin,
     },
   ];
   return (
