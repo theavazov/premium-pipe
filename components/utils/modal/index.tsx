@@ -20,6 +20,7 @@ import "swiper/css/thumbs";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { TranslationsContext } from "../../../store/translations";
+
 export default function Modal() {
   const { variant, setIsModal } = useContext(ModalContext);
 
@@ -146,88 +147,354 @@ const ViewVideo = () => {
   const { media, setIsModal, zoomVideo } = useContext(ModalContext);
   const [prevEl, setPrevEl] = useState(null);
   const [nextEl, setNextEl] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   return (
     <div className={`${styles.modal_inner} ${styles.zoomed_wrapper_container}`}>
-      <div className={styles.zoomed_wrapper}>
-        <button
-          className={styles.modal_closer}
-          onClick={() => setIsModal(false)}
-        >
-          {close}
-        </button>
+      <button className={styles.modal_closer} onClick={() => setIsModal(false)}>
+        {close}
+      </button>
+      <div className={styles.swiper}>
         <Swiper
-          navigation={{ prevEl, nextEl }}
-          modules={[Navigation]}
-          className="mySwiper"
+          slidesPerView={1}
+          loop={true}
+          spaceBetween={10}
+          // navigation={{ prevEl, nextEl }}
+          navigation={{ prevEl: ".prev_modal", nextEl: ".next_modal" }}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.swiper1}
         >
-          <SwiperSlide className={styles.video_box}>
-            <video
-              src={zoomVideo}
-              className={styles.video}
-              autoPlay
-              controls
-            ></video>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-1.jpg"></video>
           </SwiperSlide>
-          <SwiperSlide className={styles.video_box}>
-            <video
-              src={zoomVideo}
-              className={styles.video}
-              autoPlay
-              controls
-            ></video>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-2.jpg"></video>
           </SwiperSlide>
-          <SwiperSlide className={styles.video_box}>
-            <video
-              src={zoomVideo}
-              className={styles.video}
-              autoPlay
-              controls
-            ></video>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-3.jpg"></video>
           </SwiperSlide>
-          <SwiperSlide className={styles.video_box}>
-            <video
-              src={zoomVideo}
-              className={styles.video}
-              autoPlay
-              controls
-            ></video>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-4.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-5.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-6.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-7.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-8.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-9.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-10.jpg"></video>
           </SwiperSlide>
         </Swiper>
-        <div className={styles.navigation_box}>
-          {" "}
-          <div className={styles.navigation}>
-            <button
-              className={styles.left_btn}
-              ref={(node: any) => setPrevEl(node)}
-            >
-              {chevron_right}
-            </button>
-            <button
-              className={styles.right_btn}
-              ref={(node: any) => setNextEl(node)}
-            >
-              {chevron_right}
-            </button>
-          </div>
-        </div>
+        <Swiper
+          breakpoints={{
+            0: {
+              slidesPerView: 4,
+              spaceBetween: 8,
+            },
+
+            580: {
+              slidesPerView: 5,
+              spaceBetween: 12,
+            },
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            1400: {
+              slidesPerView: 6,
+              spaceBetween: 10,
+            },
+            1560: {
+              slidesPerView: 6,
+              spaceBetween: 12,
+            },
+          }}
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={8}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.thumbs}
+        >
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-1.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-2.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-3.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-4.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-5.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-6.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-7.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-8.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-9.jpg"></video>
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <video src="https://swiperjs.com/demos/images/nature-10.jpg"></video>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+      <div className={styles.navigation}>
+        <button className={`${styles.left_btn} prev_modal`}>
+          {chevron_right}
+        </button>
+        <button className={`${styles.right_btn} next_modal`}>
+          {chevron_right}
+        </button>
       </div>
     </div>
   );
 };
 const ViewImage = () => {
-  const { zoomImage, setIsModal } = useContext(ModalContext);
-
+  const { media, zoomImage, setIsModal } = useContext(ModalContext);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   return (
     <div className={`${styles.modal_inner} ${styles.zoomed_wrapper_container}`}>
-      <div className={styles.zoomed_wrapper}>
-        <button
-          className={styles.modal_closer}
-          onClick={() => setIsModal(false)}
+      <button className={styles.modal_closer} onClick={() => setIsModal(false)}>
+        {close}
+      </button>
+      <div className={styles.swiper}>
+        <Swiper
+          slidesPerView={1}
+          loop={true}
+          spaceBetween={10}
+          // navigation={{ prevEl, nextEl }}
+          navigation={{ prevEl: ".prev_modal", nextEl: ".next_modal" }}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.swiper1}
         >
-          {close}
-        </button>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-1.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-2.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-3.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-4.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-5.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-6.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-7.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-8.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-9.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.swiper1_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-10.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+        </Swiper>
+        <Swiper
+          breakpoints={{
+            0: {
+              slidesPerView: 4,
+              spaceBetween: 8,
+            },
 
-        <Image src={zoomImage} alt="zoomed_image" width={960} height={640} />
+            580: {
+              slidesPerView: 5,
+              spaceBetween: 12,
+            },
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            1400: {
+              slidesPerView: 6,
+              spaceBetween: 10,
+            },
+            1560: {
+              slidesPerView: 6,
+              spaceBetween: 12,
+            },
+          }}
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={8}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.thumbs}
+        >
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-1.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-2.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-3.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-4.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-5.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-6.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-7.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-8.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-9.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+          <SwiperSlide className={styles.thumbs_inner}>
+            <Image
+              src="https://swiperjs.com/demos/images/nature-10.jpg"
+              alt="image"
+              width={300}
+              height={300}
+            />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+      <div className={styles.navigation}>
+        <button className={`${styles.left_btn} prev_modal`}>
+          {chevron_right}
+        </button>
+        <button className={`${styles.right_btn} next_modal`}>
+          {chevron_right}
+        </button>
       </div>
     </div>
   );
@@ -236,48 +503,5 @@ const ViewModal = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const { zoomImage, media, setIsModal, index } = useContext(ModalContext);
 
-  return (
-    <>
-      {/* <Swiper
-        loop={true}
-        spaceBetween={10}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className={styles.swiper1}
-        initialSlide={index}
-      >
-        <SwiperSlide>
-          <Image src={zoomImage} alt="zoomed_image" width={960} height={640} />
-        </SwiperSlide>
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        loop={true}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className={styles.swiper2}
-        initialSlide={index}
-      >
-        {media.length > 0
-          ? media.map((med: { image: string | StaticImport }) => {
-              console.log(med.image, "!!!!!");
-              return (
-                <SwiperSlide key={}>
-                  <Image
-                    src={med.image}
-                    alt="zoomed_image"
-                    width={960}
-                    height={640}
-                  />
-                </SwiperSlide>
-              );
-            })
-          : null}
-      </Swiper> */}
-    </>
-  );
+  return <></>;
 };

@@ -278,9 +278,30 @@
 .dropdown.numbers {
   left: 15px;
 }
-.dropdown.product_links {
+.dropdown.dropdown_prod {
   top: 80px;
 }
+.dropdown_prod {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 2;
+  min-width: 100px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  top: 40px;
+}
+.header_top_withdropdown:hover .dropdown_prod {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: 0.5s;
+  pointer-events: all;
+}
+
 .dropdown a {
   padding: 12px 20px;
   background-color: var(--white);

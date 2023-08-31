@@ -29,6 +29,7 @@ interface Props {
   variant: "light" | "dark";
   categories: ICategory[];
 }
+import { useEffect } from "react";
 
 export default function Header({ variant, categories }: Props) {
   const { pathname, locale, locales, asPath, push } = useRouter();
@@ -45,7 +46,11 @@ export default function Header({ variant, categories }: Props) {
   if (siteinfo.nbm != null && typeof siteinfo.nbm === "string") {
     numbers = siteinfo.nbm.split("| ");
   }
-
+  useEffect(() => {
+    if (pathname != "/search") {
+      setQuery("");
+    }
+  }, [pathname]);
   return (
     <header className={styles.header}>
       <div className="desktop">
@@ -165,22 +170,18 @@ export default function Header({ variant, categories }: Props) {
                   {t["main.main"]}
                 </Link>
                 <div className={styles.header_top_withdropdown}>
-                  <button
-                    className={`${styles.another_wrapper} ${
+                  <a
+                    className={`${styles.another_wrapper_product} ${
                       pathname === "/products"
                         ? `${styles.nav_link} ${styles.active}`
                         : styles.nav_link
                     }`}
-                    onClick={() => setProductDropdown(!productDropdown)}
+                    href={`/categories`}
                   >
                     {t["main.products"]}
-                  </button>
+                  </a>
                   <div
-                    className={
-                      productDropdown
-                        ? `${styles.dropdown} ${styles.show} ${styles.product_links}`
-                        : styles.dropdown
-                    }
+                    className={` ${styles.dropdown_prod} ${styles.dropdown}  `}
                   >
                     {categories.length > 0
                       ? categories.map((category) => {
@@ -262,6 +263,7 @@ export default function Header({ variant, categories }: Props) {
                   placeholder={t["main.search"]}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  required
                 />
                 <button type="submit">{search}</button>
               </form>
@@ -376,7 +378,6 @@ const MobileMenu = ({
   variant: any;
   categories: ICategory[];
 }) => {
-  
   const { pathname } = useRouter();
   const { t } = useContext(TranslationsContext);
   return (

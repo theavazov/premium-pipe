@@ -9,6 +9,7 @@ import Link from "next/link";
 import ProductCard from "../../components/cards/product";
 import { useContext } from "react";
 import { TranslationsContext } from "../../store/translations";
+import Image from "next/image";
 
 export default function Page({ categorys }: { categorys: ICategory[] }) {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function Page({ categorys }: { categorys: ICategory[] }) {
     isLoading,
   } = useQuery([], () => getCategories(router.locale!), { retry: false });
   const { t } = useContext(TranslationsContext);
+
   return (
     <>
       <CustomHead
@@ -52,6 +54,17 @@ export default function Page({ categorys }: { categorys: ICategory[] }) {
                   className={styles.intro_desc}
                   dangerouslySetInnerHTML={{ __html: category.desc }}
                 ></div>
+              ) : null}
+              {category?.image ? (
+                <div className={styles.intro_back_img_box}>
+                  <Image
+                    src={category?.image}
+                    width={100}
+                    height={100}
+                    alt={category?.title}
+                    className={`image ${styles.intro_back_img}`}
+                  />
+                </div>
               ) : null}
             </div>
           </div>

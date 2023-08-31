@@ -241,6 +241,10 @@ main {
   }
 }
 @media (max-width: 1440px) {
+  main {
+    flex: 1 1 auto;
+    margin-top: 120px;
+  }
   .section_inner {
     gap: 32px;
   }

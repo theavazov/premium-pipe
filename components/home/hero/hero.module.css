@@ -162,7 +162,7 @@
     padding: 37px 0 37px 81px;
   }
   .middle_info {
-    margin-left: 16px;
+    margin-left: 56px;
   }
   .success {
     padding: 0 5px;
@@ -200,17 +200,35 @@
   .success:nth-child(2) {
     padding: 0 20px;
   }
+
+  .success:nth-child(3) {
+    padding-right: 0;
+  }
   .success_title {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 24px */
   }
+  .top_container {
+    padding-top: 40px;
+    display: flex;
+    position: relative;
+  }
+  .topper {
+    padding-inline: 56px;
+  }
 }
 @media (max-width: 1280px) {
   .bottom {
     width: 1200px;
     padding: 37px 0 37px 81px;
+  }
+  .middle_info {
+    margin-left: 16px;
+  }
+  .topper {
+    padding-inline: 16px;
   }
 }
 

@@ -242,7 +242,11 @@ export const magnet = (
 );
 
 export const arrow_right = (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" fill="none">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 25"
+    fill="currentColor"
+  >
     <path
       d="M14 16.5L18 12.5M18 12.5L14 8.5M18 12.5L6 12.5"
       stroke="currentColor"
