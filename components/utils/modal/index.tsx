@@ -174,7 +174,7 @@ const ViewModal = () => {
                       className="image"
                     />
                   ) : (
-                    <video src={obj.video} className="image"></video>
+                    <video src={obj.video} className="image" controls></video>
                   )}
                 </div>
               </SwiperSlide>

@@ -178,7 +178,7 @@ export default function Header({ variant, categories }: Props) {
                     }`}
                     href={`/categories`}
                   >
-                    {t["main.products"]}
+                    {t["main.products"]} {chevron_down}
                   </a>
                   <div
                     className={` ${styles.dropdown_prod} ${styles.dropdown}  `}

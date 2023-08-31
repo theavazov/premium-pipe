@@ -252,13 +252,17 @@
     height: 14px;
   }
   .main_image {
-    height: 100% !important;
+    height: 325px !important;
   }
   .navigation {
     display: none;
   }
   .thumbs_inner {
     height: 50px;
+  }
+  .left_btn,
+  .right_btn {
+    display: none;
   }
 }
 @media (max-width: 580px) {

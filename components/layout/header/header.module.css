@@ -301,6 +301,10 @@
   transition: 0.5s;
   pointer-events: all;
 }
+.header_top_withdropdown:hover .another_wrapper_product svg {
+  transform: rotateX(180deg);
+  transition: 0.5s;
+}
 
 .dropdown a {
   padding: 12px 20px;
