@@ -6,24 +6,31 @@ import { useContext, useEffect, useState } from "react";
 import IntroSection from "../components/universal/intro";
 import type { ICategory, IGallery } from "../server/interfaces";
 import styles from "../styles/gallery.module.css";
-import GalleryCard from "../components/cards/gallery";
 import { TranslationsContext } from "../store/translations";
-import { chevron_down, chevron_right } from "../public/icons";
+import { chevron_down, imageMask } from "../public/icons";
+import Image from "next/image";
+import { ModalContext } from "../store/modal";
 interface PageProps {
   categories: ICategory[];
 }
+
 export default function PageGalleriesPage(categories: PageProps) {
   const { locale } = useRouter();
   const [type, setType] = useState<"image" | "video">("image");
   const [galleries, setGalleries] = useState<IGallery[]>([]);
   const [limit, setLimit] = useState(12);
 
+  const { setVariant, setMedia, setIndex, setIsModal } =
+    useContext(ModalContext);
+
   useEffect(() => {
     getMedia(locale!, type)
       .then((res) => setGalleries(res))
       .catch((e) => console.log(e));
   }, [locale, type]);
+
   const { t } = useContext(TranslationsContext);
+
   return (
     <>
       <CustomHead
@@ -60,8 +67,36 @@ export default function PageGalleriesPage(categories: PageProps) {
             </div>
             <div className={styles.galleries_container}>
               {galleries.length > 0
-                ? galleries.slice(0, limit).map((media, id) => {
-                    return <GalleryCard key={id} gallery={media} />;
+                ? galleries.slice(0, limit).map((media, idx) => {
+                    return (
+                      <div
+                        key={idx}
+                        className={styles.gallery_card}
+                        onClick={() => {
+                          setVariant("gallery");
+                          setMedia(galleries);
+                          setIndex(idx);
+                          setIsModal(true);
+                        }}
+                      >
+                        <div className={styles.gallery_card_content}>
+                          {media.image ? (
+                            <Image
+                              src={media.image}
+                              alt="media"
+                              className="image"
+                              width={360}
+                              height={360}
+                            />
+                          ) : (
+                            <video className="image" src={media.video}></video>
+                          )}
+                        </div>
+                        <div className={styles.gallery_card_mask}>
+                          {imageMask}
+                        </div>
+                      </div>
+                    );
                   })
                 : null}
             </div>
@@ -81,6 +116,7 @@ export default function PageGalleriesPage(categories: PageProps) {
     </>
   );
 }
+
 export async function getServerSideProps(ctx: any) {
   const categories = await getCategories(ctx.locale);
   return {

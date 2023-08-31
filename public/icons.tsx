@@ -547,6 +547,7 @@ export const location = (
     />
   </svg>
 );
+
 export const location2 = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -561,6 +562,7 @@ export const location2 = (
     />
   </svg>
 );
+
 export const cart2 = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -611,6 +613,7 @@ export const x = (
     />
   </svg>
 );
+
 export const close = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -635,6 +638,7 @@ export const close = (
     />
   </svg>
 );
+
 export const minus = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 1" fill="none">
     <path
@@ -678,6 +682,7 @@ export const hugearrow = (
     />
   </svg>
 );
+
 export const dot = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -687,5 +692,16 @@ export const dot = (
     fill="none"
   >
     <circle cx="4" cy="4" r="4" fill="#4EB848" />
+  </svg>
+);
+
+export const imageMask = (
+  <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M51.3334 32.667L44.4757 27.7295C40.9123 25.1638 36.0424 25.4289 32.7786 28.3664L23.2216 36.9676C19.9578 39.905 15.0879 40.1702 11.5244 37.6045L4.66675 32.667M14.0001 51.3337H42.0001C47.1547 51.3337 51.3334 47.155 51.3334 42.0003V14.0003C51.3334 8.84567 47.1547 4.66699 42.0001 4.66699H14.0001C8.84542 4.66699 4.66675 8.84567 4.66675 14.0003V42.0003C4.66675 47.155 8.84542 51.3337 14.0001 51.3337ZM25.6667 19.8337C25.6667 23.0553 23.0551 25.667 19.8334 25.667C16.6118 25.667 14.0001 23.0553 14.0001 19.8337C14.0001 16.612 16.6118 14.0003 19.8334 14.0003C23.0551 14.0003 25.6667 16.612 25.6667 19.8337Z"
+      stroke="white"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+    />
   </svg>
 );

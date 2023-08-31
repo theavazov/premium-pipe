@@ -55,8 +55,6 @@
   .card_image {
     height: 180px;
   }
-  /* .card:nth-child(number) hammasini grid-column: auto; qilip chiqasiz media ni ichida  */
-
   .card_box:nth-child(1),
   .card_box:nth-child(8) {
     grid-column: auto;

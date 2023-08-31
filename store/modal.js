@@ -7,8 +7,6 @@ export default function ModalContextProvider({ children }) {
   const [variant, setVariant] = useState(""); // store | view
   const [modalCase, setModalCase] = useState("gallery"); // "gallery" | "edit" | "calendar"
   const [media, setMedia] = useState([]);
-  const [zoomImage, setZoomImage] = useState("");
-  const [zoomVideo, setZoomVideo] = useState("");
   const [index, setIndex] = useState("");
 
   const value = {
@@ -20,10 +18,6 @@ export default function ModalContextProvider({ children }) {
     setModalCase,
     media,
     setMedia,
-    zoomImage,
-    setZoomImage,
-    zoomVideo,
-    setZoomVideo,
     index,
     setIndex,
   };

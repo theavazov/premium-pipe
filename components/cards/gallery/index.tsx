@@ -6,7 +6,7 @@ import { ModalContext } from "../../../store/modal";
 import noimage from "../../../public/media/noimage.jpg";
 
 export default function GalleryCard({ gallery }: { gallery: IGallery }) {
-  const { setIsModal, setMedia, setVariant, setZoomImage, setZoomVideo } =
+  const { setIsModal, setMedia, setVariant, setIndex } =
     useContext(ModalContext);
 
   return (
@@ -16,7 +16,6 @@ export default function GalleryCard({ gallery }: { gallery: IGallery }) {
           className={styles.card}
           onClick={() => {
             setVariant("image");
-            setZoomImage(gallery.image ? gallery.image : noimage);
             setMedia(gallery);
             setIsModal(true);
           }}
@@ -45,7 +44,6 @@ export default function GalleryCard({ gallery }: { gallery: IGallery }) {
           className={styles.card}
           onClick={() => {
             setVariant("video");
-            setZoomVideo(gallery.video ? gallery.video : noimage);
             setMedia(gallery);
             setIsModal(true);
           }}
