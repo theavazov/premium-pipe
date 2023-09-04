@@ -29,7 +29,7 @@
 }
 .desc {
   color: var(--grey-80, #353437);
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -85,7 +85,7 @@
     color: var(--grey-80, #353437);
 
     /* Title 2/Regular */
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -114,7 +114,7 @@
   }
   .desc {
     color: var(--grey-80, #353437);
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 18px;
     font-style: normal;
     font-weight: 400;

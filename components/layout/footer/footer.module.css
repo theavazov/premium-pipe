@@ -278,7 +278,7 @@
   }
   .title_desc {
     color: var(--white, #fff);
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -319,7 +319,7 @@
   }
   .social_links_title {
     color: var(--white, #fff);
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -335,7 +335,7 @@
   }
   .contact_title {
     color: #69697e;
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -343,7 +343,7 @@
   }
   .footer_link {
     color: var(--white, #fff);
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -362,7 +362,7 @@
   .copyright_mobile {
     display: flex;
     color: var(--grey-24, #c2c2c3);
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

@@ -59,7 +59,7 @@
   color: var(--grey-64, #5d5d5f);
 
   /* Title 2/Regular */
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -80,7 +80,7 @@
 .name::placeholder,
 .number::placeholder {
   color: var(--grey-40, #9a999b);
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -102,7 +102,7 @@
   padding-bottom: 16px;
   border: none;
   border-bottom: 1px solid #e3e3ed;
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -120,7 +120,7 @@
   border: none;
   padding-bottom: 16px;
   color: var(--grey-40, #9a999b);
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -143,7 +143,7 @@
 }
 .formwrapper > span {
   padding-bottom: 16px;
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -216,7 +216,7 @@
     color: var(--grey-64, #5d5d5f);
 
     /* Body 1/Regular */
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -228,7 +228,7 @@
     color: var(--grey-40, #9a999b);
 
     /* Body 1/Regular */
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

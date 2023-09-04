@@ -96,7 +96,7 @@
   color: var(--white, #fff);
 
   /* Title 2/Regular */
-  font-family: var(--interface);
+  font-family: var(--interface-regular);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -285,7 +285,7 @@
     color: var(--white, #fff);
 
     /* Body 2/Regular */
-    font-family: var(--interface);
+    font-family: var(--interface-regular);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
