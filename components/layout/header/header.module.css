@@ -244,7 +244,9 @@
   font-size: 14px;
   line-height: 9px;
 }
-
+.header_bottom_bottom .nav_link {
+  border-bottom: unset;
+}
 .header_top_withdropdown {
   position: relative;
 }
@@ -537,5 +539,19 @@
     padding-bottom: 14px;
     border-bottom: 1px solid #ebebeb;
     justify-content: space-between;
+  }
+  .header_bottom_bottom .nav_link svg {
+    max-width: 50px;
+    height: 44px;
+  }
+  .order_number:after {
+    top: 30px;
+    padding: 5px;
+  }
+}
+@media (max-width: 550px) {
+  .order_number:after {
+    top: 25px;
+    padding: 2px;
   }
 }

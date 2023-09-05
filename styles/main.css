@@ -294,7 +294,7 @@ main {
   }
   .categories_container,
   .products_container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
   .section_inner_top a {
@@ -319,5 +319,19 @@ main {
   }
   .counter.cart button:hover {
     background-color: var(--white);
+  }
+}
+@media (max-width: 880px) {
+  .categories_container,
+  .products_container {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+@media (max-width: 550px) {
+  .categories_container,
+  .products_container {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }

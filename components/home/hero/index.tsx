@@ -28,7 +28,7 @@ export default function Intro() {
             className={styles.image}
             width={236}
             height={236}
-            alt="pc"
+            alt="home hero back"
           />
         </div>
         <div className={styles.middle}>

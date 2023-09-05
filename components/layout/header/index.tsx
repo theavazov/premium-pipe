@@ -348,6 +348,18 @@ export default function Header({ variant, categories }: Props) {
               />
               <button type="submit">{search}</button>
             </form>
+            <Link href="/cart" className={styles.nav_link}>
+              <div
+                data-number={orders.length > 0 ? orders.length : null}
+                className={`${
+                  orders.length > 0
+                    ? `${styles.cart_svg} ${styles.order_number}`
+                    : styles.cart_svg
+                }`}
+              >
+                {bag}
+              </div>
+            </Link>
             <button
               className={styles.hamburger}
               onClick={() => setIsMenu(!isMenu)}

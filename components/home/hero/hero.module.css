@@ -16,6 +16,7 @@
   width: 1240px;
   object-fit: fill;
   height: 100%;
+  z-index: 1;
 }
 .topper {
   display: flex;
@@ -26,6 +27,8 @@
   width: 100%;
   margin-bottom: 24px;
   gap: 16px;
+  position: relative;
+  z-index: 2;
 }
 .subtitle {
   color: var(--grey-64, #5d5d5f);

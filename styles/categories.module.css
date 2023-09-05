@@ -55,6 +55,7 @@
 }
 .intro_back_img {
   object-fit: contain !important;
+  
 }
 .breadcrumb {
   display: flex;
@@ -220,7 +221,7 @@ a.breadcrumb_el:hover {
     gap: 70px;
   }
   .intro_back_img_box {
-    position: absolute;
+    position: unset;
     bottom: 0;
     right: 0;
     width: 210px;

@@ -20,7 +20,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
           alt={product.title}
           width={400}
           height={250}
-          className="image"
+          className={`image ${styles.image}`}
         />
       </div>
       <div className={styles.card_content}>
