@@ -22,17 +22,13 @@ interface PageProps extends IProduct {
   other_products: IProduct[];
   images: { id: number; image: string }[];
 }
-interface ProductCategory {
-  product_category: IProduct[];
-}
+
 export default function Page({
   product,
   categories,
-}: // product_category,
-{
+}: {
   product: PageProps;
   categories: ICategory[];
-  // product_category: ProductCategory;
 }) {
   const router = useRouter();
   const [cImg, setCImg] = useState("");
@@ -49,6 +45,7 @@ export default function Page({
     setCount(isFound(product.id).count);
   }, [orders, router]);
   const { t } = useContext(TranslationsContext);
+
   return (
     <>
       <CustomHead
@@ -58,8 +55,8 @@ export default function Page({
       />
       <Layout categories={categories}>
         <IntroSection
-          location={t["main.products"]}
-          title={"product_category"}
+          location={product.category.title}
+          title={t["main.our_products"]}
         />
         <section>
           <div className={`box ${styles.section_inner}`}>

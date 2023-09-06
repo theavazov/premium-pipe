@@ -19,8 +19,10 @@ import { ICategory, IStoreObjectData } from "../server/interfaces";
 import { getCategories, storeOrders } from "../server/api";
 import { TranslationsContext } from "../store/translations";
 import { SiteinfoContext } from "../store/siteinfo";
-
-export default function Page(categories: ICategory[]) {
+interface PageProps {
+  categories: ICategory[];
+}
+export default function Page(categories: PageProps) {
   const { isSuccess, setIsSuccess } = useContext(FormContext);
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
@@ -58,7 +60,7 @@ export default function Page(categories: ICategory[]) {
         desc={""}
         canonical={"/contact"}
       />
-      <Layout categories={categories}>
+      <Layout categories={categories.categories}>
         <IntroSection
           location={t["main.contact"]}
           title={t["main.contactus"]}

@@ -33,7 +33,7 @@ export interface IProduct {
   slug: string;
   price: number;
   image: string | null;
-  category: string;
+  category: ICategory;
   details: string | null;
   desc: string;
   images: { id: number; image: string }[];

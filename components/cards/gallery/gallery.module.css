@@ -14,6 +14,7 @@
 .card_image {
   position: relative;
   height: 250px;
+  cursor: pointer;
 }
 
 .card:hover .card_hover_img {

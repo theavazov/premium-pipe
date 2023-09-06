@@ -17,6 +17,7 @@
   height: 360px;
   position: relative;
   z-index: 0;
+  cursor: pointer;
 }
 
 .gallery_card:hover .gallery_card_mask {

@@ -272,6 +272,7 @@
     padding-right: 0;
     padding-bottom: 14px;
     border-bottom: 1px solid #ebebeb;
+    border-right: unset;
   }
 }
 @media (max-width: 550px) {

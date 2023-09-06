@@ -497,16 +497,6 @@ const MobileMenu = ({
           >
             {t["main.contact"]}
           </Link>
-          <Link
-            href={"/cart"}
-            className={`${
-              pathname === "/cart"
-                ? `${styles.nav_link} ${styles.active}`
-                : styles.nav_link
-            }`}
-          >
-            {t["main.cart"]}
-          </Link>
         </nav>
       </div>
     </section>

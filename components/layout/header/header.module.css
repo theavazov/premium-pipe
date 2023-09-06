@@ -432,6 +432,7 @@
   .search_wrapper {
     width: 100%;
   }
+
   .header_top_link {
     font-size: 14px;
     line-height: 20px;
@@ -547,5 +548,8 @@
   .order_number:after {
     top: 25px;
     padding: 2px;
+  }
+  .search_wrapper input {
+    padding: 10px 0 10px 10px;
   }
 }

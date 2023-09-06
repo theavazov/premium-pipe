@@ -9,10 +9,11 @@ import { TranslationsContext } from "../../../store/translations";
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { t } = useContext(TranslationsContext);
+
   return (
     <Link href={`/product/${product.slug}`} className={styles.card}>
       <div className={styles.card_category}>
-        {dot} {product.category}
+        {dot} {product.category.title}
       </div>
       <div className={styles.card_image}>
         <Image

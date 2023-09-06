@@ -39,22 +39,24 @@ export default function Page({ categorys }: { categorys: ICategory[] }) {
         <section>
           <div className={`box ${styles.intro_inner}`}>
             <div className={styles.intro}>
-              <div className={styles.intro_titles}>
-                <nav className={styles.breadcrumb}>
-                  <Link href="/" className={styles.breadcrumb_el}>
-                    {t["main.main"]}
-                  </Link>
-                  <span className={styles.breadcrumb_el}>/</span>
-                  <p className={styles.breadcrumb_el}>{t["main.products"]}</p>
-                </nav>
-                <h1 className={styles.intro_title}>{category?.title}</h1>
+              <div className={styles.intro_info}>
+                <div className={styles.intro_titles}>
+                  <nav className={styles.breadcrumb}>
+                    <Link href="/" className={styles.breadcrumb_el}>
+                      {t["main.main"]}
+                    </Link>
+                    <span className={styles.breadcrumb_el}>/</span>
+                    <p className={styles.breadcrumb_el}>{t["main.products"]}</p>
+                  </nav>
+                  <h1 className={styles.intro_title}>{category?.title}</h1>
+                </div>
+                {category?.desc ? (
+                  <div
+                    className={styles.intro_desc}
+                    dangerouslySetInnerHTML={{ __html: category.desc }}
+                  ></div>
+                ) : null}
               </div>
-              {category?.desc ? (
-                <div
-                  className={styles.intro_desc}
-                  dangerouslySetInnerHTML={{ __html: category.desc }}
-                ></div>
-              ) : null}
               {category?.image ? (
                 <div className={styles.intro_back_img_box}>
                   <Image
