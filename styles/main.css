@@ -48,6 +48,10 @@
   background-color: #ececec;
 }
 
+.skeleton.article {
+  height: 460px;
+}
+
 button {
   cursor: pointer;
   border: none;
@@ -230,16 +234,6 @@ main {
   height: 17px;
 }
 
-@media (max-width: 1550px) {
-  .box {
-    padding-inline: 56px;
-  }
-  .box,
-  .mediumbox,
-  .minibox {
-    padding-inline: 56px;
-  }
-}
 @media (max-width: 1440px) {
   main {
     flex: 1 1 auto;

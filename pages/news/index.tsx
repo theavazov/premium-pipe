@@ -6,18 +6,34 @@ import IntroSection from "../../components/universal/intro";
 import { getCategories, getNews } from "../../server/api";
 import styles from "../../styles/news.module.css";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TranslationsContext } from "../../store/translations";
-import { ICategory } from "../../server/interfaces";
+import { ICategory, INews } from "../../server/interfaces";
+import Pagination from "../../components/utils/pagination";
 interface PageProps {
   categories: ICategory[];
 }
 export default function Page(categories: PageProps) {
   const { locale } = useRouter();
-  const { data: news, isLoading } = useQuery("news", () => getNews(locale!), {
-    retry: false,
-  });
   const { t } = useContext(TranslationsContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [news, setNews] = useState<INews[]>([]);
+  const [current, setCurrent] = useState(1);
+  const [max, setMax] = useState(1);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getNews(locale!)
+      .then((r) => {
+        console.log(r);
+
+        setMax(r.total_pages);
+        setNews(r.results);
+        setIsLoading(false);
+      })
+      .catch((e) => console.log(e));
+  }, [, locale]);
+
   return (
     <>
       <CustomHead
@@ -29,15 +45,28 @@ export default function Page(categories: PageProps) {
         <IntroSection location={t["main.news"]} title={t["main.our_news"]} />
         <section>
           <div className={`box ${styles.section_inner}`}>
-            {news && news.length > 0 ? (
+            {news.length > 0 ? (
               isLoading ? (
-                <p>{t["main.loading"]}...</p>
-              ) : (
                 <div className="products_container">
-                  {news.map((article) => {
-                    return <NewsCard key={article.id} article={article} />;
-                  })}
+                  <div className="skeleton article"></div>
+                  <div className="skeleton article"></div>
+                  <div className="skeleton article"></div>
+                  <div className="skeleton article"></div>
                 </div>
+              ) : (
+                <>
+                  <div className="products_container">
+                    {news.map((article) => {
+                      return <NewsCard key={article.id} article={article} />;
+                    })}
+                  </div>
+                  <Pagination
+                    path="/news"
+                    current={current}
+                    maximal={max}
+                    setPage={setCurrent}
+                  />
+                </>
               )
             ) : null}
           </div>

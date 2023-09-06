@@ -1,5 +1,8 @@
 .section_inner {
   padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .other_product_inner {

@@ -172,7 +172,7 @@
   align-items: center;
   border-radius: 24px;
   overflow: hidden;
-  width: 370px;
+  width: 320px;
 }
 
 .search_wrapper button {
@@ -223,8 +223,6 @@
 
 .header_bottom.dark .search_wrapper input {
   color: var(--white);
-}
-.nav_link > span {
 }
 .cart_svg {
   display: flex;
@@ -421,15 +419,13 @@
     gap: 44px;
   }
   .header_nav {
-    gap: 28px;
+    gap: 20px;
   }
   .nav_link {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 24px */
-  }
-  .search_wrapper {
   }
 }
 @media (max-width: 1400px) {
@@ -440,8 +436,7 @@
     font-size: 14px;
     line-height: 20px;
   }
-  .header_bottom_div,
-  .header_nav {
+  .header_bottom_div {
     gap: 24px;
   }
 }
@@ -523,7 +518,6 @@
 
   .header_nav {
     flex-direction: column;
-    gap: 24px;
     align-items: unset;
   }
   .nav_link {

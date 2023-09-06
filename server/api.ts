@@ -78,9 +78,9 @@ export async function getNews(locale: string) {
     headers: { Language: locale },
   });
 
-  const data = await res.data.results;
+  const data = await res.data;
 
-  return data as INews[];
+  return data;
 }
 
 export async function getSingleNews(locale: string, slug: string) {
