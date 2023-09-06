@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./pagination.module.css";
 import { useRouter } from "next/router";
-import { arrow_right } from "../../../public/icons";
+import { chevron_right } from "../../../public/icons";
 
 interface IPaginationComponent {
   path: string;
@@ -23,7 +23,7 @@ export default function Pagination({
       <button
         disabled={current - 1 < 1 ? true : false}
         style={{
-          opacity: current - 1 >= 1 ? "0.5" : "1",
+          opacity: current - 1 < 1 ? "0.5" : "1",
           transform: "rotate(180deg)",
         }}
         className={styles.last_element}
@@ -32,7 +32,7 @@ export default function Pagination({
           setPage(current - 1);
         }}
       >
-        {arrow_right}
+        {chevron_right}
       </button>
       {(() => {
         const paginations = [];
@@ -63,7 +63,7 @@ export default function Pagination({
           setPage(current + 1);
         }}
       >
-        {arrow_right}
+        {chevron_right}
       </button>
     </div>
   );

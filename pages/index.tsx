@@ -46,6 +46,7 @@ export default function Page({
 }: PageProps) {
   const { isSuccess } = useContext(FormContext);
   const { t } = useContext(TranslationsContext);
+
   return (
     <>
       <CustomHead title={"Premium Pipe"} desc={""} canonical={"/"} />
@@ -70,10 +71,10 @@ export default function Page({
 export async function getServerSideProps(ctx: any) {
   const categories = await getCategories(ctx.locale);
   const partners = await getPartners(ctx.locale);
-  const news = await getNews(ctx.locale);
+  const news = await getNews(ctx.locale, 1);
   const products = await getProducts(ctx.locale);
 
   return {
-    props: { categories, partners, news, products },
+    props: { categories, partners, news: news.results, products },
   };
 }

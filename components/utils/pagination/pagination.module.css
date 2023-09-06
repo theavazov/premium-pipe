@@ -1,54 +1,54 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 16px;
   margin-top: 40px;
 }
 
 .btn {
   display: grid;
   place-items: center;
-  width: 54px;
-  height: 54px;
+  width: 51px;
+  height: 51px;
   border-radius: 50%;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 16px;
+  line-height: 24px;
   color: var(--black);
   background-color: unset;
+  border: 1px solid var(--white);
   transition: 0.4s;
 }
 
 .btn.active {
-  color: var(--white);
-  background-color: #ff6418;
+  border: 1px solid #781ecd;
 }
 
 .btn.active:hover {
-  color: var(--white);
-  background-color: var(--main-orange);
+  color: #781ecd;
+  border: 1px solid #781ecd;
+  background-color: rgba(120, 30, 205, 0.1);
 }
 
 .btn:hover {
   color: var(--black);
-  background-color: #d9d8d8;
+  border: 1px solid #ebebeb;
 }
 
 .last_element {
-  border: none;
+  border: 1px solid #ebebeb;
   background-color: unset;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 18px;
-  line-height: 27px;
+  display: grid;
+  place-items: center;
   color: var(--black);
-  padding-left: 8px;
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
 }
 
 .last_element svg {
-  max-width: 24px;
+  max-width: 20px;
   width: 100%;
-  height: 24px;
+  height: 20px;
   transform: translateX(0px);
   transition: 0.4s;
 }
@@ -58,5 +58,26 @@
 }
 
 .last_element:hover svg {
-  transform: translateX(10px);
+  transform: translateX(2px);
+}
+
+@media (max-width: 1200px) {
+  .pagination {
+    margin-top: 16px;
+    gap: 8px;
+  }
+  .btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .last_element {
+    width: 36px;
+    height: 36px;
+  }
+  .last_element svg {
+    max-width: 14px;
+    height: 14px;
+  }
 }

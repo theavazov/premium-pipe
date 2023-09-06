@@ -23,16 +23,14 @@ export default function Page(categories: PageProps) {
 
   useEffect(() => {
     setIsLoading(true);
-    getNews(locale!)
+    getNews(locale!, current)
       .then((r) => {
-        console.log(r);
-
         setMax(r.total_pages);
         setNews(r.results);
         setIsLoading(false);
       })
       .catch((e) => console.log(e));
-  }, [, locale]);
+  }, [, locale, current]);
 
   return (
     <>

@@ -73,10 +73,13 @@ export async function getSingleProduct(locale: string, slug: string) {
   return data;
 }
 
-export async function getNews(locale: string) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_ENDPOINT}/news`, {
-    headers: { Language: locale },
-  });
+export async function getNews(locale: string, page: number) {
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_ENDPOINT}/news/?page=${page}`,
+    {
+      headers: { Language: locale },
+    }
+  );
 
   const data = await res.data;
 
