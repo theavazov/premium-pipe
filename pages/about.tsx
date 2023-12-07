@@ -52,7 +52,7 @@ export default function Page({
                   />
                 </div>
                 <div className={styles.top_right_div}>
-                  <h4 className={styles.stats_number}>04</h4>
+                  <h4 className={styles.stats_number}>{t["about.num-1"]}</h4>
                   <div>
                     <h5 className={styles.stats_title}>
                       {t["about.stats_title1"]}
@@ -63,7 +63,7 @@ export default function Page({
                   </div>
                 </div>
                 <div className={styles.top_right_div}>
-                  <h4 className={styles.stats_number}>25</h4>
+                  <h4 className={styles.stats_number}>{t["about.num-2"]}</h4>
                   <div>
                     <h5 className={styles.stats_title}>
                       {t["about.stats_title2"]}
@@ -74,7 +74,7 @@ export default function Page({
                   </div>
                 </div>
                 <div className={styles.top_right_div}>
-                  <h4 className={styles.stats_number}>0,98</h4>
+                  <h4 className={styles.stats_number}>{t["about.num-3"]}</h4>
                   <div>
                     <h5 className={styles.stats_title}>
                       {t["about.stats_title3"]}

@@ -82,7 +82,7 @@ export default function Footer() {
                 {t["main.footer_contactus_desc"]}
               </p>
             </div>
-            <div className={styles.social_links_cont}>
+            {/* <div className={styles.social_links_cont}>
               <p className={styles.social_links_title}>
                 {t["main.social_networks"]}
               </p>
@@ -102,7 +102,7 @@ export default function Footer() {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={styles.top_container_inner_btm}>
             <div className={styles.contact}>

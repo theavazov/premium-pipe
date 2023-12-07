@@ -62,13 +62,10 @@ export default function ContactsHome() {
                     onChange={(e) => setName(e.target.value)}
                   />
                   <div className={styles.formwrapper}>
-                    <span>+998</span>
                     <IMaskInput
                       className={styles.number}
-                      type="text"
-                      mask={"(00) 000 00 00"}
-                      unmask={true}
-                      placeholder=" 33 571 46 56"
+                      type="number"
+                      placeholder={t["main.phone_number"]}
                       required
                       value={number}
                       id="name"

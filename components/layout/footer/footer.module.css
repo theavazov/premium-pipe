@@ -102,10 +102,10 @@
 .contact_info {
   color: var(--white);
   font-family: var(--halvar-medium);
-  font-size: 34px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: 37.4px;
+  line-height: 32px;
   text-transform: uppercase;
   max-width: 704px;
   transition: 0.3s;
@@ -115,10 +115,10 @@
 .email {
   color: var(--white);
   font-family: var(--halvar-medium), sans-serif;
-  font-size: 34px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: 37.4px;
+  line-height: 32px;
   text-transform: uppercase;
   padding-bottom: 7px;
   border-bottom: 1px solid var(--white);
