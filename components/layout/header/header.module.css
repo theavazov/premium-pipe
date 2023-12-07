@@ -316,8 +316,8 @@
   color: var(--gray);
   border-bottom: 1px solid #ebebeb;
   text-transform: capitalize;
-  text-align: center;
   transition: 0.3s;
+  min-width: 208px;
 }
 
 .dropdown a:last-child {

@@ -119,7 +119,7 @@ const StoreModal = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <IMaskInput
-              mask={"+998 00 000 00 00"}
+              type="number"
               className={styles.store_input}
               placeholder={`${t["main.phone_number"]}*`}
               value={number}
