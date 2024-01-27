@@ -13,7 +13,7 @@
 
 .btn:hover,
 .arrowbtn:hover {
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .btn svg,

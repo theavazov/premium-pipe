@@ -124,7 +124,7 @@ a.breadcrumb_el:hover {
 
 .aside_link.active,
 .aside_link:hover {
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .body_content {

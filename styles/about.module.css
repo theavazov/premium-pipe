@@ -57,7 +57,7 @@
   font-weight: 700;
   font-size: 48px;
   line-height: 48px;
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .stats_title {
@@ -110,8 +110,8 @@
     line-height: 100%; /* 39px */
   }
   .stats_title {
-    font-size: 18px;  
-    line-height: 150%; 
+    font-size: 18px;
+    line-height: 150%;
   }
   .stats_text {
     font-size: 14px;

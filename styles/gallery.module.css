@@ -76,8 +76,8 @@
 }
 
 .active {
-  color: #4eb848;
-  border: 1px solid #4eb848;
+  color: var(--orange1);
+  border: 1px solid var(--orange1);
 }
 .limit_btn_box {
   display: flex;
@@ -86,8 +86,8 @@
 }
 .bottom_btn {
   border-radius: 40px;
-  border: 1px solid #4eb848;
-  color: #4eb848;
+  border: 1px solid var(--orange1);
+  color: var(--orange1);
   text-align: center;
   font-family: var(--halvar-bold);
   font-size: 14px;
@@ -142,7 +142,7 @@
     flex-direction: column;
   }
   .bottom_btn {
-    color: #4eb848;
+    color: var(--orange1);
     text-align: center;
     font-family: var(--halvar-medium);
     font-size: 16px;

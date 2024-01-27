@@ -128,7 +128,7 @@
 .phone:hover,
 .email:hover,
 .contact_info:hover {
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .btm_container {
@@ -165,8 +165,8 @@
 
 .footer_link:hover,
 .footer_link.active {
-  color: var(--green);
-  border-bottom: 1px solid var(--green);
+  color: var(--orange1);
+  border-bottom: 1px solid var(--orange1);
 }
 
 .designedby,
@@ -180,7 +180,7 @@
 }
 
 .designedby > a {
-  color: var(--green);
+  color: var(--orange1);
   padding-left: 4px;
 }
 

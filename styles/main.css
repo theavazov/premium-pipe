@@ -4,11 +4,12 @@
 :root {
   --white: #ffffff;
   --black: #020105;
-  --green: #4eb848;
+  --orange1: #4eb848;
   --gray: #5d5d5f;
   --grayscale: #353437;
   --dark-blue: #1b1b3a;
   --orange: #fd8c05;
+  --orange1: #fd8c03;
   --interface-regular: "Interface regular";
   --interface-medium: "Interface medium";
   --interface-semibold: "Interface semibold";
@@ -21,7 +22,7 @@
 }
 
 #nprogress .bar {
-  background: var(--green) !important;
+  background: var(--orange1) !important;
 }
 
 #nprogress .spinner {
@@ -140,7 +141,7 @@ main {
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
-  color: var(--green);
+  color: var(--orange1);
   max-width: 250px;
   width: 100%;
 }
@@ -187,7 +188,7 @@ main {
   align-items: center;
   gap: 8px;
   border-radius: 40px;
-  background: var(--green);
+  background: var(--orange1);
 }
 
 .primary_btn svg {

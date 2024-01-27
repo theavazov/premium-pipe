@@ -36,7 +36,7 @@
   max-width: 24px;
   width: 100%;
   height: 24px;
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .header_top.light .header_top_link,
@@ -71,7 +71,7 @@
 }
 
 .another_wrapper span {
-  color: var(--green);
+  color: var(--orange1);
   font-family: var(--interface-semibold), sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -164,7 +164,7 @@
 .header_bottom.light .nav_link:hover,
 .header_bottom.dark .nav_link.active,
 .header_bottom.dark .nav_link:hover {
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .search_wrapper {
@@ -326,7 +326,7 @@
 
 .dropdown a.active,
 .dropdown a:hover {
-  color: var(--green);
+  color: var(--orange1);
 }
 /* mobile menu open */
 .mobile_menu {
@@ -475,7 +475,7 @@
     background-color: var(--white);
   }
   .header_bottom.light .hamburger {
-    background-color: var(--green);
+    background-color: var(--orange1);
   }
   .header_bottom.dark .hamburger span {
     background-color: var(--dark-blue);

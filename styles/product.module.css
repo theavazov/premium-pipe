@@ -34,7 +34,7 @@
 }
 
 .images_secondary.active {
-  border: 1px solid var(--green);
+  border: 1px solid var(--orange1);
 }
 
 .images_mainimg {

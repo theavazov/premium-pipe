@@ -90,12 +90,12 @@
 }
 
 .card:hover .card_content_body span {
-  color: var(--green);
+  color: var(--orange1);
 }
 
 .card:hover .card_content_body svg {
   transform: rotate(-45deg);
-  color: var(--green);
+  color: var(--orange1);
 }
 
 @media (max-width: 1440px) {
